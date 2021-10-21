@@ -132,8 +132,8 @@ def main():
     train, dev, test = split_data(Labeled_data)
 
     train.to_csv('train.csv', index=False)
-    test.to_csv('train.csv', index=False)
-    dev.to_csv('train.csv', index=False)
+    test.to_csv('test.csv', index=False)
+    dev.to_csv('dev.csv', index=False)
 
     print_count(train,'train')
     print_count(test, 'test')
