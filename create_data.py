@@ -25,10 +25,10 @@ def main():
         print(f"{newspaper}: {count}")
 
 
-
 def create_data(path):
     files = Path(path)
     documents = []
+    classifications = []
     newspapers = []
 
     for f in files.rglob("*.json"):

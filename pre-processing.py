@@ -5,97 +5,134 @@ import pandas as pd
 DIR = "data/"
 
 
-GROUP = {'CLIMATE': ["CLIMATE CHANGE", "CLIMATOLOGY", "CLIMATE CHANGE REGULATION & POLICY", "WEATHER", "GLOBAL WARMING'"], 
-        "EMISSIONS": ['EMISSIONS', 'GREENHOUSE GASES', 'POLLUTION & ENVIRONMENTAL IMPACTS', 'AIR QUALITY REGULATION', 'AIR POLLUTION'],
-        }
+GROUP = {
+    "CLIMATE": [
+        "CLIMATE CHANGE",
+        "CLIMATOLOGY",
+        "CLIMATE CHANGE REGULATION & POLICY",
+        "WEATHER",
+        "GLOBAL WARMING'",
+    ],
+    "EMISSIONS": [
+        "EMISSIONS",
+        "GREENHOUSE GASES",
+        "POLLUTION & ENVIRONMENTAL IMPACTS",
+        "AIR QUALITY REGULATION",
+        "AIR POLLUTION",
+    ],
+}
 
 
 def match_list(subjects, group):
-    
-    percentage = list()
-    
-    for subject in subjects:
-        name = subject['name']
-        p = subject['percentage']
-        if name in group:
-            if p != '':
-                percentage.append(int(p))
-                
 
-    if len(percentage)==0:
+    """
+    Compare an article's subjects to a pre-defined set of subjects from the CLIMATE or EMISSIONS groups,
+    and Return the highest percentage from the subjects that is matched.
+
+    """
+
+    # get the percentages of subjects that is present on both article and group
+    percentage = [
+        int(subject["percentage"])
+        for subject in subjects
+        if subject["name"] in group and subject["percentage"] != ""
+    ]
+
+    # If there are no matches, return 0
+    if len(percentage) == 0:
         return 0
-    
-   
+
     return max(percentage)
-            
-             
+
 
 def load_data(dir):
-    
+
+    """
+    read json files from data folder,
+    extract cop edition, newspaper name, headline, published date, article body, subjects from each file
+    and return the dataset
+    """
+
     files = os.listdir(dir)
     dataset = list()
     for f in files:
-        with open(dir+f,) as file:
+        with open(
+            dir + f,
+        ) as file:
             file = json.load(file)
-            for article in file['articles']:
+            for article in file["articles"]:
 
                 data = dict()
-                data['cop_edition'] = file['cop_edition']
-                data['newspaper'] = article['newspaper']
-                data['headline'] = article['headline']
-                data['date'] = article['date']
-                data['article'] = article['body']
+                data["cop_edition"] = file["cop_edition"]
+                data["newspaper"] = article["newspaper"]
+                data["headline"] = article["headline"]
+                data["date"] = article["date"]
+                data["article"] = article["body"]
 
-                subjects = article['classification']['subject']
+                subjects = article["classification"]["subject"]
                 if subjects is None:
                     continue
 
-                data['subjects'] = subjects
+                data["subjects"] = subjects
 
                 dataset.append(data)
-    
-    return dataset      
+
+    return dataset
 
 
 def get_label(subjects):
-    
-    match = {label:match_list(subjects,topics) for label,topics in GROUP.items() if match_list(subjects,topics)!=0}  
+
+    """
+    Return the name of that group as label if the article is matched with only one group and the maximum percentage is more than or equal to 75.
+    If the article is matched with more than one group, return None. If no group matches, use MISC as the label.
+
+    """
+
+    # obtain the names of the groups that correspond to the article's topic, as well as the maximum percentage
+    match = {
+        label: match_list(subjects, topics)
+        for label, topics in GROUP.items()
+        if match_list(subjects, topics) != 0
+    }
 
     topics = list(match.keys())
 
-    if len(topics)==1 and match[topics[0]]>=75.00:            
+    if len(topics) == 1 and match[topics[0]] >= 75.00:
         return topics[0]
 
-    elif len(topics)==0:
-            return 'MISC'
+    elif len(topics) == 0:
+        return "MISC"
     else:
         return None
-    
-     
+
 
 def label_data(dataset):
 
+    """If each article meets the criteria, add a label to it and returns the tagged dataset"""
 
     Labeled_dataset = list()
     for data in dataset:
 
-        subjects = data['subjects']
+        subjects = data["subjects"]
+
         label = get_label(subjects)
-        
+
         if label is not None:
-            data['topic'] = label
-            del data['subjects']
+            data["topic"] = label
+            del data["subjects"]
             Labeled_dataset.append(data)
-    
 
     return Labeled_dataset
 
-def select_random_rows(df,n,filter="MISC"):
 
-    rdf = df[df['topic']==filter]
-    rdf = rdf.groupby('cop_edition').sample(n=n, random_state=1)
+def select_random_rows(df, n, filter="MISC"):
 
-    df = df[df['topic']!=filter]
+    """Return a dataframe comprising only n MISC articles at random"""
+
+    rdf = df[df["topic"] == filter]
+    rdf = rdf.groupby("cop_edition").sample(n=n, random_state=1)
+
+    df = df[df["topic"] != filter]
     df = df.append(rdf, ignore_index=True)
 
     return df
@@ -103,43 +140,51 @@ def select_random_rows(df,n,filter="MISC"):
 
 def split_data(dataset):
 
+    """Split the dataset into three sections: training, development, and testing. The train uses articles from the 1-20th cop meeting.
+    The 21st and 22nd meetings are utilized for the dev set, while the 23rd and 25th meetings are allocatd for testing."""
+
     df = pd.DataFrame(dataset)
-    Range_train = [str(i) for i in range(1,21)]
-    Range_test = ["23","24"]
-    Range_dev = ["21","22"]
+    Range_train = [str(i) for i in range(1, 21)]
+    Range_test = ["23", "24"]
+    Range_dev = ["21", "22"]
 
-    train = df.loc[df['cop_edition'].isin(Range_train)]
-    test = df.loc[df['cop_edition'].isin(Range_test)]
-    dev = df.loc[df['cop_edition'].isin(Range_dev)]
+    train = df.loc[df["cop_edition"].isin(Range_train)]
+    test = df.loc[df["cop_edition"].isin(Range_test)]
+    dev = df.loc[df["cop_edition"].isin(Range_dev)]
 
-    train = select_random_rows(train,125)
-    test = select_random_rows(test,300)
-    dev = select_random_rows(dev,300)
+    # For training, 125 MISC articles are randomly selected from each meeting
+    train = select_random_rows(train, 125)
+
+    # For test, 300 MISC articles are randomly selected from 23rd and 24th meeting
+    test = select_random_rows(test, 300)
+
+    # For dev, 300 MISC articles are randomly selected from 21st and 22nd meeting
+    dev = select_random_rows(dev, 300)
 
     return train, dev, test
-  
 
-
-def print_count(df, name):
-    
-   print("{} \n {} \n".format(name, df['topic'].value_counts()))
 
 def main():
 
+    # load raw json files
     Raw_data = load_data(DIR)
+
+    # tag articles with labels
     Labeled_data = label_data(Raw_data)
-        
+
+    # split the data into three sets
     train, dev, test = split_data(Labeled_data)
 
-    train.to_csv('train.csv', index=False)
-    test.to_csv('train.csv', index=False)
-    dev.to_csv('train.csv', index=False)
+    # Save training, development, and testing sets in csv format
+    train.to_csv("train.csv", index=False)
+    test.to_csv("test.csv", index=False)
+    dev.to_csv("dev.csv", index=False)
 
-    print_count(train,'train')
-    print_count(test, 'test')
-    print_count(dev, 'dev')
+    # Print the group distribution in train, dev, and test sets
+    print("{} \n {} \n".format("train", train["topic"].value_counts()))
+    print("{} \n {} \n".format("test", test["topic"].value_counts()))
+    print("{} \n {} \n".format("dev", dev["topic"].value_counts()))
 
 
 if __name__ == "__main__":
     main()
-
