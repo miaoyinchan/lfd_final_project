@@ -7,7 +7,7 @@ files = os.listdir(dir)
 
 
 def matchList(l1,l2):
-    
+
     for l in l1:
         if l in l2:
             return True
@@ -43,7 +43,7 @@ for f in files:
             topic = 'MISC'
         else:
             continue
-        
+
         data = dict()
         data['cop_edition'] = file['cop_edition']
         data['newspaper'] = article['newspaper']
@@ -53,10 +53,10 @@ for f in files:
         data['topic'] = topic
 
         dataset.append(data)
-                
+
 
 df = pd.DataFrame(dataset)
 df.to_csv('topic-classification.csv',index=False)
 
-
+print(len(dataset))
 

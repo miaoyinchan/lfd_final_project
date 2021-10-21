@@ -1,4 +1,7 @@
 import json
+import argparse
+import numpy as np
+import pandas as pd
 from pathlib import Path
 from collections import Counter
 
@@ -24,8 +27,10 @@ GROUPS = {
 
 
 def main():
-    # create_data("data")
-    test_label()
+    doc, labels = create_data("data")
+    for label_name, label_count in Counter(labels).items():
+        print(f"{label_name}: {label_count}")
+    # test_label()
 
 
 def create_data(data_directory):
@@ -40,51 +45,55 @@ def create_data(data_directory):
                 continue
             labels.append(label)
 
+    return article, labels
 
     for label_name, label_count in Counter(labels).items():
         print(f"{label_name}: {label_count}")
 
 
 def find_label_for_subjects(subjects):
-    '''Based on the percentage of the subjects, label the article:
-    - if only 1 highest percentage, if subject is one of the groups,
-    get label, if not in the groups, get MISC.
-    - if more than 1 highest percentage:
-        + if all in the same group, get label.
-        + if not in the same group, skip the sample.
-        + if in no group, MISC.
+    '''Find label for articles based on this logic,
+    collect the articles' subjects of which percentage > 75%:
+    - if there is no subject, get MISC label,
+    - if all subjects belong to no group, get MISC label,
+    - if all subjects belong to 1 group, get label,
+    - if all subjects belong to >1 group, get no label,
+    - if 1 of the subjects belong to 1 group, get label.
     '''
 
-    subjects_by_pct = {}
-
+    # if there is no subject, get MISC label
     if subjects is None or len(subjects) == 0:
         return "MISC"
 
+    #collect the articles' subjects of which percentage > 75%
+    subjects_above_75pct = []
     for subject in subjects:
         try:
             pct = int(subject["percentage"])
         except ValueError:
             continue
-        if pct not in subjects_by_pct:
-            subjects_by_pct[pct] = []
-        subjects_by_pct[pct].append(subject["name"])
+        if pct > 75:
+            subjects_above_75pct.append(subject["name"])
 
-    if len(subjects_by_pct) == 0:
-        return "MISC"
-
-    highest_pct = max(subjects_by_pct.keys())
-    highest_subjects = subjects_by_pct[highest_pct]
-
+    # check if the subjects (>75pct) belongs to groups
     labels = set()
-    for label_name, label_subjects in GROUPS.items():
-        for subject in highest_subjects:
-            if subject in label_subjects:
-                labels.add(label_name)
+    for topic_name, subject_name in GROUPS.items():
+        for subject in subjects_above_75pct:
+            if subject in subject_name:
+                labels.add(topic_name)
 
+    # if all subjects belong to no group, get MISC label
     if len(labels) == 0:
         label = "MISC"
+
+    # if all subjects belong to 1 group, get label
+    # or if 1 of the subjects belong to 1 group, get label
+    # (other subjects not belong to groups won't
+    # include in the set)
     elif len(labels) == 1:
         label = list(labels)[0]
+
+    # if all subjects belong to >1 group, get no label
     elif len(labels) > 1:
         label = None
 
@@ -93,18 +102,18 @@ def find_label_for_subjects(subjects):
 
 def test_label():
     subjects = [
-        {
+          {
             "name": "EMERGING MARKETS",
-            "percentage": "90",
-        },
-        {
+            "percentage": "90"
+          },
+          {
             "name": "ENVIRONMENT & NATURAL RESOURCES",
-            "percentage": "90",
-        },
-        {
+            "percentage": "90"
+          },
+          {
             "name": "EMISSIONS",
-            "percentage": "89",
-        },
+            "percentage": "89"
+          }
     ]
 
     print(find_label_for_subjects(subjects))
