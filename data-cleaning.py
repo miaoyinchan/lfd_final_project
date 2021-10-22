@@ -2,6 +2,7 @@ import re
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 import pandas as pd
+import numpy as np
 
 
 nltk.download("punkt")
@@ -26,23 +27,19 @@ def clean_text(text):
         # Paris, Dec. 1 --
         r"^[A-Za-z]+, [A-Za-z]+\. [0-9]+ --",
         # New Delhi, Dec. 7 --
-        r"^[[A-Za-z]+ [[A-Za-z]+, [A-Za-z]+. [0-9]+ --",
+        r"^[A-Za-z]+ [A-Za-z]+, [A-Za-z]+. [0-9]+ --",
         # SAN DIEGO --
-        r"^[[A-Za-z]+ [[A-Za-z]+ (:|--|,)",
+        r"^[A-Za-z]+ [A-Za-z]+ (:|--|,)",
         # NEW DELHI -
-        r"^[[A-Za-z]+ [[A-Za-z]+ (:|-|,)",
+        r"^[A-Za-z]+ [A-Za-z]+ (:|-|,)",
         # LE BOURGET, France --
-        r"^[[A-Za-z]+ [[A-Za-z]+(:|--|,) [[A-Za-z]+ (:|--|,)",
-        #  England --
-        r"^ [[A-Za-z]+ (:|--|,)",
-        # WASHINGTON —
-        r"^[[A-Za-z]+ (:|—|,)",
-        # BEIJING -
-        r"^[[A-Za-z]+ (:|-|,)",
+        r"^[A-Za-z]+ [A-Za-z]+(:|--|,) [A-Za-z]+ (:|--|,)",
+        # 'WASHINGTON —', 'BEIJING -', ' England --'
+        r"^[ ]?[A-Za-z]+ (:|—|-|--,)",
         # NEW DELHI:
-        r"^[[A-Za-z]+ [[A-Za-z]+(:|-|,)",
+        r"^[A-Za-z]+ [A-Za-z]+(:|-|,)",
         # NEW DELHI/BEIJING:
-        r"^[[A-Za-z]+ [[A-Za-z]+(:|-|,|\/)[[A-Za-z]+(:|-|,|\/)",
+        r"^[A-Za-z]+ [A-Za-z]+(:|-|,|\/)[A-Za-z]+(:|-|,|\/)",
     ]
     new_text = text
     for rgx_match in rgx_list:
@@ -60,7 +57,7 @@ def clean_data(df):
         article = " ".join(sen_list[:-2])
         article = clean_text(article)
 
-        cleaned_articles.append(article)
+        cleaned_articles.append(article or np.nan)
 
     df["article"] = cleaned_articles
 
