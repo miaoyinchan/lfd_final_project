@@ -1,6 +1,6 @@
 import re
 import nltk
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import sent_tokenize
 import pandas as pd
 import numpy as np
 
@@ -61,8 +61,6 @@ def clean_data(df):
 
     df["article"] = cleaned_articles
 
-    df = df.dropna()
-
     return df
 
 
@@ -72,6 +70,11 @@ def main():
     train_cleaned = clean_data(train)
     test_cleaned = clean_data(test)
     dev_cleaned = clean_data(dev)
+
+    #remove rows with NaN values
+    train_cleaned = train_cleaned.dropna()
+    test_cleaned = test_cleaned.dropna()
+    dev_cleaned = dev_cleaned.dropna()
 
     train_cleaned.to_csv(TRAIN_DIR, index=False)
     test_cleaned.to_csv(TEST_DIR, index=False)
