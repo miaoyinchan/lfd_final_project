@@ -65,6 +65,7 @@ def load_data(dir):
                 data = dict()
                 data["cop_edition"] = file["cop_edition"]
 
+                #Both 6th and 6a meetings are merged into one
                 if data["cop_edition"] == '6a':
                     data["cop_edition"] = '6'
 
