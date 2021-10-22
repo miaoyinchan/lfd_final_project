@@ -83,8 +83,6 @@ def main():
     test_cleaned.to_csv(TEST_DIR, index=False)
     dev_cleaned.to_csv(DEV_DIR, index=False)
 
-    from pprint import pprint
-    pprint(train_cleaned[:10])
 
 if __name__ == "__main__":
     main()
