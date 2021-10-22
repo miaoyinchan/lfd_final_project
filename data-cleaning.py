@@ -64,6 +64,8 @@ def clean_data(df):
 
     df["article"] = cleaned_articles
 
+    df = df.dropna()
+
     return df
 
 
@@ -74,9 +76,9 @@ def main():
     test_cleaned = clean_data(test)
     dev_cleaned = clean_data(dev)
 
-    train_cleaned.to_csv(TRAIN_DIR)
-    test_cleaned.to_csv(TEST_DIR)
-    dev_cleaned.to_csv(DEV_DIR)
+    train_cleaned.to_csv(TRAIN_DIR, index=False)
+    test_cleaned.to_csv(TEST_DIR, index=False)
+    dev_cleaned.to_csv(DEV_DIR, index=False)
 
 
 if __name__ == "__main__":
