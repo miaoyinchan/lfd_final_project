@@ -65,7 +65,6 @@ def load_data(dir):
                 data = dict()
                 data["cop_edition"] = file["cop_edition"]
 
-                #Both 6th and 6a meetings are merged into one
                 if data["cop_edition"] == '6a':
                     data["cop_edition"] = '6'
 
@@ -145,8 +144,8 @@ def select_random_rows(df, n, filter="MISC"):
 
 def split_data(dataset):
 
-    """Split the dataset into three sections: training, validation, and testing. 
-    The most recent meeting is being utilized for testing purposes. 
+    """Split the dataset into three sections: training, validation, and testing.
+    The most recent meeting is being utilized for testing purposes.
     The meeting before to the last one is set aside for validation, while the others are utilized for training.
     """
 
