@@ -52,9 +52,9 @@ def main():
         vec = CountVectorizer(tokenizer=word_tokenize,ngram_range=(n1,n2))
 
     if args.tfidf:
-        experiment_name = "NB+Tf-idf"+str(n1)+"-"+str(n2)
+        experiment_name = "NB+Tf-idf+"+str(n1)+"-"+str(n2)
     else:
-        experiment_name = "NB+Tf-idf"+str(n1)+"-"+str(n2)
+        experiment_name = "NB+CV+"+str(n1)+"-"+str(n2)
 
     #Create Log file
     try:
@@ -74,7 +74,7 @@ def main():
     classifier.fit(X_train, Y_train)
 
     #save parameter in log
-    print(classifier.get_params())
+    logging.info(classifier.get_params())
 
     #save model
     try:

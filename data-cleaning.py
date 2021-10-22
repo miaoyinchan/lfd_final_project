@@ -2,7 +2,7 @@ import re
 import nltk
 from nltk.tokenize import sent_tokenize
 import pandas as pd
-
+import numpy as np
 
 nltk.download("punkt")
 
@@ -60,7 +60,7 @@ def clean_data(df):
         article = " ".join(sen_list[:-2])
         article = clean_text(article)
 
-        cleaned_articles.append(article)
+        cleaned_articles.append(article or np.nan)
 
     df["article"] = cleaned_articles
 
