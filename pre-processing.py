@@ -64,6 +64,10 @@ def load_data(dir):
 
                 data = dict()
                 data["cop_edition"] = file["cop_edition"]
+
+                if data["cop_edition"] == '6a':
+                    data["cop_edition"] = '6'
+
                 data["newspaper"] = article["newspaper"]
                 data["headline"] = article["headline"]
                 data["date"] = article["date"]
@@ -140,26 +144,30 @@ def select_random_rows(df, n, filter="MISC"):
 
 def split_data(dataset):
 
-    """Split the dataset into three sections: training, development, and testing. The train uses articles from the 1-20th cop meeting.
-    The 21st and 22nd meetings are utilized for the dev set, while the 23rd and 25th meetings are allocatd for testing."""
+    """Split the dataset into three sections: training, validation, and testing. 
+    The most recent meeting is being utilized for testing purposes. 
+    The meeting before to the last one is set aside for validation, while the others are utilized for training.
+    """
 
     df = pd.DataFrame(dataset)
-    Range_train = [str(i) for i in range(1, 21)]
-    Range_test = ["23", "24"]
-    Range_dev = ["21", "22"]
+    meetings = df['cop_edition'].unique()
+    meetings = sorted([m for m in meetings], key=lambda x:int(x))
+    Range_train = meetings[:-2]
+    Range_test = [meetings[-1]]
+    Range_dev = [meetings[-2]]
 
     train = df.loc[df["cop_edition"].isin(Range_train)]
     test = df.loc[df["cop_edition"].isin(Range_test)]
     dev = df.loc[df["cop_edition"].isin(Range_dev)]
 
-    # For training, 125 MISC articles are randomly selected from each meeting
+    # For training, 125 MISC articles are randomly selected from each meeting except the last two
     train = select_random_rows(train, 125)
 
-    # For test, 300 MISC articles are randomly selected from 23rd and 24th meeting
-    test = select_random_rows(test, 300)
+    # For test, 250 MISC articles are randomly selected from the latest meeting
+    test = select_random_rows(test, 250)
 
-    # For dev, 300 MISC articles are randomly selected from 21st and 22nd meeting
-    dev = select_random_rows(dev, 300)
+    # For dev, 250 MISC articles are randomly selected from the meeting before to the last one
+    dev = select_random_rows(dev, 250)
 
     return train, dev, test
 
@@ -176,14 +184,22 @@ def main():
     train, dev, test = split_data(Labeled_data)
 
     # Save training, development, and testing sets in csv format
-    train.to_csv("train.csv", index=False)
-    test.to_csv("test.csv", index=False)
-    dev.to_csv("dev.csv", index=False)
+    try:
+        #create directory for train-test-dev sets
+        directory = "train-test-dev"
+        os.mkdir(directory)
+
+    except OSError as error:
+         directory = "train-test-dev"
+
+    train.to_csv(directory+"/train.csv", index=False)
+    test.to_csv(directory+"/test.csv", index=False)
+    dev.to_csv(directory+"/dev.csv", index=False)
 
     # Print the group distribution in train, dev, and test sets
-    print("{} \n {} \n".format("train", train["topic"].value_counts()))
-    print("{} \n {} \n".format("test", test["topic"].value_counts()))
-    print("{} \n {} \n".format("dev", dev["topic"].value_counts()))
+    print("{} \n{} \n".format("train", train["topic"].value_counts()))
+    print("{} \n{} \n".format("test", test["topic"].value_counts()))
+    print("{} \n{} \n".format("dev", dev["topic"].value_counts()))
 
 
 if __name__ == "__main__":
