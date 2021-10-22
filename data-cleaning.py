@@ -19,8 +19,38 @@ def load_data():
     return train, test, dev
 
 
-def clean_data(df):
+def clean_text(text):
+    rgx_list = [
+        # PARIS: or PARIS, or PARIS --
+        r"^[A-Z]+ ?(:|--|,)",
+        # Paris, Dec. 1 --
+        r"^[A-Za-z]+, [A-Za-z]+\. [0-9]+ --",
+        # New Delhi, Dec. 7 --
+        r"^[[A-Za-z]+ [[A-Za-z]+, [A-Za-z]+. [0-9]+ --",
+        # SAN DIEGO --
+        r"^[[A-Za-z]+ [[A-Za-z]+ (:|--|,)",
+        # NEW DELHI -
+        r"^[[A-Za-z]+ [[A-Za-z]+ (:|-|,)",
+        # LE BOURGET, France --
+        r"^[[A-Za-z]+ [[A-Za-z]+(:|--|,) [[A-Za-z]+ (:|--|,)",
+        #  England --
+        r"^ [[A-Za-z]+ (:|--|,)",
+        # WASHINGTON —
+        r"^[[A-Za-z]+ (:|—|,)",
+        # BEIJING -
+        r"^[[A-Za-z]+ (:|-|,)",
+        # NEW DELHI:
+        r"^[[A-Za-z]+ [[A-Za-z]+(:|-|,)",
+        # NEW DELHI/BEIJING:
+        r"^[[A-Za-z]+ [[A-Za-z]+(:|-|,|\/)[[A-Za-z]+(:|-|,|\/)",
+    ]
+    new_text = text
+    for rgx_match in rgx_list:
+        new_text = re.sub(rgx_match, "", new_text, flags=re.MULTILINE)
+    return new_text
 
+
+def clean_data(df):
     cleaned_articles = list()
     for article in df["article"]:
         article = article.replace("\n", " ")
@@ -28,6 +58,7 @@ def clean_data(df):
 
         # concate in list removing last two
         article = " ".join(sen_list[:-2])
+        article = clean_text(article)
 
         cleaned_articles.append(article)
 
@@ -37,7 +68,6 @@ def clean_data(df):
 
 
 def main():
-
     train, test, dev = load_data()
 
     train_cleaned = clean_data(train)
@@ -48,6 +78,8 @@ def main():
     test_cleaned.to_csv(TEST_DIR)
     dev_cleaned.to_csv(DEV_DIR)
 
+    from pprint import pprint
+    pprint(train_cleaned[:10])
 
 if __name__ == "__main__":
     main()
