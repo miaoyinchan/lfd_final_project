@@ -4,9 +4,9 @@ import pandas as pd
 import joblib
 
 
-DATA_DIR = '../../train-test-dev/'
-MODEL_DIR = "Saved_Models/"
-OUTPUT_DIR = "Output/"
+DATA_DIR = '../../../train-test-dev/'
+MODEL_DIR = "../Saved_Models/"
+OUTPUT_DIR = "../Output/"
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -26,6 +26,8 @@ def create_arg_parser():
     return args
 
 def load_data(dir):
+
+    """ Return article and label from test data """
 
     df = pd.read_csv(dir+'/test.csv')
     X = df['article'].ravel()
@@ -48,13 +50,13 @@ def main():
 
     
 
-    # Combine the vectorizer with a Naive Bayes classifier
+    #Load a Naive Bayes classifier model
     classifier = joblib.load(MODEL_DIR+experiment_name)
 
     #load data from train-test-dev folder
     X_test, Y_test = load_data(DATA_DIR)
 
-    # Test the model with test set
+    #Test the model with test set
     Y_pred = classifier.predict(X_test)
 
     #save results in dataframe

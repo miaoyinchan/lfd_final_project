@@ -1,16 +1,15 @@
-from math import e
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
+import joblib
 
-DATA_DIR = '../../train-test-dev/'
-MODEL_DIR = "Saved_Models/"
-OUTPUT_DIR = "Output/"
+DATA_DIR = '../../../train-test-dev/'
+MODEL_DIR = "../Saved_Models/"
+OUTPUT_DIR = "../Output/"
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
-
 
     parser.add_argument("-t", "--tfidf", action="store_true",
                         help="Use the TF-IDF vectorizer instead of CountVectorizer")
@@ -64,6 +63,32 @@ def save_results(Y_test, Y_pred, experiment_name):
     acc = accuracy_score(Y_test, Y_pred)
     print("Final accuracy: {}".format(acc))
 
+    print("\nClassification Report\n")
+    print(classification_report(Y_test,Y_pred))
+
+
+def find_top_features(classifier, n):
+
+    """Return n most top features per class"""
+
+    prob = classifier[1].feature_log_prob_
+    features = classifier[0].get_feature_names_out()
+    climate_posterior = {f:p for f,p in zip(features,prob[0])}
+    emissions_posterior = {f:p for f,p in zip(features,prob[1])}
+    misc_posterior = {f:p for f,p in zip(features,prob[2])}
+
+    #Sort features using their posterior probablitiy
+    climate_posterior_sorted = {k:v for k,v in sorted(climate_posterior.items(), key=lambda item: item[1], reverse= True)}
+    emissions_posterior_sorted = {k:v for k,v in sorted(emissions_posterior.items(), key=lambda item: item[1], reverse= True)}
+    misc_posterior_sroted = {k:v for k,v in sorted(misc_posterior.items(), key=lambda item: item[1], reverse= True)}
+
+    #get top n features
+    climate_posterior_top_features = list(climate_posterior_sorted.keys())[:n]
+    emissions_posterior_top_features = list(emissions_posterior_sorted.keys())[:n]
+    misc_posterior_top_features = list(misc_posterior_sroted.keys())[:n]
+
+    return climate_posterior_top_features, emissions_posterior_top_features, misc_posterior_top_features
+
 
 def main():
 
@@ -79,15 +104,29 @@ def main():
         experiment_name = "NB+CV+"+str(n1)+"-"+str(n2)
 
     
-
     output = pd.read_csv(OUTPUT_DIR+experiment_name+'.csv')
     Y_test = output['Test']
     Y_predict = output['Predict']
 
     save_results(Y_test, Y_predict, experiment_name)
 
+    #Load a Naive Bayes classifier model
+    classifier = joblib.load(MODEL_DIR+experiment_name)
+
+    #Find top features
+    climate_posterior, emissions_posterior, misc_posterior = find_top_features(classifier, 100)
+
+    #Save top features in csv file
+    df = pd.DataFrame()
+    df['Climate'] = climate_posterior
+    df['Emissions'] = emissions_posterior
+    df['MISC'] = misc_posterior
+
+    df.to_csv(OUTPUT_DIR+experiment_name+"_top_features.csv", index= False)
+
         
-    
+
+
 
 if __name__ == "__main__":
     main()

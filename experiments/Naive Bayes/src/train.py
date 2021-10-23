@@ -1,7 +1,6 @@
 import logging
 import os
 import argparse
-from nltk.util import pr
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import pandas as pd
@@ -10,9 +9,9 @@ from sklearn.pipeline import Pipeline
 import joblib
 
 
-DATA_DIR = '../../train-test-dev/'
-MODEL_DIR = "Saved_Models/"
-LOG_DIR = "Logs/"
+DATA_DIR = '../../../train-test-dev/'
+MODEL_DIR = "../Saved_Models/"
+LOG_DIR = "../Logs/"
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -49,7 +48,7 @@ def main():
     if args.tfidf:
         vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
     else:
-        vec = CountVectorizer(tokenizer=word_tokenize,ngram_range=(n1,n2))
+        vec = CountVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
 
     if args.tfidf:
         experiment_name = "NB+Tf-idf+"+str(n1)+"-"+str(n2)
