@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import joblib
 from matplotlib import pyplot as plt
 from sklearn import svm
+from wordcloud import WordCloud
 
 DATA_DIR = '../../train-test-dev/'
 MODEL_DIR = "Saved_Models/"
@@ -68,7 +69,15 @@ def save_results(Y_test, Y_pred, experiment_name):
     print("\nClassification Report\n")
     print(classification_report(Y_test,Y_pred))
 
-def most_informative_features(classifier, n=100):
+def cloud(freqs,title):
+    '''word cloud genertaed from frquency'''
+    plt.figure(figsize=(30,20))
+    w = WordCloud(width=3000,height=2400,mode='RGBA',background_color='white',max_words=15000).fit_words(freqs)
+    plt.imshow(w)
+    plt.axis("off")
+    plt.savefig(OUTPUT_DIR+title+'-word-cloud.jpg')
+
+def most_informative_features(classifier,experiment_name, n=100):
     
     """ get most informative features"""
     coef = classifier[1].coef_
@@ -84,6 +93,10 @@ def most_informative_features(classifier, n=100):
     top_climate_list = list(top_climate.keys())
     top_emission_list = list(top_emission.keys())
     top_misc_list = list(top_misc.keys())
+    cloud(top_climate,experiment_name+"-"+"climate")
+    cloud(top_emission,experiment_name+"-"+"emission")
+    cloud(top_misc,experiment_name+"-"+"misc")
+    
     
     return top_climate_list, top_emission_list, top_misc_list
 
@@ -111,7 +124,7 @@ def main():
     classifier = joblib.load(MODEL_DIR+experiment_name)
 
     #Find top features
-    climate_posterior, emissions_posterior, misc_posterior = most_informative_features(classifier, 100)
+    climate_posterior, emissions_posterior, misc_posterior = most_informative_features(classifier,experiment_name, 100)
     #Save top features in csv file
     df = pd.DataFrame()
     df['Climate'] = climate_posterior
