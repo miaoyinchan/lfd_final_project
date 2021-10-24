@@ -123,7 +123,7 @@ def get_optimal_hyperParmeters(kernel, X_train, Y_train, X_test, Y_test, vec):
             #Linear kernel doesn't need gamma
             progress(count, len(List_C),'C')
             count+=1
-            cls = SVC(kernel='linear', C=i)
+            cls = LinearSVC(C=i)
             classifier = Pipeline([('vec', vec), ('cls',cls)])
             classifier.fit(X_train, Y_train)
             pred = classifier.predict(X_test)
