@@ -12,14 +12,12 @@ GROUP = {
         "CLIMATE CHANGE REGULATION & POLICY",
         "WEATHER",
         "GLOBAL WARMING'",
-    ],
-    "EMISSIONS": [
         "EMISSIONS",
         "GREENHOUSE GASES",
         "POLLUTION & ENVIRONMENTAL IMPACTS",
         "AIR QUALITY REGULATION",
         "AIR POLLUTION",
-    ],
+    ]
 }
 
 
@@ -101,11 +99,12 @@ def get_label(subjects):
 
     topics = list(match.keys())
 
-    if len(topics) == 1 and match[topics[0]] >= 75.00:
+    if len(topics) == 1 and match[topics[0]] >= 80.00:
         return topics[0]
 
     elif len(topics) == 0:
         return "MISC"
+
     else:
         return None
 
@@ -134,7 +133,8 @@ def select_random_rows(df, n, filter="MISC"):
     """Return a dataframe comprising only n MISC articles at random"""
 
     rdf = df[df["topic"] == filter]
-    rdf = rdf.groupby("cop_edition").sample(n=n, random_state=1)
+
+    rdf = rdf.sample(n=n, random_state=1)
 
     df = df[df["topic"] != filter]
     df = df.append(rdf, ignore_index=True)
@@ -150,6 +150,11 @@ def split_data(dataset):
     """
 
     df = pd.DataFrame(dataset)
+    
+    #removing the duplicates
+    df = df.drop_duplicates(subset=['article','headline'], keep='first')
+    print(df['topic'].value_counts())
+    # df = select_random_rows(df, 8000)
     meetings = df['cop_edition'].unique()
     meetings = sorted([m for m in meetings], key=lambda x:int(x))
     Range_train = meetings[:-2]
@@ -160,14 +165,6 @@ def split_data(dataset):
     test = df.loc[df["cop_edition"].isin(Range_test)]
     dev = df.loc[df["cop_edition"].isin(Range_dev)]
 
-    # For training, 125 MISC articles are randomly selected from each meeting except the last two
-    train = select_random_rows(train, 125)
-
-    # For test, 250 MISC articles are randomly selected from the latest meeting
-    test = select_random_rows(test, 250)
-
-    # For dev, 250 MISC articles are randomly selected from the meeting before to the last one
-    dev = select_random_rows(dev, 250)
 
     return train, dev, test
 
@@ -196,7 +193,7 @@ def main():
     test.to_csv(directory+"/test.csv", index=False)
     dev.to_csv(directory+"/dev.csv", index=False)
 
-    # Print the group distribution in train, dev, and test sets
+    #Print the group distribution in train, dev, and test sets
     print("{} \n{} \n".format("train", train["topic"].value_counts()))
     print("{} \n{} \n".format("test", test["topic"].value_counts()))
     print("{} \n{} \n".format("dev", dev["topic"].value_counts()))

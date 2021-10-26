@@ -57,7 +57,7 @@ def main():
 
     #Create Log file
     try:
-        os.mkdir("Logs")
+        os.mkdir(LOG_DIR)
         logging.basicConfig(filename=LOG_DIR+experiment_name+'.log',level=logging.INFO)
     except OSError as error:
         logging.basicConfig(filename=LOG_DIR+experiment_name+'.log', level=logging.INFO)
