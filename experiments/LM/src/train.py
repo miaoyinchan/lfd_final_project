@@ -52,6 +52,9 @@ def create_arg_parser():
         help="Select feature from the list",
     )
 
+    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+
+
     args = parser.parse_args()
     return args
 
@@ -60,9 +63,13 @@ def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.5)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
-def load_data(dir):
+def load_data(dir, trial=False):
 
-    df_train = pd.read_csv(dir+'/train.csv')
+    if trial:
+        df_train = pd.read_csv(dir+'/train_opt.csv')
+    else:
+        df_train = pd.read_csv(dir+'/train.csv')
+    
 
     X_train = df_train['article'].ravel().tolist()
     Y_train = df_train['topic']
@@ -83,12 +90,12 @@ def load_data(dir):
 def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
 
 
-    if model_name =="BERT":
-        lm = 'bert-base-uncased'
-        max_length = 512
-    elif model_name =='LONG':
+    if model_name =='LONG':
         lm = "allenai/longformer-base-4096"
         max_length = 1024
+    else:
+        lm = 'bert-base-uncased'
+        max_length = 512
 
     tokenizer = AutoTokenizer.from_pretrained(lm)
     
@@ -99,9 +106,12 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
     # loss_function = BinaryCrossentropy(from_logits=True)
     optim = Adam(learning_rate=5e-5)
     model.compile(loss=weighted_loss_function, optimizer=optim, metrics=METRICS)
-    es = EarlyStopping(monitor="val_prc", patience=2, restore_best_weights=True, mode='max')
 
-    model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es])
+    #callbacks
+    es = EarlyStopping(monitor="val_prc", patience=2, restore_best_weights=True, mode='max')
+    history_logger=tf.keras.callbacks.CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
+
+    model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
     model.save_pretrained(save_directory=MODEL_DIR+model_name)
 
 
@@ -132,12 +142,15 @@ def main():
 
     args = create_arg_parser()
     model_name = args.model
+    trial = args.trial
+    if trial:
+        model_name = model_name+"-trial"
 
 
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR)
+    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, trial)
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, model_name)
