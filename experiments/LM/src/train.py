@@ -9,20 +9,30 @@ import argparse
 import pandas as pd
 from tensorflow.keras.optimizers import Adam
 from tensorflow.python.keras.losses import BinaryCrossentropy
-from tensorflow.python.ops.gen_math_ops import mod
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from tensorflow.keras.callbacks import EarlyStopping
-import numpy as np
-from sklearn.preprocessing import LabelBinarizer
-from tensorflow.keras.utils import to_categorical
 import tensorflow as tf
+import keras.metrics as metrics
+
 
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
+
+METRICS = [
+      metrics.TruePositives(name='tp'),
+      metrics.FalsePositives(name='fp'),
+      metrics.TrueNegatives(name='tn'),
+      metrics.FalseNegatives(name='fn'), 
+      metrics.BinaryAccuracy(name='accuracy'),
+      metrics.Precision(name='precision'),
+      metrics.Recall(name='recall'),
+      metrics.AUC(name='auc'),
+      metrics.AUC(name='prc', curve='PR'), # precision-recall curve
+]
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -41,8 +51,6 @@ def create_arg_parser():
         ],
         help="Select feature from the list",
     )
-
-
 
     args = parser.parse_args()
     return args
@@ -90,8 +98,8 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
     
     # loss_function = BinaryCrossentropy(from_logits=True)
     optim = Adam(learning_rate=5e-5)
-    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy'])
-    es = EarlyStopping(monitor="val_loss", patience=2, restore_best_weights=True)
+    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=METRICS)
+    es = EarlyStopping(monitor="val_prc", patience=2, restore_best_weights=True, mode='max')
 
     model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es])
     model.save_pretrained(save_directory=MODEL_DIR+model_name)

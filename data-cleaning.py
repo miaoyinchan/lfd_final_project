@@ -7,18 +7,17 @@ import numpy as np
 nltk.download("punkt")
 
 
-TEST_DIR = "train-test-dev/test.csv"
-TRAIN_DIR = "train-test-dev/train.csv"
-DEV_DIR = "train-test-dev/dev.csv"
+DIR = "train-test-dev/"
 
 
 def load_data():
 
     """ Return train, test and dev sets as dataframe """
 
-    train = pd.read_csv(TRAIN_DIR)
-    test = pd.read_csv(TEST_DIR)
-    dev = pd.read_csv(DEV_DIR)
+    train = pd.read_csv(DIR+"train.csv")
+    test = pd.read_csv(DIR+"test.csv")
+    dev = pd.read_csv(DIR+"dev.csv")
+    
     return train, test, dev
 
 
@@ -77,6 +76,22 @@ def clean_data(df):
     return df
 
 
+def split_train_data(df, n=5, labels = ['MISC','CLIMATE']):
+
+    """Return a dataframe comprising only n MISC articles at random"""
+
+    df_misc = df[df["topic"] == labels[0]]
+    
+    df_misc = df_misc.sample(n=int(df_misc.shape[0]/n), random_state=1)
+
+    df_climate = df[df["topic"] == labels[1]]
+    df_climate =df_climate.sample(n=int(df_climate.shape[0]/n), random_state=1)
+
+    df_small = df_misc.append(df_climate, ignore_index=True)
+
+    return df_small
+
+
 def main():
     
     train, test, dev = load_data()
@@ -90,9 +105,14 @@ def main():
     test_cleaned = test_cleaned.dropna()
     dev_cleaned = dev_cleaned.dropna()
 
-    train_cleaned.to_csv(TRAIN_DIR, index=False)
-    test_cleaned.to_csv(TEST_DIR, index=False)
-    dev_cleaned.to_csv(DEV_DIR, index=False)
+    #split train data for paramater optimization
+    train_opt = split_train_data(train_cleaned)
+
+
+    train_cleaned.to_csv(DIR+"train.csv", index=False)
+    test_cleaned.to_csv(DIR+"test.csv", index=False)
+    dev_cleaned.to_csv(DIR+"dev.csv", index=False)
+    train_opt.to_csv(DIR+"train_opt.csv", index=False)
 
 
 if __name__ == "__main__":

@@ -40,7 +40,8 @@ def create_arg_parser():
         ],
         help="Select feature from the list",
     )
-
+    args = parser.parse_args()
+    return args
 
 
 def weighted_loss_function(labels, logits):

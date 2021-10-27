@@ -1,6 +1,7 @@
 import json
 import os
 import pandas as pd
+from sklearn.model_selection import train_test_split
 
 DIR = "data/"
 
@@ -128,20 +129,6 @@ def label_data(dataset):
     return Labeled_dataset
 
 
-def select_random_rows(df, n, filter="MISC"):
-
-    """Return a dataframe comprising only n MISC articles at random"""
-
-    rdf = df[df["topic"] == filter]
-
-    rdf = rdf.sample(n=n, random_state=1)
-
-    df = df[df["topic"] != filter]
-    df = df.append(rdf, ignore_index=True)
-
-    return df
-
-
 def split_data(dataset):
 
     """Split the dataset into three sections: training, validation, and testing.
@@ -180,6 +167,7 @@ def main():
     # split the data into three sets
     train, dev, test = split_data(Labeled_data)
 
+
     # Save training, development, and testing sets in csv format
     try:
         #create directory for train-test-dev sets
@@ -192,6 +180,7 @@ def main():
     train.to_csv(directory+"/train.csv", index=False)
     test.to_csv(directory+"/test.csv", index=False)
     dev.to_csv(directory+"/dev.csv", index=False)
+   
 
     #Print the group distribution in train, dev, and test sets
     print("{} \n{} \n".format("train", train["topic"].value_counts()))
