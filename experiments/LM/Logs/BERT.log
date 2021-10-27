@@ -1,0 +1,796 @@
+2021-10-27 11:30:08,777 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:30:08,780 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:30:11,835 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 11:30:11,836 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 11:30:11,836 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 11:30:11,836 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 11:30:11,836 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 11:30:12,341 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:30:12,343 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:30:12,970 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:30:12,970 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:30:13,454 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 11:30:14,848 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 11:30:14,848 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 11:32:02,318 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:02,319 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:06,158 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 11:32:06,159 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 11:32:06,160 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 11:32:06,160 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 11:32:06,160 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 11:32:06,734 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:06,736 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:07,463 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:07,465 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:07,986 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 11:32:09,283 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 11:32:09,283 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 11:32:41,435 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:41,438 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:44,713 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 11:32:44,714 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 11:32:44,714 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 11:32:44,715 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 11:32:44,715 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 11:32:45,171 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:45,171 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:45,652 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:32:45,654 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:32:46,147 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 11:32:47,430 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 11:32:47,430 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 11:37:48,442 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:37:48,443 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:37:51,609 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 11:37:51,609 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 11:37:51,610 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 11:37:51,610 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 11:37:51,610 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 11:37:52,241 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:37:52,242 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:37:52,941 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 11:37:52,943 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 11:37:53,465 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 11:37:54,770 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 11:37:54,770 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 12:04:37,566 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:04:37,568 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:04:40,850 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 12:04:40,851 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 12:04:40,851 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 12:04:40,851 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 12:04:40,851 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 12:04:41,486 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:04:41,487 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:04:42,174 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:04:42,176 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:04:42,812 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 12:04:44,085 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 12:04:44,085 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 12:44:23,620 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:44:23,622 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:44:27,237 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 12:44:27,238 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 12:44:27,238 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 12:44:27,238 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 12:44:27,239 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 12:44:27,838 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:44:27,839 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:44:28,403 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 12:44:28,404 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 12:44:28,997 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 12:44:30,305 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 12:44:30,305 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 13:02:51,486 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:02:51,488 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:02:54,862 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 13:02:54,863 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 13:02:54,864 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 13:02:54,864 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 13:02:54,864 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 13:02:55,393 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:02:55,394 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:02:55,903 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:02:55,904 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:02:56,438 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 13:02:57,747 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 13:02:57,747 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 13:03:14,702 - transformers - INFO - Tensor("IteratorGetNext:3", shape=(None, 1), dtype=int64)
+2021-10-27 13:04:59,118 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:04:59,120 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:05:02,262 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 13:05:02,263 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 13:05:02,263 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 13:05:02,263 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 13:05:02,263 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 13:05:02,757 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:05:02,758 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:05:03,310 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:05:03,312 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:05:03,822 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 13:05:04,729 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 13:05:04,729 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 13:05:21,057 - transformers - INFO - Tensor("IteratorGetNext:3", shape=(None, 1, 2), dtype=float32)
+2021-10-27 13:21:02,254 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:21:02,256 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:21:05,568 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/hossain/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+2021-10-27 13:21:05,570 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+2021-10-27 13:21:05,570 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+2021-10-27 13:21:05,570 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+2021-10-27 13:21:05,570 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/hossain/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+2021-10-27 13:21:06,077 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:21:06,078 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:21:06,693 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+2021-10-27 13:21:06,694 - transformers.configuration_utils - INFO - Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+2021-10-27 13:21:07,211 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/bert-base-uncased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/775efbdc2152093295bc5824dee96da82a5f3c1f218dfface1b8cef3094bdf8f.c719a806caef7d36ec0185f14b3b5fa727d919f924abe35622b4b7147bfbb8c7.h5
+2021-10-27 13:21:08,085 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFBertForSequenceClassification.
+
+2021-10-27 13:21:08,085 - transformers.modeling_tf_utils - WARNING - Some layers of TFBertForSequenceClassification were not initialized from the model checkpoint at bert-base-uncased and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-10-27 13:21:24,495 - transformers - INFO - Tensor("IteratorGetNext:3", shape=(None, 2), dtype=float32)
+2021-10-27 13:21:27,501 - transformers - INFO - Tensor("IteratorGetNext:3", shape=(None, 2), dtype=float32)

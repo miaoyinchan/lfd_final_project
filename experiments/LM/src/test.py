@@ -43,9 +43,9 @@ def create_arg_parser():
 
 
 
-def weighted_loss_function(target, output):
+def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.5)
-    return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(targets=target, logits=output, pos_weight=pos_weight))
+    return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
 def load_data(dir):
 
@@ -54,8 +54,7 @@ def load_data(dir):
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
 
-    encoder = LabelBinarizer()
-    Y_test = encoder.fit_transform(Y_test)
+    Y_test = [1 if y=="MISC" else 0 for y in Y_test]
 
     
     return X_test, Y_test
@@ -81,8 +80,10 @@ def test(X_test, Y_test, model_name):
         lm = 'bert-base-uncased'
         max_length = 512
     elif model_name =='LONG':
-        lm = "longformer-base-4096"
+        lm = "allenai/longformer-base-4096"
         max_length = 1024
+    
+
     
     lm = "bert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(lm)
@@ -95,7 +96,7 @@ def test(X_test, Y_test, model_name):
     
     return Y_test, Y_pred
 
-def set_log():
+def set_log(model_name):
 
     #Create Log file
     try:
@@ -110,7 +111,7 @@ def set_log():
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     # create file handler which logs even debug messages
-    fh = logging.FileHandler('test-logs.log')
+    fh = logging.FileHandler(LOG_DIR+model_name+".log")
     fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     log.addHandler(fh)
@@ -122,12 +123,9 @@ def main():
 
     set_log()
 
-
-
-
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR)
-    Y_test, Y_pred = test(X_train,X_dev,Y_train, Y_dev, lm)
+    X_train, Y_train = load_data(DATA_DIR)
+    Y_test, Y_pred = test(X_train, Y_train, model_name)
     
     save_output(Y_test, Y_pred, model_name)
   
