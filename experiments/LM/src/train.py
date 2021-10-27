@@ -15,6 +15,7 @@ from transformers import AutoTokenizer
 from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer
+from tensorflow.keras.utils import to_categorical
 import tensorflow as tf
 
 
@@ -47,9 +48,9 @@ def create_arg_parser():
     return args
 
 
-def weighted_loss_function(target, output):
+def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.5)
-    return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(targets=target, logits=output, pos_weight=pos_weight))
+    return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
 def load_data(dir):
 
@@ -63,9 +64,11 @@ def load_data(dir):
     X_dev = df_dev['article'].ravel().tolist()
     Y_dev = df_dev['topic']
 
-    encoder = LabelBinarizer()
-    Y_train = encoder.fit_transform(Y_train)
-    Y_dev = encoder.fit_transform(Y_dev)
+    Y_train = [1 if y=="MISC" else 0 for y in Y_train]
+    Y_dev = [1 if y=="MISC" else 0 for y in Y_dev]
+
+    Y_train = tf.one_hot(Y_train,depth=2)
+    Y_dev = tf.one_hot(Y_dev,depth=2)
     
     return X_train, Y_train, X_dev, Y_dev
 
@@ -85,18 +88,18 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
     tokens_train = tokenizer(X_train, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     tokens_dev = tokenizer(X_dev, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     
-    # loss_function = weighted_loss_function
+    # loss_function = BinaryCrossentropy(from_logits=True)
     optim = Adam(learning_rate=5e-5)
     model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy'])
     es = EarlyStopping(monitor="val_loss", patience=2, restore_best_weights=True)
-    model.set
+
     model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es])
-    
     model.save_pretrained(save_directory=MODEL_DIR+model_name)
 
 
 
-def set_log():
+
+def set_log(model_name):
 
     #Create Log file
     try:
@@ -104,12 +107,14 @@ def set_log():
         log.setLevel(logging.INFO)
 
     except OSError as error:
+    
         log.setLevel(logging.INFO)
 
+    
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     # create file handler which logs even debug messages
-    fh = logging.FileHandler('test-logs.log')
+    fh = logging.FileHandler(LOG_DIR+model_name+".log")
     fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     log.addHandler(fh)
@@ -121,7 +126,7 @@ def main():
     model_name = args.model
 
 
-    set_log()
+    set_log(model_name)
 
     #load data from train-test-dev folder
     X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR)
