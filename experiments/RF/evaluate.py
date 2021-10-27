@@ -1,12 +1,32 @@
+#!/usr/bin/env python
+
 from math import e
 from sklearn.metrics import (
     accuracy_score, classification_report,
     confusion_matrix, ConfusionMatrixDisplay)
 import pandas as pd
 import matplotlib.pyplot as plt
+import argparse
 
 
 OUTPUT_DIR = "Output/"
+
+
+def create_arg_parser():
+    """
+    Description:
+
+    This method is an arg parser
+
+    Return
+
+    This method returns a map with commandline parameters taken from the user
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--tfidf", action="store_true",
+                        help="Use the TF-IDF vectorizer instead of CountVectorizer")
+    args = parser.parse_args()
+    return args
 
 
 def save_results(Y_test, Y_pred, experiment_name):
@@ -48,15 +68,20 @@ def save_results(Y_test, Y_pred, experiment_name):
 
 
 def main():
+    args = create_arg_parser()
+    if args.tfidf:
+        experiment_name = "RF+Tf-idf"
+    else:
+        experiment_name = "RF+CV"
 
-    experiment_names = ['ccp_alpha_0.0', 'ccp_alpha_0.01',
+    alphas = ['ccp_alpha_0.0', 'ccp_alpha_0.01',
                         'ccp_alpha_0.001', 'ccp_alpha_0.0001']
-    for experiment_name in experiment_names:
-        output = pd.read_csv(OUTPUT_DIR+experiment_name+'.csv')
+    for alpha in alphas:
+        output = pd.read_csv(f"{OUTPUT_DIR}{experiment_name}_{alpha}.csv")
         Y_test = output['Test']
         Y_predict = output['Predict']
 
-        save_results(Y_test, Y_predict, experiment_name)
+        save_results(Y_test, Y_predict, f"{experiment_name}_{alpha}")
 
 
 if __name__ == "__main__":
