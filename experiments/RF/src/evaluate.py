@@ -1,15 +1,20 @@
 #!/usr/bin/env python
 
-from math import e
-from sklearn.metrics import (
-    accuracy_score, classification_report,
-    confusion_matrix, ConfusionMatrixDisplay)
-import pandas as pd
-import matplotlib.pyplot as plt
 import argparse
+from math import e
+from pprint import pprint
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.metrics import (
+    accuracy_score,
+    classification_report,
+    confusion_matrix,
+    ConfusionMatrixDisplay,
+)
 
 
-OUTPUT_DIR = "Output/"
+OUTPUT_DIR = "../Output/"
 
 
 def create_arg_parser():
@@ -33,16 +38,18 @@ def save_results(Y_test, Y_pred, experiment_name):
     ''' save results (accuracy, precision, recall, and f1-score)
     in csv file and plot confusion matrix '''
 
-    test_report =  classification_report(Y_test,Y_pred,output_dict=True,digits=4)
+    test_report =  classification_report(Y_test, Y_pred, output_dict=True, digits=4)
 
-    result = {"experiment":experiment_name}
-
-    labels = list(test_report.keys())[:3]
+    result = {"experiment": experiment_name}
+    labels = [label for label in test_report.keys() if label.isupper()]
 
     for label in labels:
-        result["precision-"+label] = test_report[label]['precision']
-        result["recall-"+label] = test_report[label]['recall']
-        result["f1-"+label] = test_report[label]['f1-score']
+        report = test_report[label]
+        result.update({
+            f"precision-{label}": report['precision'],
+            f"recall-{label}": report['recall'],
+            f"f1-{label}": report['f1-score'],
+        })
 
 
     result['accuracy'] = test_report['accuracy']

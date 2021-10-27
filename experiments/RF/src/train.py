@@ -14,9 +14,9 @@ from sklearn.pipeline import Pipeline
 from nltk.tokenize import word_tokenize
 
 
-DATA_DIR = '../../train-test-dev'
-MODEL_DIR = "Saved_Models"
-LOG_DIR = "Logs"
+DATA_DIR = '../../../train-test-dev'
+MODEL_DIR = "../Saved_Models"
+LOG_DIR = "../Logs"
 
 
 def create_arg_parser():
@@ -53,10 +53,10 @@ def main():
     # and preprocessor, since the texts are already preprocessed and
     # tokenized.
     if args.tfidf:
-        vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3))
+        vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3), max_features=5000)
         experiment_name = "RF+Tf-idf"
     else:
-        vec = CountVectorizer(tokenizer=word_tokenize,ngram_range=(1,3))
+        vec = CountVectorizer(tokenizer=word_tokenize,ngram_range=(1,3), max_features=5000)
         experiment_name = "RF+CV"
 
     #Create Log file

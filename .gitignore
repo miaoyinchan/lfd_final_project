@@ -1,6 +1,4 @@
 /data
 /train-test-dev
-/statistic.txt
-/create_data.py
-/create_data2.py
+/experiments/RF/Saved_Models
 
