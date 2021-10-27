@@ -61,14 +61,12 @@ def plot_distribution(dataset, column_name):
     dist = find_distribution(dataset,column_name)
     labels = [str(x) for x in list(dist.keys())]
     climate = [freq['CLIMATE'] for freq in dist.values()]
-    # emissions = [freq['EMISSIONS'] for freq in dist.values()]
 
     width = 0.35      
 
     fig, ax = plt.subplots(figsize=(22,8))
 
     ax.bar(labels, climate, width, label='CLIMATE')
-    # ax.bar(labels, emissions, width, bottom=climate, label='EMISSIONS')
     ax.set_xlabel(column_name.replace("_"," "))
     ax.set_ylabel('Frequency')
     ax.set_title('Distribution of topics per '+column_name.replace("_"," "))
