@@ -105,10 +105,10 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
     
     # loss_function = BinaryCrossentropy(from_logits=True)
     optim = Adam(learning_rate=5e-5)
-    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=METRICS)
+    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy','f1_score'])
 
     #callbacks
-    es = EarlyStopping(monitor="val_prc", patience=2, restore_best_weights=True, mode='max')
+    es = EarlyStopping(monitor="val_f1_score", patience=2, restore_best_weights=True, mode='max')
     history_logger=tf.keras.callbacks.CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
 
     model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
