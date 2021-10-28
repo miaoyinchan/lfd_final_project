@@ -55,8 +55,8 @@ def load_data(dir):
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
 
-    Y_test = [1 if y=="MISC" else 0 for y in Y_test]
-
+    Y_test = [0 if y=="MISC" else 1 for y in Y_test]
+    Y_test = tf.one_hot(Y_test, depth=2)
     
     return X_test, Y_test
 

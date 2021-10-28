@@ -13,7 +13,8 @@ from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
 from tensorflow.keras.callbacks import EarlyStopping
 import tensorflow as tf
-import keras.metrics as metrics
+from tensorflow.keras import backend as K
+from tensorflow.keras.metrics import Recall, Precision
 
 
 
@@ -22,17 +23,27 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
 
-METRICS = [
-      metrics.TruePositives(name='tp'),
-      metrics.FalsePositives(name='fp'),
-      metrics.TrueNegatives(name='tn'),
-      metrics.FalseNegatives(name='fn'), 
-      metrics.BinaryAccuracy(name='accuracy'),
-      metrics.Precision(name='precision'),
-      metrics.Recall(name='recall'),
-      metrics.AUC(name='auc'),
-      metrics.AUC(name='prc', curve='PR'), # precision-recall curve
-]
+def f1_score(y_true, y_pred): 
+
+    def recall_m(y_true, y_pred):
+        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        Positives = K.sum(K.round(K.clip(y_true, 0, 1)))
+        
+        recall = TP / (Positives+K.epsilon())    
+        return recall 
+    
+    
+    def precision_m(y_true, y_pred):
+        TP = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+        Pred_Positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    
+        precision = TP / (Pred_Positives+K.epsilon())
+        return precision 
+    
+    precision, recall = precision_m(y_true, y_pred), recall_m(y_true, y_pred)
+    return 2*((precision*recall)/(precision+recall+K.epsilon()))
+
+
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -66,7 +77,8 @@ def weighted_loss_function(labels, logits):
 def load_data(dir, trial=False):
 
     if trial:
-        df_train = pd.read_csv(dir+'/train_opt.csv')
+        # df_train = pd.read_csv(dir+'/train_opt.csv')
+        df_train = pd.read_csv(dir+'/test.csv')
     else:
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -79,8 +91,8 @@ def load_data(dir, trial=False):
     X_dev = df_dev['article'].ravel().tolist()
     Y_dev = df_dev['topic']
 
-    Y_train = [1 if y=="MISC" else 0 for y in Y_train]
-    Y_dev = [1 if y=="MISC" else 0 for y in Y_dev]
+    Y_train = [0 if y=="MISC" else 1 for y in Y_train]
+    Y_dev = [0 if y=="MISC" else 1 for y in Y_dev]
 
     Y_train = tf.one_hot(Y_train,depth=2)
     Y_dev = tf.one_hot(Y_dev,depth=2)
@@ -88,7 +100,6 @@ def load_data(dir, trial=False):
     return X_train, Y_train, X_dev, Y_dev
 
 def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
-
 
     if model_name =='LONG':
         lm = "allenai/longformer-base-4096"
@@ -105,7 +116,7 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
     
     # loss_function = BinaryCrossentropy(from_logits=True)
     optim = Adam(learning_rate=5e-5)
-    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy','f1_score'])
+    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
     #callbacks
     es = EarlyStopping(monitor="val_f1_score", patience=2, restore_best_weights=True, mode='max')
@@ -113,8 +124,6 @@ def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
 
     model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
     model.save_pretrained(save_directory=MODEL_DIR+model_name)
-
-
 
 
 def set_log(model_name):
