@@ -1,3 +1,4 @@
+import json
 import logging
 # get TF logger
 log = logging.getLogger('transformers')
@@ -7,21 +8,34 @@ print = log.info
 import os
 import argparse
 import pandas as pd
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import Adam, SGD
 from tensorflow.python.keras.losses import BinaryCrossentropy
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
-from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.callbacks import EarlyStopping, CSVLogger
 import tensorflow as tf
 from tensorflow.keras import backend as K
-from tensorflow.keras.metrics import Recall, Precision
-
 
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
+
+
+
+def get_config():
+
+    try:
+        location = 'config.json'
+        with open(location) as file:
+            configs = json.load(file)
+            vals = [str(v) for v in configs.values()]
+            model_name = "_".join(vals)
+        return configs, model_name
+    except FileNotFoundError as error:
+        print(error)
+
 
 def f1_score(y_true, y_pred): 
 
@@ -48,37 +62,20 @@ def f1_score(y_true, y_pred):
 def create_arg_parser():
     parser = argparse.ArgumentParser()
 
-
-    parser.add_argument(
-        "-lm",
-        "--model",
-        default="BERT",
-        const="BERT",
-        nargs="?",
-        choices=[
-            "BERT",
-            "LONG"
-
-        ],
-        help="Select feature from the list",
-    )
-
     parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
-
 
     args = parser.parse_args()
     return args
 
 
 def weighted_loss_function(labels, logits):
-    pos_weight = tf.constant(0.5)
+    pos_weight = tf.constant(0.33)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
 def load_data(dir, trial=False):
 
     if trial:
-        # df_train = pd.read_csv(dir+'/train_opt.csv')
-        df_train = pd.read_csv(dir+'/test.csv')
+        df_train = pd.read_csv(dir+'/train_opt.csv')
     else:
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -99,30 +96,45 @@ def load_data(dir, trial=False):
     
     return X_train, Y_train, X_dev, Y_dev
 
-def classifier(X_train, X_dev, Y_train, Y_dev, model_name):
+def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
 
-    if model_name =='LONG':
+    max_length  =  config['max_length']
+    learning_rate =  config["learning_rate"]
+    epochs = config["epochs"]
+    patience = config["patience"]
+    batch_size = config["batch_size"]
+
+    if config["loss"] == "custom":
+        loss_function = weighted_loss_function
+    else:
+        loss_function = BinaryCrossentropy(from_logits=True)
+
+    if config['optimizer'] == "Adam":
+        optim = Adam(learning_rate=learning_rate)
+    else:
+        optim = SGD(learning_rate=learning_rate)
+
+    if config["model"] =='LONG':
         lm = "allenai/longformer-base-4096"
-        max_length = 1024
     else:
         lm = 'bert-base-uncased'
-        max_length = 512
+        
 
     tokenizer = AutoTokenizer.from_pretrained(lm)
     
     model = TFAutoModelForSequenceClassification.from_pretrained(lm, num_labels=2)
+    
     tokens_train = tokenizer(X_train, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     tokens_dev = tokenizer(X_dev, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
+   
     
-    # loss_function = BinaryCrossentropy(from_logits=True)
-    optim = Adam(learning_rate=5e-5)
-    model.compile(loss=weighted_loss_function, optimizer=optim, metrics=['accuracy',f1_score])
+    model.compile(loss=loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
     #callbacks
-    es = EarlyStopping(monitor="val_f1_score", patience=2, restore_best_weights=True, mode='max')
-    history_logger=tf.keras.callbacks.CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
+    es = EarlyStopping(monitor="val_f1_score", patience=patience, restore_best_weights=True, mode='max')
+    history_logger = CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
 
-    model.fit(tokens_train, Y_train, verbose=1, epochs=3 ,batch_size=8, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
+    model.fit(tokens_train, Y_train, verbose=1, epochs=epochs ,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
     model.save_pretrained(save_directory=MODEL_DIR+model_name)
 
 
@@ -150,7 +162,7 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
-    model_name = args.model
+    config, model_name = get_config()
     trial = args.trial
     if trial:
         model_name = model_name+"-trial"
@@ -162,7 +174,7 @@ def main():
     X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, trial)
 
     #run model
-    classifier(X_train,X_dev,Y_train, Y_dev, model_name)
+    classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)
 
   
 
