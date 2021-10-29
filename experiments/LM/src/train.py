@@ -15,7 +15,7 @@ from transformers import AutoTokenizer
 from tensorflow.keras.callbacks import EarlyStopping, CSVLogger
 import tensorflow as tf
 from tensorflow.keras import backend as K
-
+from tqdm.keras import TqdmCallback
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
@@ -134,7 +134,7 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     es = EarlyStopping(monitor="val_f1_score", patience=patience, restore_best_weights=True, mode='max')
     history_logger = CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
 
-    model.fit(tokens_train, Y_train, verbose=1, epochs=epochs ,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger])
+    model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
     model.save_pretrained(save_directory=MODEL_DIR+model_name)
 
 

@@ -3,31 +3,29 @@ import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
+import json
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 
+
+def get_model_name():
+
+    try:
+        location = 'config.json'
+        with open(location) as file:
+            configs = json.load(file)
+            vals = [str(v) for v in configs.values()]
+            model_name = "_".join(vals)
+        return model_name
+    except FileNotFoundError as error:
+        print(error)
+
+
 def create_arg_parser():
     parser = argparse.ArgumentParser()
-
-
-    parser.add_argument(
-        "-lm",
-        "--model",
-        default="BERT",
-        const="BERT",
-        nargs="?",
-        choices=[
-            "BERT",
-            "LONG"
-
-        ],
-        help="Select feature from the list",
-    )
-
-
-
+    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
     args = parser.parse_args()
     return args
 
@@ -37,11 +35,11 @@ def save_results(Y_test, Y_pred, model_name):
     ''' save results (accuracy, precision, recall, and f1-score) in csv file and plot confusion matrix '''
 
    
-    test_report =  classification_report(Y_test,Y_pred,output_dict=True,digits=4)
+    test_report =  classification_report(Y_test, Y_pred, output_dict=True, digits=4)
 
     result = {"Model": model_name}
 
-    labels = list(test_report.keys())[:3]
+    labels = list(test_report.keys())[:2]
 
     for label in labels:
         result["precision-"+label] = test_report[label]['precision']
@@ -75,13 +73,14 @@ def save_results(Y_test, Y_pred, model_name):
 
 
 
-
-
 def main():
 
     
     args = create_arg_parser()
-    model_name = args.model
+    model_name = get_model_name()
+    trial = args.trial
+    if trial:
+        model_name = model_name+"-trial"
     
     output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']

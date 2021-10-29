@@ -3,7 +3,7 @@ import logging
 log = logging.getLogger('transformers')
 log.setLevel(logging.INFO)
 print = log.info
-
+import json
 import os
 import argparse
 import pandas as pd
@@ -16,6 +16,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer
 import tensorflow as tf
+from tqdm.keras import TqdmCallback
 
 
 DATA_DIR = '../../../train-test-dev/'
@@ -23,30 +24,25 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
 
+def get_config():
+
+    try:
+        location = 'config.json'
+        with open(location) as file:
+            configs = json.load(file)
+            vals = [str(v) for v in configs.values()]
+            model_name = "_".join(vals)
+        return configs, model_name
+    except FileNotFoundError as error:
+        print(error)
+
 def create_arg_parser():
+
     parser = argparse.ArgumentParser()
-
-
-    parser.add_argument(
-        "-lm",
-        "--model",
-        default="BERT",
-        const="BERT",
-        nargs="?",
-        choices=[
-            "BERT",
-            "LONG"
-
-        ],
-        help="Select feature from the list",
-    )
+    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
     args = parser.parse_args()
     return args
 
-
-def weighted_loss_function(labels, logits):
-    pos_weight = tf.constant(0.5)
-    return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
 def load_data(dir):
 
@@ -62,6 +58,9 @@ def load_data(dir):
 
 def save_output(Y_test, Y_pred, model_name):
 
+    Y_test = ["MISC" if y==0 else "CLIMATE" for y in Y_test]
+    Y_pred = ["MISC" if y==0 else "CLIMATE" for y in Y_pred]
+
     df = pd.DataFrame()
     df['Test'] = Y_test
     df['Predict'] = Y_pred
@@ -75,16 +74,16 @@ def save_output(Y_test, Y_pred, model_name):
         df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
    
 
-def test(X_test, Y_test, model_name):
+def test(X_test, Y_test, config, model_name):
 
-    if model_name =="BERT":
-        lm = 'bert-base-uncased'
-        max_length = 512
-    elif model_name =='LONG':
-        lm = "allenai/longformer-base-4096"
-        max_length = 1024
     
-
+    max_length  =  config['max_length']
+   
+    if config["model"] =='LONG':
+        lm = "allenai/longformer-base-4096"
+    else:
+        lm = 'bert-base-uncased'
+        
     
     lm = "bert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(lm)
@@ -107,7 +106,6 @@ def set_log(model_name):
     except OSError as error:
     
         log.setLevel(logging.INFO)
-
     
     # create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -120,13 +118,17 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
-    model_name = args.model
+    config, model_name = get_config()
+    trial = args.trial
+    if trial:
+        model_name = model_name+"-trial"
 
-    set_log()
+
+    set_log(model_name)
 
     #load data from train-test-dev folder
     X_train, Y_train = load_data(DATA_DIR)
-    Y_test, Y_pred = test(X_train, Y_train, model_name)
+    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
     
     save_output(Y_test, Y_pred, model_name)
   
