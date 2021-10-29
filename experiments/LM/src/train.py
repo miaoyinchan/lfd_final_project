@@ -91,8 +91,8 @@ def load_data(dir, trial=False):
     Y_train = [0 if y=="MISC" else 1 for y in Y_train]
     Y_dev = [0 if y=="MISC" else 1 for y in Y_dev]
 
-    Y_train = tf.one_hot(Y_train,depth=2)
-    Y_dev = tf.one_hot(Y_dev,depth=2)
+    Y_train = tf.one_hot(Y_train,depth=2, dtype=tf.int64)
+    Y_dev = tf.one_hot(Y_dev,depth=2, dtype=tf.int64)
     
     return X_train, Y_train, X_dev, Y_dev
 
@@ -114,8 +114,8 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     else:
         optim = SGD(learning_rate=learning_rate)
 
-    if config["model"] =='LONG':
-        lm = "allenai/longformer-base-4096"
+    if config["model"] =='XLNet':
+        lm = "xlnet-base-uncased"
     else:
         lm = 'bert-base-uncased'
         
@@ -127,7 +127,7 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     tokens_train = tokenizer(X_train, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     tokens_dev = tokenizer(X_dev, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
    
-    
+
     model.compile(loss=loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
     #callbacks
