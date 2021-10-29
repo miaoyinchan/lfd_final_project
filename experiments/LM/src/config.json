@@ -9,7 +9,7 @@
     "patience": 3,
     "batch_size": 8,
     "loss": "custom",
-    "optimizer": "sgd"
+    "optimizer": "Adam"
 
 
 }
