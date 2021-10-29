@@ -16,7 +16,7 @@ from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
 from sklearn.preprocessing import LabelBinarizer
 import tensorflow as tf
-from tqdm.keras import TqdmCallback
+
 
 
 DATA_DIR = '../../../train-test-dev/'
