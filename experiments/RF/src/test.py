@@ -6,7 +6,7 @@ import pandas as pd
 import joblib
 
 
-DATA_DIR = '../../../train-test-dev'
+DATA_DIR = '../../train-test-dev'
 MODEL_DIR = "../Saved_Models"
 OUTPUT_DIR = "../Output"
 

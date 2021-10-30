@@ -1,0 +1,155 @@
+2021-10-29 23:17:17,538 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-10-29 23:17:18,357 - transformers.configuration_utils - ERROR - 404 Client Error: Not Found for url: https://huggingface.co/xlnet-base-uncased/resolve/main/config.json
+2021-10-29 23:17:32,795 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-10-29 23:17:33,616 - transformers.file_utils - INFO - https://huggingface.co/xlnet-base-cased/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/hossain/.cache/huggingface/transformers/tmpj_mg9jgw
+2021-10-29 23:17:34,439 - transformers.file_utils - INFO - storing https://huggingface.co/xlnet-base-cased/resolve/main/config.json in cache at /home/hossain/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+2021-10-29 23:17:34,457 - transformers.file_utils - INFO - creating metadata file for /home/hossain/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+2021-10-29 23:17:34,457 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+2021-10-29 23:17:34,458 - transformers.configuration_utils - INFO - Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+2021-10-29 23:17:35,869 - transformers.file_utils - INFO - https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model not found in cache or force_download set to True, downloading to /home/hossain/.cache/huggingface/transformers/tmpd890dyyj
+2021-10-29 23:17:37,635 - transformers.file_utils - INFO - storing https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model in cache at /home/hossain/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+2021-10-29 23:17:37,636 - transformers.file_utils - INFO - creating metadata file for /home/hossain/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+2021-10-29 23:17:38,225 - transformers.file_utils - INFO - https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json not found in cache or force_download set to True, downloading to /home/hossain/.cache/huggingface/transformers/tmpm6coqi5s
+2021-10-29 23:17:40,325 - transformers.file_utils - INFO - storing https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json in cache at /home/hossain/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+2021-10-29 23:17:40,326 - transformers.file_utils - INFO - creating metadata file for /home/hossain/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+2021-10-29 23:17:42,729 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model from cache at /home/hossain/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+2021-10-29 23:17:42,730 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json from cache at /home/hossain/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+2021-10-29 23:17:42,730 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/xlnet-base-cased/resolve/main/added_tokens.json from cache at None
+2021-10-29 23:17:42,730 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/xlnet-base-cased/resolve/main/special_tokens_map.json from cache at None
+2021-10-29 23:17:42,730 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer_config.json from cache at None
+2021-10-29 23:17:43,366 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+2021-10-29 23:17:43,369 - transformers.configuration_utils - INFO - Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+2021-10-29 23:17:44,163 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/hossain/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+2021-10-29 23:17:44,165 - transformers.configuration_utils - INFO - Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+2021-10-29 23:17:44,883 - transformers.file_utils - INFO - https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 not found in cache or force_download set to True, downloading to /home/hossain/.cache/huggingface/transformers/tmpskqaz9bf
+2021-10-29 23:18:10,045 - transformers.file_utils - INFO - storing https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 in cache at /home/hossain/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+2021-10-29 23:18:10,045 - transformers.file_utils - INFO - creating metadata file for /home/hossain/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+2021-10-29 23:18:10,046 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 from cache at /home/hossain/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+2021-10-29 23:18:10,928 - transformers.modeling_tf_utils - WARNING - Some layers from the model checkpoint at xlnet-base-cased were not used when initializing TFXLNetForSequenceClassification: ['lm_loss']
+- This IS expected if you are initializing TFXLNetForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFXLNetForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2021-10-29 23:18:10,928 - transformers.modeling_tf_utils - WARNING - Some layers of TFXLNetForSequenceClassification were not initialized from the model checkpoint at xlnet-base-cased and are newly initialized: ['logits_proj', 'sequence_summary']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.

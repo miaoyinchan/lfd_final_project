@@ -36,6 +36,22 @@ if len(physical_devices) > 0:
 
 
 
+#physical_devices = tf.config.experimental.list_physical_devices('GPU')
+#if len(physical_devices) > 0:
+#    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
+
+def change_dtype(tokens):
+
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    
+    return tokens
+
 def get_config():
 
     try:
@@ -128,6 +144,8 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
 
     if config["model"] =='XLNet':
         lm = "xlnet-base-cased"
+    elif config["model"] =='LONG':
+        lm = "allenai/longformer-base-4096"
     else:
         lm = 'bert-base-uncased'
         
@@ -139,6 +157,9 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     tokens_train = tokenizer(X_train, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     tokens_dev = tokenizer(X_dev, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
    
+    if config["model"] =='LONG':
+        tokens_train = change_dtype(tokens_train)
+        tokens_dev = change_dtype(tokens_dev)
 
     model.compile(loss=loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
