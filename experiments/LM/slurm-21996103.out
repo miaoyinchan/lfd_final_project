@@ -1,0 +1,55 @@
+Traceback (most recent call last):
+  File "train.py", line 10, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "test.py", line 9, in <module>
+    import pandas as pd
+ModuleNotFoundError: No module named 'pandas'
+Traceback (most recent call last):
+  File "evaluate.py", line 1, in <module>
+    from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
+ModuleNotFoundError: No module named 'sklearn'
+
+
+###############################################################################
+Peregrine Cluster
+Job 21996103 for user 's4996755'
+Finished at: Sat Oct 30 10:22:33 CEST 2021
+
+Job details:
+============
+
+Job ID              : 21996103
+Name                : run.sh
+User                : s4996755
+Partition           : gpu
+Nodes               : pg-gpu22
+Number of Nodes     : 1
+Cores               : 12
+Number of Tasks     : 1
+State               : FAILED
+Submit              : 2021-10-30T10:22:24
+Start               : 2021-10-30T10:22:29
+End                 : 2021-10-30T10:22:33
+Reserved walltime   : 03:00:00
+Used walltime       : 00:00:04
+Used CPU time       : --
+% User (Computation): 57.32%
+% System (I/O)      : 42.68%
+Mem reserved        : 2000M/core
+Max Mem (Node/step) : 0.00  (Node unknown, N/A)
+Full Max Mem usage  : 0.00 
+Total Disk Read     : 0.00 
+Total Disk Write    : 0.00 
+Average GPU usage   : 0.0% (pg-gpu22)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################

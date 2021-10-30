@@ -5,6 +5,8 @@ log = logging.getLogger('transformers')
 log.setLevel(logging.INFO)
 print = log.info
 
+import random as python_random
+import numpy as np
 import os
 import argparse
 import pandas as pd
@@ -21,6 +23,16 @@ DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
+
+np.random.seed(1234)
+tf.random.set_seed(1234)
+python_random.seed(1234)
+
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
 
 
 

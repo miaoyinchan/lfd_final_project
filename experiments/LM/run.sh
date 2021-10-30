@@ -4,6 +4,6 @@
 module load cuDNN
 
 cd src
-python3 train.py
-python3 test.py
-python3 evaluate.py
+python3 train.py -t
+python3 test.py -t
+python3 evaluate.py -t
