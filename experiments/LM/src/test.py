@@ -24,6 +24,16 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
 
+def change_dtype(tokens):
+
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    
+    return tokens
+
 def get_config():
 
     try:
@@ -79,7 +89,9 @@ def test(X_test, Y_test, config, model_name):
     
     max_length  =  config['max_length']
    
-    if config["model"] =='LONG':
+    if config["model"] =='XLNet':
+        lm = "xlnet-base-cased"
+    elif config["model"] =='LONG':
         lm = "allenai/longformer-base-4096"
     else:
         lm = 'bert-base-uncased'

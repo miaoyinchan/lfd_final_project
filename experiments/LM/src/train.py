@@ -36,12 +36,6 @@ if len(physical_devices) > 0:
 
 
 
-#physical_devices = tf.config.experimental.list_physical_devices('GPU')
-#if len(physical_devices) > 0:
-#    tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
-#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
-
 def change_dtype(tokens):
 
     tokens['input_ids'] = tokens['input_ids'].astype('int32')
