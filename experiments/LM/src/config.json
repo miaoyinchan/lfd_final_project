@@ -2,7 +2,7 @@
 {
 
    
-    "model": "BERT",
+    "model": "LONG",
     "max_length" : 512,
     "learning_rate": 3e-5,
     "epochs": 10,
