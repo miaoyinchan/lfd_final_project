@@ -17,7 +17,7 @@ from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report as report
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_predict
-import numpy as np  
+import numpy as np
 from nltk.util import ngrams, pr
 import sys
 import joblib
@@ -29,11 +29,11 @@ LOG_DIR = "Logs/"
 def create_arg_parser():
     """
     Description:
-    
+
     This method is an arg parser
-    
+
     Return
-    
+
     This method returns a map with commandline parameters taken from the user
     """
     parser = argparse.ArgumentParser()
@@ -66,30 +66,30 @@ def saveModel(classifier,experiment_name ):
     try:
         os.mkdir(MODEL_DIR)
         joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
-        
+
     except OSError as error:
         joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
-    
+
 
 def get_optimal_hyperParmeters(kernel, X_train, Y_train, X_test, Y_test, vec):
     """
     Description:
-    
+
     This method vectorize the tokens and trains several SVM models
      using different hyperparameter values to find the best performing model
-    
+
     Parameters:
-    
+
     X_train = token lists for training
-    
+
     Y_train = labels for training set
-    
+
     X_test = token lists for testing/validating
-    
+
     Y_test = labels for test/validation set
-    
-    """ 
-     
+
+    """
+
     #For each model the C value increase by an order of magnitude
     List_C = list([0.0001,0.001,0.01,0.1,10,100,1000])
     C=0
@@ -154,7 +154,7 @@ def main():
     args = create_arg_parser()
     n1 = args.n1
     n2 = args.n2
-    
+
     if args.tfidf:
         vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
         experiment_name = "SVM+Tf-idf"+str(n1)+"-"+str(n2)+"-"+args.kernel
@@ -168,7 +168,7 @@ def main():
         logging.basicConfig(filename=LOG_DIR+experiment_name+'.log',level=logging.INFO)
     except OSError as error:
         logging.basicConfig(filename=LOG_DIR+experiment_name+'.log', level=logging.INFO)
-    
+
 
     X_train, Y_train  = read_data(DATA_DIR+'train.csv')
     X_test, Y_test  = read_data(DATA_DIR+'dev.csv')
@@ -179,5 +179,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
 
