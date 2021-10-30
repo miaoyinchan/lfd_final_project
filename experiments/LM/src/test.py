@@ -7,17 +7,19 @@ import json
 import os
 import argparse
 import pandas as pd
-from tensorflow.keras.optimizers import Adam
-from tensorflow.python.keras.losses import BinaryCrossentropy
-from tensorflow.python.ops.gen_math_ops import mod
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
-from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
-from sklearn.preprocessing import LabelBinarizer
 import tensorflow as tf
+import random as python_random
 
+np.random.seed(1234)
+tf.random.set_seed(1234)
+python_random.seed(1234)
 
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
@@ -100,6 +102,9 @@ def test(X_test, Y_test, config, model_name):
     lm = "bert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(lm)
     tokens_test = tokenizer(X_test, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
+    if config["model"] =='LONG':
+        tokens_test = change_dtype(tokens_test)
+
     model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
     Y_pred = model.predict(tokens_test, batch_size=1)["logits"]
 
