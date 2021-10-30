@@ -4,7 +4,7 @@
    
     "model": "LONG",
     "max_length" : 1024,
-    "learning_rate": 3e-5,
+    "learning_rate": 5e-5,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
