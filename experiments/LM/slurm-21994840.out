@@ -1,0 +1,390 @@
+2021-10-29 23:11:56.521349: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:11:56.696906: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:11:56.697307: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:11:56.714704: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-29 23:11:56.715919: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:11:56.716276: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:11:56.716535: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:12:02.504563: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:12:02.505113: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:12:02.505449: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:12:02.505770: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
+Could not locate the tokenizer configuration file, will try to use the model config instead.
+https://huggingface.co/xlnet-base-cased/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmp75scapyw
+Downloading:   0%|          | 0.00/760 [00:00<?, ?B/s]Downloading: 100%|██████████| 760/760 [00:00<00:00, 759kB/s]
+storing https://huggingface.co/xlnet-base-cased/resolve/main/config.json in cache at /home/s4996755/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+creating metadata file for /home/s4996755/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmpt3wnhxs8
+Downloading:   0%|          | 0.00/779k [00:00<?, ?B/s]Downloading:  12%|█▏        | 96.0k/779k [00:00<00:01, 564kB/s]Downloading:  55%|█████▌    | 432k/779k [00:00<00:00, 1.39MB/s]Downloading: 100%|██████████| 779k/779k [00:00<00:00, 1.81MB/s]
+storing https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model in cache at /home/s4996755/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+creating metadata file for /home/s4996755/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmpvmtgx8k4
+Downloading:   0%|          | 0.00/1.32M [00:00<?, ?B/s]Downloading:   2%|▏         | 28.0k/1.32M [00:00<00:08, 163kB/s]Downloading:  15%|█▍        | 200k/1.32M [00:00<00:01, 657kB/s] Downloading:  57%|█████▋    | 776k/1.32M [00:00<00:00, 1.89MB/s]Downloading: 100%|██████████| 1.32M/1.32M [00:00<00:00, 2.58MB/s]
+storing https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json in cache at /home/s4996755/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+creating metadata file for /home/s4996755/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+loading file https://huggingface.co/xlnet-base-cased/resolve/main/spiece.model from cache at /home/s4996755/.cache/huggingface/transformers/df73bc9f8d13bf2ea4dab95624895e45a550a0f0a825e41fc25440bf367ee3c8.d93497120e3a865e2970f26abdf7bf375896f97fde8b874b70909592a6c785c9
+loading file https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/46f47734f3dcaef7e236b9a3e887f27814e18836a8db7e6a49148000058a1a54.2a683f915238b4f560dab0c724066cf0a7de9a851e96b0fb3a1e7f0881552f53
+loading file https://huggingface.co/xlnet-base-cased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/xlnet-base-cased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/xlnet-base-cased/resolve/main/tokenizer_config.json from cache at None
+loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+loading configuration file https://huggingface.co/xlnet-base-cased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/06bdb0f5882dbb833618c81c3b4c996a0c79422fa2c95ffea3827f92fc2dba6b.da982e2e596ec73828dbae86525a1870e513bd63aae5a2dc773ccc840ac5c346
+Model config XLNetConfig {
+  "architectures": [
+    "XLNetLMHeadModel"
+  ],
+  "attn_type": "bi",
+  "bi_data": false,
+  "bos_token_id": 1,
+  "clamp_len": -1,
+  "d_head": 64,
+  "d_inner": 3072,
+  "d_model": 768,
+  "dropout": 0.1,
+  "end_n_top": 5,
+  "eos_token_id": 2,
+  "ff_activation": "gelu",
+  "initializer_range": 0.02,
+  "layer_norm_eps": 1e-12,
+  "mem_len": null,
+  "model_type": "xlnet",
+  "n_head": 12,
+  "n_layer": 12,
+  "pad_token_id": 5,
+  "reuse_len": null,
+  "same_length": false,
+  "start_n_top": 5,
+  "summary_activation": "tanh",
+  "summary_last_dropout": 0.1,
+  "summary_type": "last",
+  "summary_use_proj": true,
+  "task_specific_params": {
+    "text-generation": {
+      "do_sample": true,
+      "max_length": 250
+    }
+  },
+  "transformers_version": "4.11.3",
+  "untie_r": true,
+  "use_mems_eval": true,
+  "use_mems_train": false,
+  "vocab_size": 32000
+}
+
+https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmptt8dcsm8
+Downloading:   0%|          | 0.00/539M [00:00<?, ?B/s]Downloading:   1%|          | 3.95M/539M [00:00<00:13, 41.4MB/s]Downloading:   1%|▏         | 7.90M/539M [00:00<00:20, 27.3MB/s]Downloading:   2%|▏         | 11.0M/539M [00:00<00:18, 29.3MB/s]Downloading:   3%|▎         | 14.0M/539M [00:00<00:19, 28.7MB/s]Downloading:   3%|▎         | 18.4M/539M [00:00<00:16, 34.0MB/s]Downloading:   4%|▍         | 21.7M/539M [00:00<00:16, 32.4MB/s]Downloading:   5%|▍         | 24.9M/539M [00:00<00:19, 28.0MB/s]Downloading:   5%|▌         | 27.7M/539M [00:00<00:19, 28.2MB/s]Downloading:   6%|▌         | 30.8M/539M [00:01<00:18, 29.1MB/s]Downloading:   6%|▌         | 33.7M/539M [00:01<00:18, 28.0MB/s]Downloading:   7%|▋         | 37.7M/539M [00:01<00:17, 30.8MB/s]Downloading:   8%|▊         | 40.7M/539M [00:01<00:17, 29.4MB/s]Downloading:   8%|▊         | 43.6M/539M [00:01<00:18, 27.7MB/s]Downloading:   9%|▊         | 46.2M/539M [00:01<00:20, 25.2MB/s]Downloading:   9%|▉         | 49.7M/539M [00:01<00:18, 28.0MB/s]Downloading:  10%|▉         | 52.5M/539M [00:01<00:19, 26.8MB/s]Downloading:  10%|█         | 55.1M/539M [00:02<00:22, 22.9MB/s]Downloading:  11%|█         | 59.8M/539M [00:02<00:17, 28.9MB/s]Downloading:  12%|█▏        | 62.7M/539M [00:02<00:22, 22.7MB/s]Downloading:  12%|█▏        | 65.2M/539M [00:02<00:24, 20.6MB/s]Downloading:  13%|█▎        | 67.6M/539M [00:02<00:22, 21.5MB/s]Downloading:  13%|█▎        | 69.8M/539M [00:02<00:24, 19.7MB/s]Downloading:  13%|█▎        | 72.2M/539M [00:02<00:23, 20.9MB/s]Downloading:  14%|█▍        | 75.3M/539M [00:03<00:20, 23.4MB/s]Downloading:  14%|█▍        | 77.7M/539M [00:03<00:20, 23.6MB/s]Downloading:  15%|█▍        | 80.2M/539M [00:03<00:19, 24.4MB/s]Downloading:  15%|█▌        | 83.5M/539M [00:03<00:17, 27.2MB/s]Downloading:  16%|█▌        | 86.2M/539M [00:03<00:19, 24.8MB/s]Downloading:  17%|█▋        | 89.3M/539M [00:03<00:17, 26.8MB/s]Downloading:  17%|█▋        | 92.4M/539M [00:03<00:17, 27.0MB/s]Downloading:  18%|█▊        | 95.0M/539M [00:03<00:18, 25.7MB/s]Downloading:  18%|█▊        | 98.2M/539M [00:03<00:16, 27.4MB/s]Downloading:  19%|█▉        | 101M/539M [00:04<00:15, 28.8MB/s] Downloading:  19%|█▉        | 104M/539M [00:04<00:17, 26.4MB/s]Downloading:  20%|█▉        | 107M/539M [00:04<00:16, 27.7MB/s]Downloading:  20%|██        | 110M/539M [00:04<00:16, 27.0MB/s]Downloading:  21%|██        | 112M/539M [00:04<00:22, 19.6MB/s]Downloading:  21%|██        | 115M/539M [00:04<00:23, 19.3MB/s]Downloading:  22%|██▏       | 117M/539M [00:04<00:25, 17.3MB/s]Downloading:  22%|██▏       | 120M/539M [00:04<00:20, 21.2MB/s]Downloading:  23%|██▎       | 122M/539M [00:05<00:22, 19.2MB/s]Downloading:  23%|██▎       | 127M/539M [00:05<00:21, 20.5MB/s]Downloading:  24%|██▍       | 129M/539M [00:05<00:20, 20.7MB/s]Downloading:  24%|██▍       | 131M/539M [00:05<00:20, 20.4MB/s]Downloading:  25%|██▍       | 134M/539M [00:05<00:16, 25.2MB/s]Downloading:  25%|██▌       | 137M/539M [00:05<00:17, 24.0MB/s]Downloading:  26%|██▌       | 140M/539M [00:05<00:16, 25.1MB/s]Downloading:  27%|██▋       | 143M/539M [00:05<00:15, 27.4MB/s]Downloading:  27%|██▋       | 146M/539M [00:06<00:14, 28.1MB/s]Downloading:  28%|██▊       | 150M/539M [00:06<00:13, 31.1MB/s]Downloading:  28%|██▊       | 153M/539M [00:06<00:13, 30.8MB/s]Downloading:  29%|██▉       | 156M/539M [00:06<00:13, 29.4MB/s]Downloading:  29%|██▉       | 159M/539M [00:06<00:13, 30.3MB/s]Downloading:  30%|██▉       | 162M/539M [00:06<00:13, 28.9MB/s]Downloading:  30%|███       | 164M/539M [00:06<00:16, 23.7MB/s]Downloading:  31%|███       | 167M/539M [00:06<00:18, 21.6MB/s]Downloading:  31%|███▏      | 169M/539M [00:07<00:18, 21.0MB/s]Downloading:  32%|███▏      | 171M/539M [00:07<00:18, 20.6MB/s]Downloading:  32%|███▏      | 174M/539M [00:07<00:16, 22.8MB/s]Downloading:  33%|███▎      | 176M/539M [00:07<00:17, 21.7MB/s]Downloading:  33%|███▎      | 178M/539M [00:07<00:18, 21.0MB/s]Downloading:  33%|███▎      | 180M/539M [00:07<00:17, 21.2MB/s]Downloading:  34%|███▍      | 183M/539M [00:07<00:15, 24.1MB/s]Downloading:  35%|███▍      | 188M/539M [00:07<00:12, 30.2MB/s]Downloading:  35%|███▌      | 191M/539M [00:07<00:12, 30.1MB/s]Downloading:  36%|███▌      | 194M/539M [00:08<00:13, 27.7MB/s]Downloading:  37%|███▋      | 198M/539M [00:08<00:10, 32.6MB/s]Downloading:  37%|███▋      | 202M/539M [00:08<00:10, 33.6MB/s]Downloading:  38%|███▊      | 207M/539M [00:08<00:09, 38.8MB/s]Downloading:  39%|███▉      | 211M/539M [00:08<00:08, 41.4MB/s]Downloading:  40%|███▉      | 215M/539M [00:08<00:08, 38.2MB/s]Downloading:  41%|████      | 220M/539M [00:08<00:08, 41.1MB/s]Downloading:  41%|████▏     | 224M/539M [00:08<00:08, 38.9MB/s]Downloading:  42%|████▏     | 228M/539M [00:08<00:08, 36.8MB/s]Downloading:  43%|████▎     | 231M/539M [00:09<00:08, 37.2MB/s]Downloading:  44%|████▎     | 235M/539M [00:09<00:12, 25.6MB/s]Downloading:  44%|████▍     | 240M/539M [00:09<00:10, 31.3MB/s]Downloading:  45%|████▌     | 243M/539M [00:09<00:10, 30.4MB/s]Downloading:  46%|████▌     | 247M/539M [00:09<00:11, 27.6MB/s]Downloading:  46%|████▋     | 250M/539M [00:09<00:10, 28.3MB/s]Downloading:  47%|████▋     | 253M/539M [00:09<00:11, 26.6MB/s]Downloading:  47%|████▋     | 255M/539M [00:10<00:11, 26.2MB/s]Downloading:  48%|████▊     | 258M/539M [00:10<00:11, 26.4MB/s]Downloading:  48%|████▊     | 261M/539M [00:10<00:10, 27.4MB/s]Downloading:  49%|████▉     | 264M/539M [00:10<00:09, 29.4MB/s]Downloading:  49%|████▉     | 267M/539M [00:10<00:10, 27.3MB/s]Downloading:  50%|█████     | 270M/539M [00:10<00:10, 27.9MB/s]Downloading:  51%|█████     | 274M/539M [00:10<00:08, 32.7MB/s]Downloading:  51%|█████▏    | 278M/539M [00:10<00:09, 30.4MB/s]Downloading:  52%|█████▏    | 281M/539M [00:10<00:09, 29.1MB/s]Downloading:  53%|█████▎    | 283M/539M [00:11<00:10, 26.4MB/s]Downloading:  53%|█████▎    | 286M/539M [00:11<00:09, 27.4MB/s]Downloading:  54%|█████▎    | 290M/539M [00:11<00:08, 29.1MB/s]Downloading:  54%|█████▍    | 292M/539M [00:11<00:09, 26.2MB/s]Downloading:  55%|█████▍    | 295M/539M [00:11<00:09, 27.1MB/s]Downloading:  55%|█████▌    | 298M/539M [00:11<00:10, 25.2MB/s]Downloading:  56%|█████▌    | 301M/539M [00:11<00:10, 23.8MB/s]Downloading:  56%|█████▋    | 304M/539M [00:11<00:09, 26.9MB/s]Downloading:  57%|█████▋    | 307M/539M [00:11<00:09, 26.6MB/s]Downloading:  57%|█████▋    | 309M/539M [00:12<00:09, 24.6MB/s]Downloading:  58%|█████▊    | 312M/539M [00:12<00:13, 18.0MB/s]Downloading:  58%|█████▊    | 314M/539M [00:12<00:12, 19.5MB/s]Downloading:  59%|█████▉    | 318M/539M [00:12<00:09, 24.1MB/s]Downloading:  60%|█████▉    | 321M/539M [00:12<00:09, 25.4MB/s]Downloading:  60%|██████    | 324M/539M [00:12<00:09, 23.0MB/s]Downloading:  60%|██████    | 326M/539M [00:12<00:10, 21.6MB/s]Downloading:  61%|██████    | 329M/539M [00:13<00:09, 23.9MB/s]Downloading:  62%|██████▏   | 332M/539M [00:13<00:09, 22.5MB/s]Downloading:  62%|██████▏   | 334M/539M [00:13<00:09, 23.0MB/s]Downloading:  62%|██████▏   | 336M/539M [00:13<00:14, 14.6MB/s]Downloading:  63%|██████▎   | 342M/539M [00:13<00:09, 22.3MB/s]Downloading:  64%|██████▍   | 344M/539M [00:13<00:09, 22.0MB/s]Downloading:  64%|██████▍   | 347M/539M [00:14<00:09, 20.3MB/s]Downloading:  65%|██████▍   | 349M/539M [00:14<00:09, 21.1MB/s]Downloading:  65%|██████▌   | 353M/539M [00:14<00:07, 24.5MB/s]Downloading:  66%|██████▌   | 355M/539M [00:14<00:07, 24.5MB/s]Downloading:  66%|██████▋   | 358M/539M [00:14<00:07, 24.6MB/s]Downloading:  67%|██████▋   | 360M/539M [00:14<00:07, 23.5MB/s]Downloading:  67%|██████▋   | 363M/539M [00:14<00:07, 24.8MB/s]Downloading:  68%|██████▊   | 366M/539M [00:14<00:07, 25.0MB/s]Downloading:  68%|██████▊   | 368M/539M [00:14<00:06, 26.5MB/s]Downloading:  69%|██████▉   | 371M/539M [00:15<00:07, 23.6MB/s]Downloading:  70%|██████▉   | 376M/539M [00:15<00:05, 30.2MB/s]Downloading:  70%|███████   | 379M/539M [00:15<00:06, 25.9MB/s]Downloading:  71%|███████   | 383M/539M [00:15<00:05, 30.0MB/s]Downloading:  72%|███████▏  | 386M/539M [00:15<00:05, 28.7MB/s]Downloading:  72%|███████▏  | 390M/539M [00:15<00:04, 31.5MB/s]Downloading:  73%|███████▎  | 393M/539M [00:15<00:05, 30.3MB/s]Downloading:  73%|███████▎  | 396M/539M [00:15<00:05, 27.3MB/s]Downloading:  74%|███████▍  | 398M/539M [00:16<00:05, 26.8MB/s]Downloading:  74%|███████▍  | 401M/539M [00:16<00:05, 28.2MB/s]Downloading:  75%|███████▍  | 404M/539M [00:16<00:07, 18.7MB/s]Downloading:  76%|███████▋  | 412M/539M [00:16<00:04, 31.4MB/s]Downloading:  77%|███████▋  | 416M/539M [00:16<00:03, 33.8MB/s]Downloading:  78%|███████▊  | 420M/539M [00:16<00:04, 27.1MB/s]Downloading:  78%|███████▊  | 423M/539M [00:16<00:04, 26.5MB/s]Downloading:  79%|███████▉  | 426M/539M [00:17<00:05, 22.8MB/s]Downloading:  79%|███████▉  | 429M/539M [00:17<00:05, 21.6MB/s]Downloading:  80%|███████▉  | 431M/539M [00:17<00:05, 20.6MB/s]Downloading:  80%|████████  | 434M/539M [00:17<00:05, 21.9MB/s]Downloading:  81%|████████  | 436M/539M [00:17<00:04, 22.3MB/s]Downloading:  81%|████████  | 438M/539M [00:17<00:06, 17.5MB/s]Downloading:  82%|████████▏ | 443M/539M [00:17<00:04, 25.0MB/s]Downloading:  83%|████████▎ | 446M/539M [00:18<00:04, 23.5MB/s]Downloading:  83%|████████▎ | 448M/539M [00:18<00:05, 16.7MB/s]Downloading:  84%|████████▎ | 451M/539M [00:18<00:06, 15.1MB/s]Downloading:  84%|████████▍ | 452M/539M [00:18<00:06, 15.2MB/s]Downloading:  84%|████████▍ | 454M/539M [00:18<00:05, 15.9MB/s]Downloading:  85%|████████▍ | 456M/539M [00:18<00:04, 18.0MB/s]Downloading:  85%|████████▌ | 460M/539M [00:19<00:03, 23.5MB/s]Downloading:  86%|████████▌ | 463M/539M [00:19<00:03, 22.7MB/s]Downloading:  86%|████████▋ | 465M/539M [00:19<00:03, 22.8MB/s]Downloading:  87%|████████▋ | 468M/539M [00:19<00:03, 24.8MB/s]Downloading:  87%|████████▋ | 471M/539M [00:19<00:03, 22.8MB/s]Downloading:  88%|████████▊ | 475M/539M [00:19<00:02, 27.7MB/s]Downloading:  89%|████████▊ | 477M/539M [00:19<00:02, 26.7MB/s]Downloading:  89%|████████▉ | 481M/539M [00:19<00:02, 26.2MB/s]Downloading:  90%|████████▉ | 483M/539M [00:19<00:02, 25.3MB/s]Downloading:  90%|█████████ | 486M/539M [00:20<00:02, 23.0MB/s]Downloading:  91%|█████████ | 490M/539M [00:20<00:01, 28.0MB/s]Downloading:  92%|█████████▏| 493M/539M [00:20<00:01, 30.9MB/s]Downloading:  92%|█████████▏| 497M/539M [00:20<00:01, 28.6MB/s]Downloading:  93%|█████████▎| 499M/539M [00:20<00:01, 25.6MB/s]Downloading:  93%|█████████▎| 502M/539M [00:20<00:01, 23.7MB/s]Downloading:  94%|█████████▎| 504M/539M [00:20<00:01, 22.8MB/s]Downloading:  94%|█████████▍| 506M/539M [00:20<00:01, 20.2MB/s]Downloading:  94%|█████████▍| 508M/539M [00:21<00:01, 17.0MB/s]Downloading:  95%|█████████▌| 515M/539M [00:21<00:00, 27.6MB/s]Downloading:  96%|█████████▌| 518M/539M [00:21<00:00, 28.6MB/s]Downloading:  97%|█████████▋| 521M/539M [00:21<00:00, 28.2MB/s]Downloading:  97%|█████████▋| 524M/539M [00:21<00:00, 25.0MB/s]Downloading:  98%|█████████▊| 526M/539M [00:21<00:00, 25.1MB/s]Downloading:  98%|█████████▊| 529M/539M [00:21<00:00, 26.7MB/s]Downloading:  99%|█████████▊| 532M/539M [00:22<00:00, 23.4MB/s]Downloading:  99%|█████████▉| 535M/539M [00:22<00:00, 25.7MB/s]Downloading: 100%|█████████▉| 538M/539M [00:22<00:00, 25.4MB/s]Downloading: 100%|██████████| 539M/539M [00:22<00:00, 25.4MB/s]
+storing https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 in cache at /home/s4996755/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+creating metadata file for /home/s4996755/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+loading weights file https://huggingface.co/xlnet-base-cased/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/48c817fb99021d9dba8862b6cbd5bc1487de264f8f0269b081cc225f279cdecc.ab7772817fe449c4e2bec364052beb82b38e799e66265a75603a89ad983170b5.h5
+Some layers from the model checkpoint at xlnet-base-cased were not used when initializing TFXLNetForSequenceClassification: ['lm_loss']
+- This IS expected if you are initializing TFXLNetForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFXLNetForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some layers of TFXLNetForSequenceClassification were not initialized from the model checkpoint at xlnet-base-cased and are newly initialized: ['sequence_summary', 'logits_proj']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+0epoch [00:00, ?epoch/s]  0%|          | 0/10 [00:00<?, ?epoch/s]2021-10-29 23:12:54.799721: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+
+  0%|          | 0.00/652 [00:00<?, ?batch/s][ATraceback (most recent call last):
+  File "train.py", line 182, in <module>
+    main()
+  File "train.py", line 177, in main
+    classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)
+  File "train.py", line 137, in classifier
+    model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
+  File "/home/s4996755/env/lib64/python3.6/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 933, in _call
+    self._initialize(args, kwds, add_initializers_to=initializers)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 760, in _initialize
+    *args, **kwds))
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3066, in _get_concrete_function_internal_garbage_collected
+    graph_function, _ = self._maybe_define_function(args, kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3463, in _maybe_define_function
+    graph_function = self._create_graph_function(args, kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3308, in _create_graph_function
+    capture_by_value=self._capture_by_value),
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/func_graph.py", line 1007, in func_graph_from_py_func
+    func_outputs = python_func(*func_args, **func_kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 668, in wrapped_fn
+    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/func_graph.py", line 994, in wrapper
+    raise e.ag_error_metadata.to_exception(e)
+TypeError: in user code:
+
+    /home/s4996755/env/lib64/python3.6/site-packages/keras/engine/training.py:853 train_function  *
+        return step_function(self, iterator)
+    train.py:73 weighted_loss_function  *
+        return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/util/dispatch.py:206 wrapper  **
+        return target(*args, **kwargs)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/nn_impl.py:336 weighted_cross_entropy_with_logits_v2
+        log_weight = 1 + (pos_weight - 1) * labels
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/math_ops.py:1383 binary_op_wrapper
+        raise e
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/math_ops.py:1367 binary_op_wrapper
+        return func(x, y, name=name)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/math_ops.py:1710 _mul_dispatch
+        return multiply(x, y, name=name)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/util/dispatch.py:206 wrapper
+        return target(*args, **kwargs)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/math_ops.py:530 multiply
+        return gen_math_ops.mul(x, y, name)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/gen_math_ops.py:6246 mul
+        "Mul", x=x, y=y, name=name)
+    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:558 _apply_op_helper
+        inferred_from[input_arg.type_attr]))
+
+    TypeError: Input 'y' of 'Mul' Op has type int64 that does not match type float32 of argument 'x'.
+
+  0%|          | 0/10 [00:11<?, ?epoch/s]
+  0%|          | 0.00/652 [00:09<?, ?batch/s]2021-10-29 23:13:40.954761: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:40.978421: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:40.978928: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:40.979865: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-29 23:13:40.981270: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:40.981747: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:40.982102: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:41.697058: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:41.697546: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:41.697897: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-29 23:13:41.698170: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/s4996755/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/s4996755/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
+Traceback (most recent call last):
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 554, in get_config_dict
+    user_agent=user_agent,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1410, in cached_path
+    local_files_only=local_files_only,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1574, in get_from_cache
+    r.raise_for_status()
+  File "/home/s4996755/env/lib64/python3.6/site-packages/requests/models.py", line 953, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 138, in <module>
+    main()
+  File "test.py", line 131, in main
+    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
+  File "test.py", line 91, in test
+    model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/auto_factory.py", line 397, in from_pretrained
+    pretrained_model_name_or_path, return_unused_kwargs=True, **kwargs
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/configuration_auto.py", line 527, in from_pretrained
+    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 570, in get_config_dict
+    raise EnvironmentError(msg)
+OSError: Can't load config for '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial'. Make sure that:
+
+- '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial' is a correct model identifier listed on 'https://huggingface.co/models'
+
+- or '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial' is the correct path to a directory containing a config.json file
+
+
+Traceback (most recent call last):
+  File "evaluate.py", line 94, in <module>
+    main()
+  File "evaluate.py", line 85, in main
+    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 688, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 454, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 948, in __init__
+    self._make_engine(self.engine)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1180, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 2010, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '../Output/XLNet_512_5e-05_10_3_8_custom_Adam-trial.csv'
+
+
+###############################################################################
+Peregrine Cluster
+Job 21994840 for user 's4996755'
+Finished at: Fri Oct 29 23:14:05 CEST 2021
+
+Job details:
+============
+
+Job ID              : 21994840
+Name                : run.sh
+User                : s4996755
+Partition           : gpu
+Nodes               : pg-gpu09
+Number of Nodes     : 1
+Cores               : 12
+Number of Tasks     : 1
+State               : FAILED
+Submit              : 2021-10-29T23:08:27
+Start               : 2021-10-29T23:08:56
+End                 : 2021-10-29T23:14:05
+Reserved walltime   : 03:00:00
+Used walltime       : 00:05:09
+Used CPU time       : 00:03:13 (efficiency:  5.21%)
+% User (Computation): 84.08%
+% System (I/O)      : 15.92%
+Mem reserved        : 2000M/core
+Max Mem (Node/step) : 2.39G (pg-gpu09, per node)
+Full Max Mem usage  : 2.39G
+Total Disk Read     : 1.11G
+Total Disk Write    : 541.88M
+Average GPU usage   : 0.0% (pg-gpu09)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################

@@ -24,6 +24,12 @@ LOG_DIR = "../Logs/"
 
 
 
+#physical_devices = tf.config.experimental.list_physical_devices('GPU')
+#if len(physical_devices) > 0:
+#    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
+
 def get_config():
 
     try:
@@ -91,8 +97,8 @@ def load_data(dir, trial=False):
     Y_train = [0 if y=="MISC" else 1 for y in Y_train]
     Y_dev = [0 if y=="MISC" else 1 for y in Y_dev]
 
-    Y_train = tf.one_hot(Y_train,depth=2, dtype=tf.int64)
-    Y_dev = tf.one_hot(Y_dev,depth=2, dtype=tf.int64)
+    Y_train = tf.one_hot(Y_train,depth=2)
+    Y_dev = tf.one_hot(Y_dev,depth=2)
     
     return X_train, Y_train, X_dev, Y_dev
 
@@ -115,7 +121,7 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
         optim = SGD(learning_rate=learning_rate)
 
     if config["model"] =='XLNet':
-        lm = "xlnet-base-uncased"
+        lm = "xlnet-base-cased"
     else:
         lm = 'bert-base-uncased'
         
