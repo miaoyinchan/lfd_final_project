@@ -4,12 +4,13 @@
    
     "model": "BERT",
     "max_length" : 512,
-    "learning_rate": 3e-5,
+    "learning_rate": 5e-5,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
     "loss": "custom",
-    "optimizer": "Adam"
+    "optimizer": "Adam",
+    "experiment": "resample"
 
 
 }

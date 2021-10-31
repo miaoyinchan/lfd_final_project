@@ -5,6 +5,8 @@ log = logging.getLogger('transformers')
 log.setLevel(logging.INFO)
 print = log.info
 
+import random as python_random
+import numpy as np
 import os
 import argparse
 import pandas as pd
@@ -23,12 +25,21 @@ OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
 
 
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
 
-#physical_devices = tf.config.experimental.list_physical_devices('GPU')
-#if len(physical_devices) > 0:
-#    tf.config.experimental.set_memory_growth(physical_devices[0], True)
+if len(physical_devices) > 0:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
+
+def change_dtype(tokens):
+
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    
+    return tokens
 
 def get_config():
 
@@ -68,7 +79,7 @@ def f1_score(y_true, y_pred):
 def create_arg_parser():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
 
     args = parser.parse_args()
     return args
@@ -78,10 +89,12 @@ def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.33)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
-def load_data(dir, trial=False):
+def load_data(dir, experiment):
 
-    if trial:
+    if experiment=="trial":
         df_train = pd.read_csv(dir+'/train_opt.csv')
+    elif experiment=="resample":
+        df_train = pd.read_csv(dir+'/train_aug.csv')
     else:
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -104,6 +117,10 @@ def load_data(dir, trial=False):
 
 def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
 
+    np.random.seed(config['seed'])
+    tf.random.set_seed(config['seed'])
+    python_random.seed(config['seed'])
+
     max_length  =  config['max_length']
     learning_rate =  config["learning_rate"]
     epochs = config["epochs"]
@@ -122,6 +139,8 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
 
     if config["model"] =='XLNet':
         lm = "xlnet-base-cased"
+    elif config["model"] =='LONG':
+        lm = "allenai/longformer-base-4096"
     else:
         lm = 'bert-base-uncased'
         
@@ -133,6 +152,9 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     tokens_train = tokenizer(X_train, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
     tokens_dev = tokenizer(X_dev, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
    
+    if config["model"] =='LONG':
+        tokens_train = change_dtype(tokens_train)
+        tokens_dev = change_dtype(tokens_dev)
 
     model.compile(loss=loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
@@ -168,16 +190,17 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
-    config, model_name = get_config()
-    trial = args.trial
-    if trial:
-        model_name = model_name+"-trial"
+    seed = args.seed
 
+    config, model_name = get_config()
+    config['seed'] = seed
+    if config['experiment'] != 'trial':
+        model_name = model_name+"_"+str(seed)
 
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, trial)
+    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, config["experiment"])
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)

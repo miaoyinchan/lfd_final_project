@@ -1,0 +1,168 @@
+Traceback (most recent call last):
+  File "train.py", line 28, in <module>
+    python_random.seed(1234)
+NameError: name 'python_random' is not defined
+2021-10-30 10:32:00.771788: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:01.066217: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:01.066752: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:01.067775: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-10-30 10:32:01.069590: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:01.070116: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:01.070429: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:12.034039: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:12.034726: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:12.035141: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-10-30 10:32:12.035487: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/s4996755/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/s4996755/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
+Traceback (most recent call last):
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 554, in get_config_dict
+    user_agent=user_agent,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1410, in cached_path
+    local_files_only=local_files_only,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1574, in get_from_cache
+    r.raise_for_status()
+  File "/home/s4996755/env/lib64/python3.6/site-packages/requests/models.py", line 953, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 138, in <module>
+    main()
+  File "test.py", line 131, in main
+    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
+  File "test.py", line 91, in test
+    model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/auto_factory.py", line 397, in from_pretrained
+    pretrained_model_name_or_path, return_unused_kwargs=True, **kwargs
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/configuration_auto.py", line 527, in from_pretrained
+    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 570, in get_config_dict
+    raise EnvironmentError(msg)
+OSError: Can't load config for '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial'. Make sure that:
+
+- '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial' is a correct model identifier listed on 'https://huggingface.co/models'
+
+- or '../Saved_Models/XLNet_512_5e-05_10_3_8_custom_Adam-trial' is the correct path to a directory containing a config.json file
+
+
+Traceback (most recent call last):
+  File "evaluate.py", line 94, in <module>
+    main()
+  File "evaluate.py", line 85, in main
+    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 688, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 454, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 948, in __init__
+    self._make_engine(self.engine)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1180, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 2010, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '../Output/XLNet_512_5e-05_10_3_8_custom_Adam-trial.csv'
+
+
+###############################################################################
+Peregrine Cluster
+Job 21996119 for user 's4996755'
+Finished at: Sat Oct 30 10:32:32 CEST 2021
+
+Job details:
+============
+
+Job ID              : 21996119
+Name                : run.sh
+User                : s4996755
+Partition           : gpu
+Nodes               : pg-gpu22
+Number of Nodes     : 1
+Cores               : 12
+Number of Tasks     : 1
+State               : FAILED
+Submit              : 2021-10-30T10:29:26
+Start               : 2021-10-30T10:29:29
+End                 : 2021-10-30T10:32:32
+Reserved walltime   : 03:00:00
+Used walltime       : 00:03:03
+Used CPU time       : 00:00:33 (efficiency:  1.54%)
+% User (Computation): 66.84%
+% System (I/O)      : 33.16%
+Mem reserved        : 2000M/core
+Max Mem (Node/step) : 191.51M (pg-gpu22, per node)
+Full Max Mem usage  : 191.51M
+Total Disk Read     : 102.03M
+Total Disk Write    : 217.34K
+Average GPU usage   : 0.0% (pg-gpu22)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################

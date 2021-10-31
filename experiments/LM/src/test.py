@@ -7,22 +7,31 @@ import json
 import os
 import argparse
 import pandas as pd
-from tensorflow.keras.optimizers import Adam
-from tensorflow.python.keras.losses import BinaryCrossentropy
-from tensorflow.python.ops.gen_math_ops import mod
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
-from tensorflow.keras.callbacks import EarlyStopping
 import numpy as np
-from sklearn.preprocessing import LabelBinarizer
 import tensorflow as tf
+import random as python_random
 
 
+physical_devices = tf.config.experimental.list_physical_devices('GPU')
+if len(physical_devices) > 0:
+    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 DATA_DIR = '../../../train-test-dev/'
 MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
+
+def change_dtype(tokens):
+
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+    tokens['input_ids'] = tokens['input_ids'].astype('int32')
+
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    
+    return tokens
 
 def get_config():
 
@@ -36,10 +45,12 @@ def get_config():
     except FileNotFoundError as error:
         print(error)
 
-def create_arg_parser():
 
+def create_arg_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+
+    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
+
     args = parser.parse_args()
     return args
 
@@ -76,10 +87,15 @@ def save_output(Y_test, Y_pred, model_name):
 
 def test(X_test, Y_test, config, model_name):
 
-    
+    np.random.seed(config['seed'])
+    tf.random.set_seed(config['seed'])
+    python_random.seed(config['seed'])
+
     max_length  =  config['max_length']
    
-    if config["model"] =='LONG':
+    if config["model"] =='XLNet':
+        lm = "xlnet-base-cased"
+    elif config["model"] =='LONG':
         lm = "allenai/longformer-base-4096"
     else:
         lm = 'bert-base-uncased'
@@ -88,6 +104,9 @@ def test(X_test, Y_test, config, model_name):
     lm = "bert-base-uncased"
     tokenizer = AutoTokenizer.from_pretrained(lm)
     tokens_test = tokenizer(X_test, padding=True, max_length=max_length,truncation=True, return_tensors="np").data
+    if config["model"] =='LONG':
+        tokens_test = change_dtype(tokens_test)
+
     model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
     Y_pred = model.predict(tokens_test, batch_size=1)["logits"]
 
@@ -118,11 +137,13 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
-    config, model_name = get_config()
-    trial = args.trial
-    if trial:
-        model_name = model_name+"-trial"
+    seed = args.seed
 
+    config, model_name = get_config()
+    config['seed'] = seed
+
+    if config['experiment'] != 'trial':
+        model_name = model_name+"_"+str(seed)
 
     set_log(model_name)
 
