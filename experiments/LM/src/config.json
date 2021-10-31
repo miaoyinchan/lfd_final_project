@@ -10,7 +10,7 @@
     "batch_size": 8,
     "loss": "custom",
     "optimizer": "Adam",
-    "experiment": "trial"
+    "experiment": "resample"
 
 
 }
