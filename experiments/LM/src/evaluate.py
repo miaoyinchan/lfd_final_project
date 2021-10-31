@@ -23,11 +23,11 @@ def get_model_name():
         print(error)
 
 
-def create_arg_parser():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
-    args = parser.parse_args()
-    return args
+# def create_arg_parser():
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+#     args = parser.parse_args()
+#     return args
 
 def save_results(Y_test, Y_pred, model_name):
     
@@ -76,11 +76,7 @@ def save_results(Y_test, Y_pred, model_name):
 def main():
 
     
-    args = create_arg_parser()
     model_name = get_model_name()
-    trial = args.trial
-    if trial:
-        model_name = model_name+"-trial"
     
     output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']

@@ -45,10 +45,12 @@ def get_config():
     except FileNotFoundError as error:
         print(error)
 
-def create_arg_parser():
 
+def create_arg_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+
+    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
+
     args = parser.parse_args()
     return args
 
@@ -88,7 +90,7 @@ def test(X_test, Y_test, config, model_name):
     np.random.seed(config['seed'])
     tf.random.set_seed(config['seed'])
     python_random.seed(config['seed'])
-    
+
     max_length  =  config['max_length']
    
     if config["model"] =='XLNet':
@@ -135,10 +137,10 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
+    seed = args.seed
+
     config, model_name = get_config()
-    trial = args.trial
-    if trial:
-        model_name = model_name+"-trial"
+    config['seed'] = seed
 
 
     set_log(model_name)

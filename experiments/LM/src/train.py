@@ -79,7 +79,7 @@ def f1_score(y_true, y_pred):
 def create_arg_parser():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
+    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
 
     args = parser.parse_args()
     return args
@@ -89,10 +89,12 @@ def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.33)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
-def load_data(dir, trial=False):
+def load_data(dir, experiment):
 
-    if trial:
+    if experiment=="trial":
         df_train = pd.read_csv(dir+'/train_opt.csv')
+    elif experiment=="resample":
+        df_train = pd.read_csv(dir+'/train_aug.csv')
     else:
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -188,16 +190,16 @@ def set_log(model_name):
 def main():
 
     args = create_arg_parser()
+    seed = args.seed
+
     config, model_name = get_config()
-    trial = args.trial
-    if trial:
-        model_name = model_name+"-trial"
+    config['seed'] = seed
 
 
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, trial)
+    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, config["experiment"])
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)
