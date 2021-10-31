@@ -194,7 +194,8 @@ def main():
 
     config, model_name = get_config()
     config['seed'] = seed
-
+    if config['experiment'] != 'trial':
+        model_name = model_name+"_"+str(seed)
 
     set_log(model_name)
 
