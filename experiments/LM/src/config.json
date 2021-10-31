@@ -2,7 +2,7 @@
 {
 
    
-    "model": "XLNet",
+    "model": "BERT",
     "max_length" : 512,
     "learning_rate": 5e-5,
     "epochs": 10,
