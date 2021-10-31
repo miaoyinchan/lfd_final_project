@@ -10,8 +10,6 @@ from sklearn.metrics import (
     confusion_matrix,
     ConfusionMatrixDisplay,
 )
-from math import e
-from pprint import pprint
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
@@ -32,31 +30,46 @@ def create_arg_parser():
     This method returns a map with commandline parameters taken from the user
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--tfidf", action="store_true",
-                        help="Use the TF-IDF vectorizer instead of CountVectorizer")
-    for i in range(1,12):
+    parser.add_argument(
+        "-t",
+        "--tfidf",
+        action="store_true",
+        help="Use the TF-IDF vectorizer instead of CountVectorizer",
+    )
+    for i in range(1, 12):
         parser.add_argument(
             f"-f{i}",
             f"--feature{i}",
             action="store_true",
             help=f"choose feature set {i} for the classifier",
         )
-    for i in range(1,10):
+    for i in range(1, 10):
         parser.add_argument(
             f"-tu{i}",
             f"--tuning{i}",
             action="store_true",
             help="tune hyperparameters for the best classifier",
         )
-    parser.add_argument("-re", "--resampling", action="store_true",
-                        help="Applying resampling strategy")
-    for i in range(1,5):
+    parser.add_argument(
+        "-re",
+        "--resampling",
+        action="store_true",
+        help="Applying resampling strategy",
+    )
+    for i in range(1, 5):
         parser.add_argument(
             f"-fx{i}",
             f"--fixedsq{i}",
             action="store_true",
             help="tune hyperparameters for the best classifier",
         )
+
+    parser.add_argument(
+        "-fxre",
+        "--fixsqresampling",
+        action="store_true",
+        help="Use fixed sequences (512 tokens) for resampling.",
+    )
 
     args = parser.parse_args()
     return args
@@ -75,43 +88,49 @@ class LemmaTokenizer:
 
 
 def tokenizer_ner_tag(doc: str) -> [str]:
-    return  [token.label_ for token in nlp(doc).ents]
+    return [token.label_ for token in nlp(doc).ents]
 
 
 def save_results(Y_test, Y_pred, experiment_name):
-    ''' save results (accuracy, precision, recall, and f1-score)
-    in csv file and plot confusion matrix '''
+    """save results (accuracy, precision, recall, and f1-score)
+    in csv file and plot confusion matrix"""
 
-    test_report =  classification_report(Y_test, Y_pred, output_dict=True, digits=4)
+    test_report = classification_report(
+        Y_test,
+        Y_pred,
+        output_dict=True,
+        digits=4,
+    )
 
     result = {"experiment": experiment_name}
     labels = [label for label in test_report.keys() if label.isupper()]
 
     for label in labels:
         report = test_report[label]
-        result.update({
-            f"precision-{label}": report['precision'],
-            f"recall-{label}": report['recall'],
-            f"f1-{label}": report['f1-score'],
-        })
+        result.update(
+            {
+                f"precision-{label}": report["precision"],
+                f"recall-{label}": report["recall"],
+                f"f1-{label}": report["f1-score"],
+            }
+        )
 
-
-    result['accuracy'] = test_report['accuracy']
-    result['macro f1-score'] = test_report['macro avg']['f1-score']
+    result["accuracy"] = test_report["accuracy"]
+    result["macro f1-score"] = test_report["macro avg"]["f1-score"]
 
     try:
-        df = pd.read_csv(OUTPUT_DIR+"results.csv")
+        df = pd.read_csv(OUTPUT_DIR + "results.csv")
         df = df.append(result, ignore_index=True)
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df.to_csv(OUTPUT_DIR + "results.csv", index=False)
     except FileNotFoundError:
-        df = pd.DataFrame(result,index=[0])
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df = pd.DataFrame(result, index=[0])
+        df.to_csv(OUTPUT_DIR + "results.csv", index=False)
 
     # save the confusion matrix of the model in png file
     cm = confusion_matrix(Y_test, Y_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
     disp.plot()
-    plt.savefig(OUTPUT_DIR+"{}.png".format(experiment_name))
+    plt.savefig(OUTPUT_DIR + "{}.png".format(experiment_name))
 
     # Obtain the accuracy score of the model
     acc = accuracy_score(Y_test, Y_pred)
@@ -205,7 +224,7 @@ def main():
         experiment_name = f"tfidf_w_ngram_1_3_{C_values[8]}"
 
     if args.resampling:
-        experiment_name = f"best_model_resampling"
+        experiment_name = "best_model_resampling"
 
     if args.fixedsq1:
         experiment_name = f"fixed_sq_{1}"
@@ -219,9 +238,12 @@ def main():
     if args.fixedsq4:
         experiment_name = f"fixed_sq_{1000}"
 
+    if args.fixsqresampling:
+        experiment_name = "best_model_resampling_fixsq"
+
     output = pd.read_csv(f"{OUTPUT_DIR}{experiment_name}.csv")
-    Y_test = output['Test']
-    Y_predict = output['Predict']
+    Y_test = output["Test"]
+    Y_predict = output["Predict"]
 
     save_results(Y_test, Y_predict, f"{experiment_name}")
 
