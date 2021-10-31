@@ -24,16 +24,11 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 LOG_DIR = "../Logs/"
 
-np.random.seed(1234)
-tf.random.set_seed(1234)
-python_random.seed(1234)
 
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
+
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
-#os.environ["TF_GPU_ALLOCATOR"] = "cuda_malloc_async"
-
 
 
 def change_dtype(tokens):
@@ -119,6 +114,10 @@ def load_data(dir, trial=False):
     return X_train, Y_train, X_dev, Y_dev
 
 def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
+
+    np.random.seed(config['seed'])
+    tf.random.set_seed(config['seed'])
+    python_random.seed(config['seed'])
 
     max_length  =  config['max_length']
     learning_rate =  config["learning_rate"]

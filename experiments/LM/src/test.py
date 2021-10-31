@@ -13,9 +13,6 @@ import numpy as np
 import tensorflow as tf
 import random as python_random
 
-np.random.seed(1234)
-tf.random.set_seed(1234)
-python_random.seed(1234)
 
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
@@ -88,6 +85,9 @@ def save_output(Y_test, Y_pred, model_name):
 
 def test(X_test, Y_test, config, model_name):
 
+    np.random.seed(config['seed'])
+    tf.random.set_seed(config['seed'])
+    python_random.seed(config['seed'])
     
     max_length  =  config['max_length']
    
