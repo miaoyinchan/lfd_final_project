@@ -95,7 +95,9 @@ def load_data(dir, experiment):
         df_train = pd.read_csv(dir+'/train_opt.csv')
     elif experiment=="resample":
         df_train = pd.read_csv(dir+'/train_aug.csv')
-    else:
+    elif experiment=="resample-balance":
+        df_train = pd.read_csv(dir+'/train_down.csv')
+    elif experiment=="full":
         df_train = pd.read_csv(dir+'/train.csv')
     
 
