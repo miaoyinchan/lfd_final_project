@@ -10,7 +10,7 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 
 
-def get_model_name():
+def get_config():
 
     try:
         location = 'config.json'
@@ -18,16 +18,19 @@ def get_model_name():
             configs = json.load(file)
             vals = [str(v) for v in configs.values()]
             model_name = "_".join(vals)
-        return model_name
+        return configs, model_name
     except FileNotFoundError as error:
         print(error)
 
 
-# def create_arg_parser():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
-#     args = parser.parse_args()
-#     return args
+
+def create_arg_parser():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
+
+    args = parser.parse_args()
+    return args
 
 def save_results(Y_test, Y_pred, model_name):
     
@@ -75,8 +78,14 @@ def save_results(Y_test, Y_pred, model_name):
 
 def main():
 
-    
-    model_name = get_model_name()
+    args = create_arg_parser()
+    seed = args.seed
+
+    config, model_name = get_config()
+    config['seed'] = seed
+
+    if config['experiment'] != 'trial':
+        model_name = model_name+"_"+str(seed)
     
     output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']
