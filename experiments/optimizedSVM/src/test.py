@@ -1,20 +1,19 @@
 #!/usr/bin/env python
 
-import os
 import argparse
-import pandas as pd
+
 import joblib
+import pandas as pd
 import spacy
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from sklearn import preprocessing
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 nlp = spacy.load("en_core_web_sm")
 
 
-DATA_DIR = '../../../train-test-dev'
+DATA_DIR = "../../../train-test-dev"
 MODEL_DIR = "../Saved_Models"
 OUTPUT_DIR = "../Output"
 
@@ -30,31 +29,50 @@ def create_arg_parser():
     This method returns a map with commandline parameters taken from the user
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument("-t", "--tfidf", action="store_true",
-                        help="Use the TF-IDF vectorizer instead of CountVectorizer")
-    for i in range(1,12):
+    parser.add_argument(
+        "-t",
+        "--tfidf",
+        action="store_true",
+        help="Use the TF-IDF vectorizer instead of CountVectorizer",
+    )
+
+    for i in range(1, 12):
         parser.add_argument(
             f"-f{i}",
             f"--feature{i}",
             action="store_true",
             help=f"choose feature set {i} for the classifier",
         )
-    for i in range(1,10):
+
+    for i in range(1, 10):
         parser.add_argument(
             f"-tu{i}",
             f"--tuning{i}",
             action="store_true",
             help="tune hyperparameters for the best classifier",
         )
-    parser.add_argument("-re", "--resampling", action="store_true",
-                        help="Applying resampling strategy")
-    for i in range(1,5):
+
+    parser.add_argument(
+        "-re",
+        "--resampling",
+        action="store_true",
+        help="Applying resampling strategy",
+    )
+    for i in range(1, 5):
         parser.add_argument(
             f"-fx{i}",
             f"--fixedsq{i}",
             action="store_true",
             help="tune hyperparameters for the best classifier",
         )
+
+    parser.add_argument(
+        "-fxre",
+        "--fixsqresampling",
+        action="store_true",
+        help="Use fixed sequences (512 tokens) for resampling.",
+    )
+
     args = parser.parse_args()
     return args
 
@@ -72,19 +90,20 @@ class LemmaTokenizer:
 
 
 def tokenizer_ner_tag(doc: str) -> [str]:
-    return  [token.label_ for token in nlp(doc).ents]
+    return [token.label_ for token in nlp(doc).ents]
 
 
-def load_data(dir):
-    df = pd.read_csv(dir+'/test.csv')
-    X = df['article'].ravel()
-    Y = df['topic']
+def load_data(directory):
+    df = pd.read_csv(f"{directory}/test.csv")
+    X = df["article"].ravel()
+    Y = df["topic"]
 
-    return X,Y
+    return X, Y
 
 
 def main():
     args = create_arg_parser()
+
     # Load training and test sets.
     X_test, Y_test = load_data(DATA_DIR)
 
@@ -173,12 +192,13 @@ def main():
         experiment_name = f"tfidf_w_ngram_1_3_{C_values[8]}"
 
     if args.resampling:
-        experiment_name = f"best_model_resampling"
-        # Encode target label.
-        # encoder = preprocessing.LabelEncoder()
-        # Y_test = encoder.fit_transform(Y_test)
-        vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3),
-        min_df=5, max_features=5000)
+        experiment_name = "best_model_resampling"
+        vec = TfidfVectorizer(
+            tokenizer=word_tokenize,
+            ngram_range=(1, 3),
+            min_df=5,
+            max_features=5000,
+        )
         X_test = vec.fit_transform(X_test)
 
     if args.fixedsq1:
@@ -193,16 +213,26 @@ def main():
     if args.fixedsq4:
         experiment_name = f"fixed_sq_{1000}"
 
+    if args.fixsqresampling:
+        experiment_name = "best_model_resampling_fixsq"
+        vec = TfidfVectorizer(
+            tokenizer=word_tokenize,
+            ngram_range=(1, 3),
+            min_df=5,
+            max_features=5000,
+        )
+        X_test = vec.fit_transform(X_test)
+
     # load saved models
     classifier = joblib.load(f"{MODEL_DIR}/{experiment_name}")
 
     # Test the model with test set
     Y_pred = classifier.predict(X_test)
 
-    #save results in dataframe
+    # save results in dataframe
     df = pd.DataFrame()
-    df['Test'] = Y_test
-    df['Predict'] = Y_pred
+    df["Test"] = Y_test
+    df["Predict"] = Y_pred
 
     df.to_csv(f"{OUTPUT_DIR}/{experiment_name}.csv", index=False)
 

@@ -1,91 +1,72 @@
-import re
-import sys
 import argparse
-import random
-import pandas as pd
-import os
 import csv
-import nltk
 import logging
-import matplotlib.pyplot as plt
-import numpy as np
+import sys
+from collections import Counter
+
 import joblib
 import spacy
-from nltk.tokenize import word_tokenize
-from nltk import pos_tag
-from nltk.util import ngrams, pr
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from sklearn.svm import LinearSVC
-from sklearn.pipeline import FeatureUnion
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split, cross_val_predict
-from sklearn.metrics import (
-    accuracy_score,
-    classification_report,
-    confusion_matrix,
-    plot_confusion_matrix,
-)
 from imblearn.over_sampling import SMOTE
 from imblearn.under_sampling import RandomUnderSampler
-from sklearn import preprocessing
-from collections import Counter
+from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.svm import LinearSVC
 
 
 nlp = spacy.load("en_core_web_sm")
-# nltk.download('wordnet')
+csv.field_size_limit(sys.maxsize)
 
-DATA_DIR = '../../../train-test-dev'
+DATA_DIR = "../../../train-test-dev"
 MODEL_DIR = "../Saved_Models"
 LOG_DIR = "../Logs"
 
 
-def read_data(dataset):
+def create_arg_parser():
+    """
+    Description:
+    This method is an arg parser
+    Return
+    This method returns a map with commandline parameters taken from the user
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-fxre",
+        "--fixsq",
+        action="store_true",
+        help="Use fixed sequences (512 tokens) for training.",
+    )
+
+    args = parser.parse_args()
+    return args
+
+
+def read_data(dataset, use_fixed_sequence=False):
     sentences = []
     labels = []
+
     with open(dataset, "r") as file:
-        csv.field_size_limit(sys.maxsize)
-        text = list(csv.reader(file, delimiter=','))
+        text = list(csv.reader(file, delimiter=","))
         for row in text[1:]:
             tokens = row[-2].strip().split()
+            if use_fixed_sequence:
+                tokens = tokens[:512]
             sentences.append(" ".join(tokens))
             labels.append(row[-1])
+
     return sentences, labels
 
 
-def saveModel(classifier,experiment_name ):
-    #save model
-    try:
-        os.mkdir(MODEL_DIR)
-        joblib.dump(classifier, f"{MODEL_DIR}/{experiment_name}", compress=9)
+def saveModel(classifier, experiment_name):
+    joblib.dump(classifier, f"{MODEL_DIR}/{experiment_name}", compress=9)
 
-    except OSError as error:
-        joblib.dump(classifier, f"{MODEL_DIR}/{experiment_name}", compress=9)
-
-
-def pipeline_resampling():
-    '''Set up pipeline with optimized c value, the best
-       features, and applying oversampling and undersampling
-       technique'''
-    clf = LinearSVC(C=1.0, max_iter=1000000)
-    vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3),
-        min_df=5, max_features=5000)
-    over = SMOTE(sampling_strategy=0.5)
-    under = RandomUnderSampler(sampling_strategy=1.0)
-    pipeline = Pipeline(
-        [("vec", vec),
-         ("over", over),
-         ("under", under),
-         ("cls", clf),
-        ]
-    )
-    return pipeline
 
 def main():
+    args = create_arg_parser()
     # Load training and test sets.
-    X_train, Y_train = read_data(f"{DATA_DIR}/train.csv")
+    X_train, Y_train = read_data(
+        f"{DATA_DIR}/train.csv",
+        use_fixed_sequence=args.fixsq,
+    )
 
     # Encode target label to fit in resampling.
     # encoder = preprocessing.LabelEncoder()
@@ -96,14 +77,18 @@ def main():
     print("Class distribution before resampling", counter)
 
     # Create Log file
-    logging.basicConfig(filename=f"{LOG_DIR}/optSVM.log",level=logging.INFO)
+    logging.basicConfig(filename=f"{LOG_DIR}/optSVM.log", level=logging.INFO)
 
     # Classifer with optimized c value.
     clf = LinearSVC(C=1000, max_iter=1000000)
 
     # Tfidf vectorize best features.
-    vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3),
-        min_df=5, max_features=5000)
+    vec = TfidfVectorizer(
+        tokenizer=word_tokenize,
+        ngram_range=(1, 3),
+        min_df=5,
+        max_features=5000,
+    )
     X_train_tfidf = vec.fit_transform(X_train)
 
     # Oversampling on features vectors of CLIMATE using SMOTE
@@ -125,7 +110,12 @@ def main():
 
     # Save parameters in log
     logging.info(clf.get_params())
-    saveModel(clf, f"best_model_resampling")
+
+    experiment_name = "best_model_resampling"
+    if args.fixsq:
+        experiment_name = "best_model_resampling_fixsq"
+
+    saveModel(clf, experiment_name)
 
 
 if __name__ == "__main__":
