@@ -1,0 +1,43 @@
+2021-11-01 20:56:29,564 - transformers - INFO - 200
+2021-11-01 20:56:29,570 - transformers - INFO - 340427
+2021-11-01 20:56:31,287 - transformers - INFO - yes
+2021-11-01 20:58:51,079 - transformers - INFO - 200
+2021-11-01 20:58:51,081 - transformers - INFO - 340427
+2021-11-01 20:58:51,427 - transformers - INFO - yes
+2021-11-01 21:00:18,734 - transformers - INFO - 200
+2021-11-01 21:00:18,734 - transformers - INFO - 340427
+2021-11-01 21:00:19,081 - transformers - INFO - yes
+2021-11-01 21:02:35,822 - transformers - INFO - 200
+2021-11-01 21:02:35,822 - transformers - INFO - 340427
+2021-11-01 21:02:36,128 - transformers - INFO - yes
+2021-11-01 21:24:51,786 - transformers - INFO - Accuracy on own dev set: 0.814
+2021-11-01 21:24:51,796 - transformers - INFO - ROC AUC: 0.795
+2021-11-01 21:24:51,809 - transformers - INFO -               precision    recall  f1-score   support
+
+           0       0.56      0.76      0.65       328
+           1       0.92      0.83      0.87      1136
+
+    accuracy                           0.81      1464
+   macro avg       0.74      0.79      0.76      1464
+weighted avg       0.84      0.81      0.82      1464
+
+2021-11-01 21:26:44,719 - transformers - INFO - 200
+2021-11-01 21:26:44,723 - transformers - INFO - 340427
+2021-11-01 21:26:45,072 - transformers - INFO - yes
+2021-11-01 21:31:26,259 - transformers - INFO - 200
+2021-11-01 21:31:26,259 - transformers - INFO - 340427
+2021-11-01 21:31:26,564 - transformers - INFO - yes
+2021-11-01 21:38:16,044 - transformers - INFO - 200
+2021-11-01 21:38:16,051 - transformers - INFO - 340427
+2021-11-01 21:38:16,709 - transformers - INFO - yes
+2021-11-01 22:00:04,864 - transformers - INFO - Accuracy on own dev set: 0.712
+2021-11-01 22:00:04,897 - transformers - INFO - ROC AUC: 0.736
+2021-11-01 22:00:04,914 - transformers - INFO -               precision    recall  f1-score   support
+
+           0       0.42      0.78      0.55       328
+           1       0.92      0.69      0.79      1136
+
+    accuracy                           0.71      1464
+   macro avg       0.67      0.74      0.67      1464
+weighted avg       0.81      0.71      0.73      1464
+

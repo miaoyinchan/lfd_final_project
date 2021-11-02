@@ -1,0 +1,21 @@
+2021-11-01 19:32:12,063 - transformers - INFO - yes
+2021-11-01 19:35:22,719 - transformers - INFO - yes
+2021-11-01 19:37:56,899 - transformers - INFO - yes
+2021-11-01 19:39:49,699 - transformers - INFO - yes
+2021-11-01 19:41:53,253 - transformers - INFO - yes
+2021-11-01 19:49:30,518 - transformers - INFO - yes
+2021-11-01 19:53:35,757 - transformers - INFO - yes
+2021-11-01 20:04:38,545 - transformers - INFO - 200
+2021-11-01 20:04:38,547 - transformers - INFO - 340427
+2021-11-01 20:04:38,864 - transformers - INFO - yes
+2021-11-01 20:17:00,418 - transformers - INFO - Accuracy on own dev set: 0.814
+2021-11-01 20:17:00,429 - transformers - INFO - ROC AUC: 0.795
+2021-11-01 20:17:00,437 - transformers - INFO -               precision    recall  f1-score   support
+
+           0       0.56      0.76      0.65       328
+           1       0.92      0.83      0.87      1136
+
+    accuracy                           0.81      1464
+   macro avg       0.74      0.79      0.76      1464
+weighted avg       0.84      0.81      0.82      1464
+

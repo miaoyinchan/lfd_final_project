@@ -33,6 +33,8 @@ def load_data(dir):
     X = df['article'].ravel()
     Y = df['topic']
     
+    Y = [1 if y=="MISC" else 0 for y in Y]
+    
     return X,Y
 
 def main():
@@ -44,9 +46,9 @@ def main():
 
 
     if args.tfidf:
-        experiment_name = "SVM+CV1-1-linear"
-    else:
         experiment_name = "SVM+Tf-idf1-1-linear"
+    else:
+        experiment_name = "SVM+CV1-1-linear"
 
     
     classifier = joblib.load(MODEL_DIR+experiment_name)
