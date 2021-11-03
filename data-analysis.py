@@ -3,7 +3,6 @@ import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from nltk.tokenize import word_tokenize
 import numpy as np
-from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import json
 import numpy as np
@@ -44,19 +43,6 @@ def find_distribution(df, column_name):
 
     return dist
 
-    
-    
-def generate_word_cloud(freqs, title):
-
-    """word cloud genertaed from frquency"""
-
-    plt.figure(figsize=(30, 20))
-    w = WordCloud(
-        width=3000, height=2400, mode="RGBA", background_color="white", max_words=1000
-    ).fit_words(freqs)
-    plt.imshow(w)
-    plt.axis("off")
-    plt.savefig("Figures/"+title + "-word-cloud.jpg")
 
 
 def plot_distribution(dataset, column_name):
@@ -254,12 +240,22 @@ def main():
     dist_full = dataset['topic'].value_counts()
     print("{} \n{} \n".format("Full Distribution", dist_full))
 
-    #plot distribution using a bar chart
-    plot_distribution(dataset, "cop_edition")
-    plot_distribution(dataset, "newspaper")
+    #plot distribution using a bar chart and pie chart
+    try:
+        #create directory for figures
+        os.mkdir("Figures")
+        plot_distribution(dataset, "cop_edition")
+        plot_distribution(dataset, "newspaper")
+        plot_pie(dist_full.to_dict())
 
-    plot_pie(dist_full.to_dict())
+    except OSError as error:
+        plot_distribution(dataset, "cop_edition")
+        plot_distribution(dataset, "newspaper")
+        plot_pie(dist_full.to_dict())
 
+    
+
+    #print the summary of data
     dir = "data/"
     dataset = load_full_data(dir)
     data_summary(dataset)
