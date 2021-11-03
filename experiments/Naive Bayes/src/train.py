@@ -32,11 +32,11 @@ def load_data(dir, experiment):
 
     """Return appropriate training and validation sets reading from csv files"""
 
-    if experiment=="resample":
+    if experiment.upper()=="RESAMPLE":
         df = pd.read_csv(dir+'/train_aug.csv')
-    elif experiment=="resample-balance":
+    elif experiment.upper()=="RESAMPLE-BALANCE":
         df = pd.read_csv(dir+'/train_down.csv')
-    elif experiment=="full":
+    elif experiment.upper()=="FULL":
         df = pd.read_csv(dir+'/train.csv')
 
     X = df['article'].ravel()
@@ -54,9 +54,9 @@ def main():
     n2 = config['n2']
 
     #initialize vectorizer
-    if config['vector']=="TF-IDF":
+    if config['vector'].upper()=="TF-IDF":
         vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
-    elif config['vector']=="CV":
+    elif config['vector'].upper()=="CV":
         vec = CountVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
 
 
@@ -75,7 +75,7 @@ def main():
     classifier = Pipeline([('vec', vec), ('cls', MultinomialNB())])
 
     #load data from train-test-dev folder
-    X_train, Y_train = load_data(DATA_DIR)
+    X_train, Y_train = load_data(DATA_DIR, config['experiment'])
 
     # Train the model with training set
     classifier.fit(X_train, Y_train)

@@ -1,17 +1,22 @@
 import pandas as pd
 import nlpaug.augmenter.word as naw
 from tqdm import tqdm
+import argparse
 
 TRAIN_DIR = "train-test-dev/"
 
+def create_arg_parser():
 
-def load_data():
+    """Returns a map with commandline parameters taken from the user"""
 
-    """ Return train, test and dev sets as dataframe """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-u", "--upsampling", action="store_true",
+                        help="Perform upsampling technique on training set")
 
-    train = pd.read_csv(TRAIN_DIR+'train.csv')
-
-    return train
+    parser.add_argument("-d", "--downsampling", action="store_true",
+                        help="Perform downsampling on previous upsampled data")
+    args = parser.parse_args()
+    return args
 
 def augment_text(data):
 
@@ -53,20 +58,32 @@ def downsampling(data):
 
 def main():
 
-    #load train set into pandas dataframe
-    train = load_data()
-    
-    #get augmented data
-    train_aug = augment_text(train)
-    
-    #save augmented as csv file
-    train_aug.to_csv(TRAIN_DIR+'train_aug.csv', index= False)
+    args = create_arg_parser()
 
-    #get balanced train set after random downlsampling
-    train_down = downsampling(train_aug)
+    #perform upsampling
+    if args.upsampling:
+        #load train set into pandas dataframe
+        train = pd.read_csv(TRAIN_DIR+'train.csv')
+        
+        #get augmented data
+        train_aug = augment_text(train)
+        
+        #save augmented as csv file
+        train_aug.to_csv(TRAIN_DIR+'train_aug.csv', index= False)
 
-    #save data in csv format
-    train_down.to_csv(TRAIN_DIR+'train_down.csv', index= False)
+    #perform downsampling
+    if args.downsampling:
+
+        try:
+            train_aug = pd.read_csv(TRAIN_DIR+'train_aug.csv')
+        except FileNotFoundError as error:
+            print("Please download the uplsampled data or run again with upsampling argument")
+
+        #get balanced train set after random downlsampling
+        train_down = downsampling(train_aug)
+
+        #save data in csv format
+        train_down.to_csv(TRAIN_DIR+'train_down.csv', index= False)
     
 
 
