@@ -17,11 +17,11 @@ To install recquired packagaes:
 
 For data pre-processing, run:
 
-`./pre-processing.sh`
+`pre-processing.sh`
 
 * It is assumed that data is present at ***data*** folder
-* This command will **NOT** add augmented data and it is recommended to create a directory named ***train-test-dev*** in the project folder and download the file ***train_aug.csv*** from here(add link)
-* Otherwise, run `./pre-processing.sh upsampling` to add augmented data from scratch but it can take considerable amount of time (e.g 4-6 hours) to finish
+* This command will **NOT** add augmented data and it is recommended to create a directory named ***train-test-dev*** in the project folder and download the file ***train_aug.csv*** from [here](https://drive.google.com/file/d/1tHI_j5RUNZH8Cx2NIaR_L9oC765s3CSX/view?usp=sharing).
+* Otherwise, run `pre-processing.sh upsampling` to add augmented data from scratch but it can take considerable amount of time (e.g 4-6 hours) to finish
 
 To get a summery of data and create graphical plots, run:
 
@@ -29,7 +29,7 @@ To get a summery of data and create graphical plots, run:
 
 ## Experiments
 
-Download all saved models from here(add link). To distribute models in respective folders, **unzip** the downloaded file and run:
+Download all saved models from [here](https://drive.google.com/drive/folders/1g7D1uaNfiLXztpZqMaM8WWEU00cxeSKL?usp=sharing). To distribute models in respective folders, **unzip** the downloaded file and run:
 
 `python3 model-distribute.py`
 
