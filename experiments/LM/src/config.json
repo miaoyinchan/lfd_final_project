@@ -2,15 +2,15 @@
 {
 
    
-    "model": "LONG",
-    "max_length" : 1024,
+    "model": "BERT",
+    "max_length" : 512,
     "learning_rate": 5e-5,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
     "loss": "custom",
     "optimizer": "adam",
-    "experiment": "resample-balance",
+    "experiment": "full",
     "seed": 1234
 
 
