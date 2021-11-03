@@ -1,10 +1,7 @@
 import re
-import nltk
 from nltk.tokenize import sent_tokenize
 import pandas as pd
 import numpy as np
-
-nltk.download("punkt")
 
 
 DIR = "train-test-dev/"
@@ -96,6 +93,7 @@ def main():
     
     train, test, dev = load_data()
 
+    #clean data
     train_cleaned = clean_data(train)
     test_cleaned = clean_data(test)
     dev_cleaned = clean_data(dev)
@@ -108,7 +106,7 @@ def main():
     #split train data for paramater optimization
     train_opt = split_train_data(train_cleaned)
 
-
+    #save dataframes as csv files
     train_cleaned.to_csv(DIR+"train.csv", index=False)
     test_cleaned.to_csv(DIR+"test.csv", index=False)
     dev_cleaned.to_csv(DIR+"dev.csv", index=False)

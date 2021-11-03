@@ -95,18 +95,18 @@ def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.33)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
-def load_data(dir, experiment):
+def load_data(dir, training_set):
 
     """Return appropriate training and validation sets reading from csv files"""
 
-    if experiment=="trial":
+    if training_set.lower()=="trial":
         df_train = pd.read_csv(dir+'/train_opt.csv')
-    elif experiment=="resample":
+    elif training_set.lower()=="resample":
         df_train = pd.read_csv(dir+'/train_aug.csv')
-    elif experiment=="resample-balance":
+    elif training_set.lower()=="resample-balance":
         df_train = pd.read_csv(dir+'/train_down.csv')
-        df_train = df_train[:-1]
-    elif experiment=="full":
+        df_train = df_train[:-1] #remove one sample to escape longformer's incompatibility with shapes
+    else:
         df_train = pd.read_csv(dir+'/train.csv')
     
 
@@ -219,13 +219,13 @@ def main():
     #get parameters for experiments
     config, model_name = get_config()
     
-    if config['experiment'] != 'trial':
+    if config['training-set'] != 'trial':
         model_name = model_name+"_"+str(config['seed'])
 
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, config["experiment"])
+    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, config["training-set"])
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)

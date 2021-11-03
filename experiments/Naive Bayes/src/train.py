@@ -28,15 +28,15 @@ def get_config():
         print(error)
 
 
-def load_data(dir, experiment):
+def load_data(dir, training_set):
 
     """Return appropriate training and validation sets reading from csv files"""
 
-    if experiment=="resample":
+    if training_set.upper()=="RESAMPLE":
         df = pd.read_csv(dir+'/train_aug.csv')
-    elif experiment=="resample-balance":
+    elif training_set.upper()=="RESAMPLE-BALANCE":
         df = pd.read_csv(dir+'/train_down.csv')
-    elif experiment=="full":
+    elif training_set.upper()=="FULL":
         df = pd.read_csv(dir+'/train.csv')
 
     X = df['article'].ravel()
@@ -47,27 +47,28 @@ def load_data(dir, experiment):
 def main():
 
     #get parameters for experiments
-    config, experiment_name = get_config()
+    config, model_name = get_config()
 
     #get n-gram parameters from config
-    n1 = config['n1']
-    n2 = config['n2']
+    
+    n1 = config['n1'] #lower end of the word n-gram range
+    n2 = config['n2'] #upper end of the word n-gram range
 
     #initialize vectorizer
-    if config['vector']=="TF-IDF":
+    if config['vectorizer'].upper()=="TF-IDF":
         vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
-    elif config['vector']=="CV":
+    else:
         vec = CountVectorizer(tokenizer=word_tokenize, ngram_range=(n1,n2))
 
 
     #Create Log file
     try:
         os.mkdir(LOG_DIR)
-        log = logging.basicConfig(filename=LOG_DIR+experiment_name+'.log',level=logging.INFO)
+        log = logging.basicConfig(filename=LOG_DIR+model_name+'.log',level=logging.INFO)
         print = log
     except OSError as error:
-        logging.basicConfig(filename=LOG_DIR+experiment_name+'.log', level=logging.INFO)
-        log = logging.basicConfig(filename=LOG_DIR+experiment_name+'.log',level=logging.INFO)
+        logging.basicConfig(filename=LOG_DIR+model_name+'.log', level=logging.INFO)
+        log = logging.basicConfig(filename=LOG_DIR+model_name+'.log',level=logging.INFO)
         print = log
     
 
@@ -75,7 +76,7 @@ def main():
     classifier = Pipeline([('vec', vec), ('cls', MultinomialNB())])
 
     #load data from train-test-dev folder
-    X_train, Y_train = load_data(DATA_DIR)
+    X_train, Y_train = load_data(DATA_DIR, config['training-set'])
 
     # Train the model with training set
     classifier.fit(X_train, Y_train)
@@ -86,10 +87,10 @@ def main():
     #save model output directory
     try:
         os.mkdir(MODEL_DIR)
-        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
+        joblib.dump(classifier, MODEL_DIR+model_name, compress=9)
         
     except OSError as error:
-        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
+        joblib.dump(classifier, MODEL_DIR+model_name, compress=9)
     
 
 if __name__ == "__main__":
