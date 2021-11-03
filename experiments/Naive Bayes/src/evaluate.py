@@ -88,16 +88,16 @@ def main():
 
     
     #get parameters for experiments
-    experiment_name = get_config()
+    model_name = get_config()
     
-    output = pd.read_csv(OUTPUT_DIR+experiment_name+'.csv')
+    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']
     Y_predict = output['Predict']
 
-    save_results(Y_test, Y_predict, experiment_name)
+    save_results(Y_test, Y_predict, model_name)
 
     #Load a Naive Bayes classifier model
-    classifier = joblib.load(MODEL_DIR+experiment_name)
+    classifier = joblib.load(MODEL_DIR+model_name)
 
     #Find top features
     climate_posterior, misc_posterior = find_top_features(classifier, 100)
@@ -107,7 +107,7 @@ def main():
     df['Climate'] = climate_posterior
     df['MISC'] = misc_posterior
 
-    df.to_csv(OUTPUT_DIR+experiment_name+"_top_features.csv", index= False)
+    df.to_csv(OUTPUT_DIR+model_name+"_top_features.csv", index= False)
 
         
 

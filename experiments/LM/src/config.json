@@ -10,7 +10,7 @@
     "batch_size": 8,
     "loss": "custom",
     "optimizer": "adam",
-    "experiment": "resample-balance",
+    "training-set": "resample-balance",
     "seed": 1234
 
 

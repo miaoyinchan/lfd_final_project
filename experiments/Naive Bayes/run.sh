@@ -10,7 +10,7 @@ then
 
 elif [[ "$1" == "test" ]]
 then
- python3 test.p
+ python3 test.py
  python3 evaluate.py
     
 elif [[ "$1" == "eval" ]]

@@ -1,10 +1,10 @@
 {
 
     "model": "NB",
-    "vector" : "cv",
+    "vectorizer" : "cv",
     "n1": 1,
     "n2": 1,
-    "experiment":"full"
+    "training-set":"full"
 
 
 }

@@ -35,12 +35,12 @@ def main():
 
     
     #get parameters for experiments
-    experiment_name = get_config()
+    model_name = get_config()
 
     
 
     #Load a Naive Bayes classifier model
-    classifier = joblib.load(MODEL_DIR+experiment_name)
+    classifier = joblib.load(MODEL_DIR+model_name)
 
     #load data from train-test-dev folder
     X_test, Y_test = load_data(DATA_DIR)
@@ -57,10 +57,10 @@ def main():
     #save output
     try:
         os.mkdir(OUTPUT_DIR)
-        df.to_csv(OUTPUT_DIR+experiment_name+".csv", index=False)
+        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
         
     except OSError as error:
-        df.to_csv(OUTPUT_DIR+experiment_name+".csv", index=False)
+        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
         
     
 

@@ -73,7 +73,7 @@ def main():
     #get parameters for experiments
     config, model_name = get_config()
     
-    if config['experiment'] != 'trial':
+    if config['training-set'] != 'trial':
         model_name = model_name+"_"+str(config['seed'])
 
     #read models prediction from csv file
