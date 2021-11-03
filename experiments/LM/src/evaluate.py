@@ -12,6 +12,7 @@ OUTPUT_DIR = "../Output/"
 
 def get_config():
 
+    """Return model name and paramters after reading it from json file"""
     try:
         location = 'config.json'
         with open(location) as file:
@@ -25,6 +26,9 @@ def get_config():
 
 
 def create_arg_parser():
+
+    """Return argument parser"""
+
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
@@ -81,16 +85,19 @@ def main():
     args = create_arg_parser()
     seed = args.seed
 
+    #get parameters for experiments
     config, model_name = get_config()
     config['seed'] = seed
 
     if config['experiment'] != 'trial':
         model_name = model_name+"_"+str(seed)
     
+    #read models prediction from csv file
     output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']
     Y_predict = output['Predict']
 
+    #save results in directory
     save_results(Y_test, Y_predict, model_name)
 
 

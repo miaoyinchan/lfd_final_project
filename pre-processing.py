@@ -1,7 +1,6 @@
 import json
 import os
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
 DIR = "data/"
 
@@ -86,8 +85,9 @@ def load_data(dir):
 def get_label(subjects):
 
     """
-    Return the name of that group as label if the article is matched with only one group and the maximum percentage is more than or equal to 75.
-    If the article is matched with more than one group, return None. If no group matches, use MISC as the label.
+    Return the name of that group as label if at least one subjects matches with topics listed under CLIMATE
+    and the maximum percentage is more than or equal to 80. If group matches but percentage is low then return None.
+    If no group matches, Return MISC as the label.
 
     """
 
