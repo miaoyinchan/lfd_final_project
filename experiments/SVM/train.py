@@ -18,6 +18,7 @@ from sklearn.metrics import classification_report as report
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_predict
 import numpy as np
+import pandas as pd
 from nltk.util import ngrams, pr
 import sys
 import joblib
@@ -60,6 +61,19 @@ def read_data(dataset):
         sentences.append(" ".join(tokens))
         labels.append(row[-1])
     return sentences, labels
+    
+def load_data(dataset):
+
+    df_train = pd.read_csv(dataset)
+
+    X_train = df_train['article'].ravel().tolist()
+    Y_train = df_train['topic']
+
+
+    Y_train = [1 if y=="MISC" else 0 for y in Y_train]
+
+
+    return X_train, Y_train
 
 def saveModel(classifier,experiment_name ):
     #save model
@@ -116,8 +130,8 @@ def get_optimal_hyperParmeters(kernel, X_train, Y_train, X_test, Y_test, vec):
                     C = i
                     gamma = x
         logging.info(f"rbf kernel: C = {C} gamma = {gamma} f1 = {f1_opt}")
-        logging.info(classifier.get_params())
-        return classifier
+        logging.info(best_model.get_params())
+        return best_model
     elif kernel == "linear" :
         for i in List_C:
             #Linear kernel doesn't need gamma
@@ -134,8 +148,8 @@ def get_optimal_hyperParmeters(kernel, X_train, Y_train, X_test, Y_test, vec):
                 f1_opt = f1
                 C = i
         logging.info(f"linear kernel: C = {C}  f1 = {f1_opt}")
-        logging.info(classifier.get_params())
-        return classifier
+        logging.info(best_model.get_params())
+        return best_model
 
 
 
@@ -170,8 +184,8 @@ def main():
         logging.basicConfig(filename=LOG_DIR+experiment_name+'.log', level=logging.INFO)
 
 
-    X_train, Y_train  = read_data(DATA_DIR+'train.csv')
-    X_test, Y_test  = read_data(DATA_DIR+'dev.csv')
+    X_train, Y_train  = load_data(DATA_DIR+'train.csv')
+    X_test, Y_test  = load_data(DATA_DIR+'dev.csv')
     classifier = get_optimal_hyperParmeters( args.kernel, X_train,Y_train,  X_test, Y_test, vec)
     saveModel(classifier, experiment_name)
 
