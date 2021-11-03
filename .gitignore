@@ -7,3 +7,4 @@
 /experiments/LSTM/src/train2.py
 /experiments/LSTM/src/train3.py
 /experiments/LSTM/src/data
+*.out
