@@ -37,7 +37,7 @@ def save_results(Y_test, Y_pred, experiment_name):
 
     result = {"experiment":experiment_name}
 
-    labels = list(test_report.keys())[:3]
+    labels = list(test_report.keys())[:2]
 
     for label in labels:
         result["precision-"+label] = test_report[label]['precision']
@@ -80,25 +80,20 @@ def cloud(freqs,title):
 def most_informative_features(classifier,experiment_name, n=100):
     
     """ get most informative features"""
-    coef = classifier[1].coef_
+    v = classifier[1].coef_.ravel()
     features = classifier[0].get_feature_names()
-    coefs_with_fns_climate = sorted(zip(coef[0], features))
-    coefs_with_fns_emision = sorted(zip(coef[1], features))
-    coefs_with_fns_misc = sorted(zip(coef[2], features))
-         
-    top_climate =  {fn_1:coef_1 for coef_1, fn_1 in coefs_with_fns_climate[:-(n+1):-1]}
-    top_emission = {fn_1:coef_1 for coef_1, fn_1 in coefs_with_fns_emision[:-(n+1):-1]}
-    top_misc = {fn_1:coef_1 for coef_1, fn_1 in coefs_with_fns_misc[:-(n+1):-1]}
+    coefs_with_fns = sorted(zip(v, features))
+    
+    top_misc =  {fn_1:coef_1 for coef_1, fn_1 in coefs_with_fns[:-(n+1):-1]}
+    top_climate = {fn_1:abs(coef_1) for coef_1, fn_1 in coefs_with_fns[:n:]}
     
     top_climate_list = list(top_climate.keys())
-    top_emission_list = list(top_emission.keys())
     top_misc_list = list(top_misc.keys())
     cloud(top_climate,experiment_name+"-"+"climate")
-    cloud(top_emission,experiment_name+"-"+"emission")
     cloud(top_misc,experiment_name+"-"+"misc")
     
     
-    return top_climate_list, top_emission_list, top_misc_list
+    return top_climate_list, top_misc_list
 
 
 def main():
@@ -124,11 +119,10 @@ def main():
     classifier = joblib.load(MODEL_DIR+experiment_name)
 
     #Find top features
-    climate_posterior, emissions_posterior, misc_posterior = most_informative_features(classifier,experiment_name, 100)
+    climate_posterior, misc_posterior = most_informative_features(classifier,experiment_name, 100)
     #Save top features in csv file
     df = pd.DataFrame()
     df['Climate'] = climate_posterior
-    df['Emissions'] = emissions_posterior
     df['MISC'] = misc_posterior
 
     df.to_csv(OUTPUT_DIR+experiment_name+"_top_features.csv", index= False)

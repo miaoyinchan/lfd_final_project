@@ -1,0 +1,350 @@
+2021-11-02 12:26:44.790485: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:44.933739: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:44.934159: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:46.344047: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-02 12:26:46.345200: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:46.345608: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:46.345894: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:53.171646: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:53.172103: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:53.172404: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:26:53.172697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
+Could not locate the tokenizer configuration file, will try to use the model config instead.
+loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
+Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
+- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+0epoch [00:00, ?epoch/s]  0%|          | 0/10 [00:00<?, ?epoch/s]2021-11-02 12:27:37.575483: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
+
+  0%|          | 0.00/3.24k [00:00<?, ?batch/s][AInitializing global attention on CLS token...
+Initializing global attention on CLS token...
+2021-11-02 12:28:32.053132: W tensorflow/core/framework/op_kernel.cc:1680] Invalid argument: required broadcastable shapes
+Traceback (most recent call last):
+  File "train.py", line 213, in <module>
+    main()
+  File "train.py", line 208, in main
+    classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)
+  File "train.py", line 167, in classifier
+    model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
+  File "/home/s4996755/env/lib64/python3.6/site-packages/keras/engine/training.py", line 1184, in fit
+    tmp_logs = self.train_function(iterator)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
+    result = self._call(*args, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 950, in _call
+    return self._stateless_fn(*args, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3040, in __call__
+    filtered_flat_args, captured_inputs=graph_function.captured_inputs)  # pylint: disable=protected-access
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 1964, in _call_flat
+    ctx, args, cancellation_manager=cancellation_manager))
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 596, in call
+    ctx=ctx)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/execute.py", line 60, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.InvalidArgumentError:  Incompatible shapes: [8,512,12,514] vs. [8,512,12,513]
+	 [[node gradient_tape/tf_longformer_for_sequence_classification/longformer/encoder/layer_._0/attention/self/BroadcastGradientArgs_1 (defined at /home/s4996755/env/lib64/python3.6/site-packages/transformers/modeling_tf_utils.py:771) ]] [Op:__inference_train_function_90505]
+
+Function call stack:
+train_function
+
+  0%|          | 0/10 [00:55<?, ?epoch/s]
+  0%|          | 0.00/3.24k [00:54<?, ?batch/s]2021-11-02 12:28:44.185999: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:44.204415: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:44.204746: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:44.377858: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2021-11-02 12:28:44.379047: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:44.379446: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:44.379720: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:45.021659: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:45.022072: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:45.022365: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2021-11-02 12:28:45.022655: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/s4996755/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
+loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
+loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/s4996755/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
+loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
+Model config BertConfig {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "classifier_dropout": null,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 0,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 2,
+  "use_cache": true,
+  "vocab_size": 30522
+}
+
+404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234/resolve/main/config.json
+Traceback (most recent call last):
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 554, in get_config_dict
+    user_agent=user_agent,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1410, in cached_path
+    local_files_only=local_files_only,
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1574, in get_from_cache
+    r.raise_for_status()
+  File "/home/s4996755/env/lib64/python3.6/site-packages/requests/models.py", line 953, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234/resolve/main/config.json
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "test.py", line 159, in <module>
+    main()
+  File "test.py", line 152, in main
+    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
+  File "test.py", line 110, in test
+    model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/auto_factory.py", line 397, in from_pretrained
+    pretrained_model_name_or_path, return_unused_kwargs=True, **kwargs
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/configuration_auto.py", line 527, in from_pretrained
+    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 570, in get_config_dict
+    raise EnvironmentError(msg)
+OSError: Can't load config for '../Saved_Models/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234'. Make sure that:
+
+- '../Saved_Models/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234' is a correct model identifier listed on 'https://huggingface.co/models'
+
+- or '../Saved_Models/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234' is the correct path to a directory containing a config.json file
+
+
+Traceback (most recent call last):
+  File "evaluate.py", line 99, in <module>
+    main()
+  File "evaluate.py", line 90, in main
+    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 688, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 454, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 948, in __init__
+    self._make_engine(self.engine)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1180, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 2010, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
+  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
+FileNotFoundError: [Errno 2] No such file or directory: '../Output/LONG_512_5e-05_10_3_8_custom_Adam_resample-balance_1234.csv'
+
+
+###############################################################################
+Peregrine Cluster
+Job 22005120 for user 's4996755'
+Finished at: Tue Nov  2 12:29:09 CET 2021
+
+Job details:
+============
+
+Job ID              : 22005120
+Name                : run.sh
+User                : s4996755
+Partition           : gpu
+Nodes               : pg-gpu37
+Number of Nodes     : 1
+Cores               : 12
+Number of Tasks     : 1
+State               : FAILED
+Submit              : 2021-11-02T12:11:48
+Start               : 2021-11-02T12:24:08
+End                 : 2021-11-02T12:29:09
+Reserved walltime   : 08:00:00
+Used walltime       : 00:05:01
+Used CPU time       : 00:05:07 (efficiency:  8.51%)
+% User (Computation): 77.44%
+% System (I/O)      : 22.56%
+Mem reserved        : 2000M/core
+Max Mem (Node/step) : 3.59G (pg-gpu37, per node)
+Full Max Mem usage  : 3.59G
+Total Disk Read     : 769.34M
+Total Disk Write    : 506.00K
+Average GPU usage   : 8.8% (pg-gpu37)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################
