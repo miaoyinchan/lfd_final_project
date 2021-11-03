@@ -1,0 +1,10 @@
+{
+
+    "model": "NB",
+    "vector" : "tf-idf",
+    "n1": 1,
+    "n2": 1,
+    "experiment":"full"
+
+
+}

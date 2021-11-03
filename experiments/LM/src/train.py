@@ -46,8 +46,8 @@ def get_config():
         location = 'config.json'
         with open(location) as file:
             configs = json.load(file)
-            vals = [str(v) for v in configs.values()]
-            model_name = "_".join(vals)
+            vals = [str(v).upper() for v in configs.values()]
+            model_name = "_".join(vals[:-1])
         return configs, model_name
     except FileNotFoundError as error:
         print(error)
@@ -90,17 +90,6 @@ def f1_score(y_true, y_pred):
 
 
 
-def create_arg_parser():
-
-    """Return argument parser"""
-
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
-
-    args = parser.parse_args()
-    return args
-
-
 def weighted_loss_function(labels, logits):
 
     pos_weight = tf.constant(0.33)
@@ -116,6 +105,7 @@ def load_data(dir, experiment):
         df_train = pd.read_csv(dir+'/train_aug.csv')
     elif experiment=="resample-balance":
         df_train = pd.read_csv(dir+'/train_down.csv')
+        df_train = df_train[:-1]
     elif experiment=="full":
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -154,21 +144,19 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
     patience = config["patience"]
     batch_size = config["batch_size"]
 
-    if config["loss"] == "custom":
+    if config["loss"].upper() == "CUSTOM":
         loss_function = weighted_loss_function
-    else:
+    elif config["loss"].upper() == "BINARY":
         loss_function = BinaryCrossentropy(from_logits=True)
 
-    if config['optimizer'] == "Adam":
+    if config['optimizer'].upper() == "ADAM":
         optim = Adam(learning_rate=learning_rate)
-    else:
+    elif config['optimizer'].upper() == "SGD":
         optim = SGD(learning_rate=learning_rate)
 
-    if config["model"] =='XLNet':
-        lm = "xlnet-base-cased"
-    elif config["model"] =='LONG':
+    if config["model"].upper() =='LONG':
         lm = "allenai/longformer-base-4096"
-    else:
+    elif config["model"].upper() =='BERT':
         lm = 'bert-base-uncased'
         
     #set tokenizer according to pre-trained model
@@ -190,7 +178,7 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
 
     #callbacks for ealry stopping and saving model history
     es = EarlyStopping(monitor="val_f1_score", patience=patience, restore_best_weights=True, mode='max')
-    history_logger = CSVLogger(LOG_DIR+model_name+"-history.csv", separator=",", append=True)
+    history_logger = CSVLogger(LOG_DIR+model_name+"-HISTORY.csv", separator=",", append=True)
 
     #train models
     model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
@@ -227,14 +215,12 @@ def main():
     if len(physical_devices) > 0:
         tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-    args = create_arg_parser()
-    seed = args.seed
 
     #get parameters for experiments
     config, model_name = get_config()
-    config['seed'] = seed
+    
     if config['experiment'] != 'trial':
-        model_name = model_name+"_"+str(seed)
+        model_name = model_name+"_"+str(config['seed'])
 
     set_log(model_name)
 

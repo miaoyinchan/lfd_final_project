@@ -5,7 +5,6 @@ log.setLevel(logging.INFO)
 print = log.info
 import json
 import os
-import argparse
 import pandas as pd
 from transformers import TFAutoModelForSequenceClassification
 from transformers import AutoTokenizer
@@ -39,21 +38,11 @@ def get_config():
         location = 'config.json'
         with open(location) as file:
             configs = json.load(file)
-            vals = [str(v) for v in configs.values()]
-            model_name = "_".join(vals)
+            vals = [str(v).upper() for v in configs.values()]
+            model_name = "_".join(vals[:-1])
         return configs, model_name
     except FileNotFoundError as error:
         print(error)
-
-
-def create_arg_parser():
-
-    """Return argument parser"""
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--seed", default= 1234, type=int, help="select seed")
-
-    args = parser.parse_args()
-    return args
 
 
 def load_data(dir):
@@ -105,11 +94,9 @@ def test(X_test, Y_test, config, model_name):
     #set model parameters 
     max_length  =  config['max_length']
    
-    if config["model"] =='XLNet':
-        lm = "xlnet-base-cased"
-    elif config["model"] =='LONG':
+    if config["model"].upper() =='LONG':
         lm = "allenai/longformer-base-4096"
-    else:
+    elif config["model"].upper() =='BERT':
         lm = 'bert-base-uncased'
         
     #set tokenizer according to pre-trained model
@@ -159,15 +146,11 @@ def main():
     if len(physical_devices) > 0:
         tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-    args = create_arg_parser()
-    seed = args.seed
-
     #get parameters for experiments
     config, model_name = get_config()
-    config['seed'] = seed
-
+    
     if config['experiment'] != 'trial':
-        model_name = model_name+"_"+str(seed)
+        model_name = model_name+"_"+str(config['seed'])
 
     #set log settings
     set_log(model_name)
