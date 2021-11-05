@@ -1,4 +1,3 @@
-import json
 import logging
 
 # get TF logger for pre-trained transformer model
@@ -9,7 +8,6 @@ print = log.info
 import random as python_random
 import numpy as np
 import os
-import argparse
 import pandas as pd
 from tensorflow.keras.optimizers import Adam, SGD
 from tensorflow.python.keras.losses import BinaryCrossentropy
@@ -20,37 +18,8 @@ import tensorflow as tf
 from tensorflow.keras import backend as K
 from tqdm.keras import TqdmCallback
 
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-OUTPUT_DIR = "../Output/"
-LOG_DIR = "../Logs/"
+import utils
 
-
-
-def change_dtype(tokens):
-
-    """Return model inputs after changing data type to int32"""
-    
-    tokens['input_ids'] = tokens['input_ids'].astype('int32')
-    tokens['input_ids'] = tokens['input_ids'].astype('int32')
-
-    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
-    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
-    
-    return tokens
-
-def get_config():
-
-    """Return model name and paramters after reading it from json file"""
-    try:
-        location = 'config.json'
-        with open(location) as file:
-            configs = json.load(file)
-            vals = [str(v).upper() for v in configs.values()]
-            model_name = "_".join(vals[:-1])
-        return configs, model_name
-    except FileNotFoundError as error:
-        print(error)
 
 
 def f1_score(y_true, y_pred): 
@@ -171,27 +140,27 @@ def classifier(X_train, X_dev, Y_train, Y_dev, config, model_name):
    
     #change the data type of model inputs to int32 
     if config["model"] =='LONG':
-        tokens_train = change_dtype(tokens_train)
-        tokens_dev = change_dtype(tokens_dev)
+        tokens_train = utils.change_dtype(tokens_train)
+        tokens_dev = utils.change_dtype(tokens_dev)
 
     model.compile(loss=loss_function, optimizer=optim, metrics=['accuracy',f1_score])
 
     #callbacks for ealry stopping and saving model history
     es = EarlyStopping(monitor="val_f1_score", patience=patience, restore_best_weights=True, mode='max')
-    history_logger = CSVLogger(LOG_DIR+model_name+"-HISTORY.csv", separator=",", append=True)
+    history_logger = CSVLogger(utils.LOG_DIR+model_name+"-HISTORY.csv", separator=",", append=True)
 
     #train models
     model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
     
     #save models in directory
-    model.save_pretrained(save_directory=MODEL_DIR+model_name)
+    model.save_pretrained(save_directory=utils.MODEL_DIR+model_name)
 
 
 def set_log(model_name):
 
     #Create Log file to save info
     try:
-        os.mkdir(LOG_DIR)
+        os.mkdir(utils.LOG_DIR)
         log.setLevel(logging.INFO)
 
     except OSError as error:
@@ -202,7 +171,7 @@ def set_log(model_name):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     
     # create file handler which logs info
-    fh = logging.FileHandler(LOG_DIR+model_name+".log")
+    fh = logging.FileHandler(utils.LOG_DIR+model_name+".log")
     fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     log.addHandler(fh)
@@ -217,7 +186,7 @@ def main():
 
 
     #get parameters for experiments
-    config, model_name = get_config()
+    config, model_name = utils.get_config()
     
     if config['training-set'] != 'trial':
         model_name = model_name+"_"+str(config['seed'])
@@ -225,7 +194,7 @@ def main():
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(DATA_DIR, config["training-set"])
+    X_train, Y_train, X_dev, Y_dev = load_data(utils.DATA_DIR, config["training-set"])
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)

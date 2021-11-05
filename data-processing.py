@@ -145,16 +145,20 @@ def split_data(dataset):
     
     meetings = df['cop_edition'].unique()
     meetings = sorted([m for m in meetings], key=lambda x:int(x))
-    Range_train = meetings[:-2]
-    Range_test = [meetings[-1]]
-    Range_dev = [meetings[-2]]
-
-    train = df.loc[df["cop_edition"].isin(Range_train)]
-    test = df.loc[df["cop_edition"].isin(Range_test)]
-    dev = df.loc[df["cop_edition"].isin(Range_dev)]
 
 
-    return train, dev, test
+    train = df.loc[df["cop_edition"].isin(meetings[:22])] # 1 to 22 meetings for train
+    test = df.loc[df["cop_edition"].isin([meetings[23]])]  # 24th meeting for test
+    dev = df.loc[df["cop_edition"].isin([meetings[22]])] # 23rd meeting for validation
+
+    #test set for 25th meeting
+    if len(meetings)==25:
+        
+        test_25th = df.loc[df["cop_edition"].isin([meetings[24]])]  # 25th meeting for testing model in completely unseen data
+        return train, dev, test, test_25th
+
+    return train, dev, test, None
+    
 
 
 def main():
@@ -166,7 +170,7 @@ def main():
     Labeled_data = label_data(Raw_data)
 
     # split the data into three sets
-    train, dev, test = split_data(Labeled_data)
+    train, dev, test, test_25th = split_data(Labeled_data)
 
 
     # Save training, development, and testing sets in csv format
@@ -181,6 +185,9 @@ def main():
     train.to_csv(directory+"/train.csv", index=False)
     test.to_csv(directory+"/test.csv", index=False)
     dev.to_csv(directory+"/dev.csv", index=False)
+
+    if test_25th is not None:
+        test_25th.to_csv(directory+"/test_25th.csv", index=False)
    
 
 

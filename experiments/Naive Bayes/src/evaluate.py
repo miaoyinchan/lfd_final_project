@@ -1,25 +1,9 @@
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
-import json
 import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
+import utils
 
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-OUTPUT_DIR = "../Output/"
-
-def get_config():
-
-    """Return model name and paramters after reading it from json file"""
-    try:
-        location = 'config.json'
-        with open(location) as file:
-            configs = json.load(file)
-            vals = [str(v).upper() for v in configs.values()]
-            model_name = "_".join(vals)
-        return model_name
-    except FileNotFoundError as error:
-        print(error)
 
 def save_results(Y_test, Y_pred, experiment_name):
     
@@ -43,18 +27,18 @@ def save_results(Y_test, Y_pred, experiment_name):
     result['macro f1-score'] = test_report['macro avg']['f1-score']
 
     try:
-        df = pd.read_csv(OUTPUT_DIR+"results.csv")
+        df = pd.read_csv(utils.OUTPUT_DIR+"results.csv")
         df = df.append(result, ignore_index=True)
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df.to_csv(utils.OUTPUT_DIR+"results.csv",index=False)
     except FileNotFoundError:
         df = pd.DataFrame(result,index=[0])
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df.to_csv(utils.OUTPUT_DIR+"results.csv",index=False)
 
     # save the confusion matrix of the model in png file
     cm = confusion_matrix(Y_test, Y_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
     disp.plot()
-    plt.savefig(OUTPUT_DIR+"{}.png".format(experiment_name))
+    plt.savefig(utils.OUTPUT_DIR+"{}.png".format(experiment_name))
 
     # Obtain the accuracy score of the model
     acc = accuracy_score(Y_test, Y_pred)
@@ -88,16 +72,16 @@ def main():
 
     
     #get parameters for experiments
-    model_name = get_config()
+    _, model_name = utils.get_config()
     
-    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
+    output = pd.read_csv(utils.OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']
     Y_predict = output['Predict']
 
     save_results(Y_test, Y_predict, model_name)
 
     #Load a Naive Bayes classifier model
-    classifier = joblib.load(MODEL_DIR+model_name)
+    classifier = joblib.load(utils.MODEL_DIR+model_name)
 
     #Find top features
     climate_posterior, misc_posterior = find_top_features(classifier, 100)
@@ -107,7 +91,7 @@ def main():
     df['Climate'] = climate_posterior
     df['MISC'] = misc_posterior
 
-    df.to_csv(OUTPUT_DIR+model_name+"_top_features.csv", index= False)
+    df.to_csv(utils.OUTPUT_DIR+model_name+"_top_features.csv", index= False)
 
         
 

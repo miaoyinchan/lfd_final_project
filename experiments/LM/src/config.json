@@ -4,11 +4,11 @@
    
     "model": "BERT",
     "max_length" : 512,
-    "learning_rate": 1e-4,
+    "learning_rate": 5e-5,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
-    "loss": "binary",
+    "loss": "custom",
     "optimizer": "adam",
     "training-set": "trial",
     "seed": 1234
