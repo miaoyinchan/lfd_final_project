@@ -106,7 +106,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * If just to test and evaluate the baseline RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data) which has been trained and uploaded in GoogleDrive:
 
-    * download model named "RF+Tf-idf_ccp_alpha_0.0".
+    * The baseline RF model named "RF+Tf-idf_ccp_alpha_0.0".
     * execute `test.py -t -b` to test the model.
     * execute `evaluate.py -t -b` to get scores of the model.
 
@@ -125,7 +125,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * If just to test and evaluate the best model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set) which has been trained and uploaded in GoogleDrive:
 
-    * download model named "model_upsampling_aug_1".
+    * The best Linear SVM model named "model_upsampling_aug_1".
     * execute`test.py -u1` to test the model.
     * execute `evaluate.py -u1` to get scores of the model.
 
@@ -133,6 +133,22 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 * To train, test, and evaluate linear SVC models with different feature sets on the full training set:
 
     * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+    * Explanation of feature sets:
+
+| Feature set  |      Setting                   |
+|--------------|--------------------------------|
+| 1 (-f1)      | word-ngram range (1,3)         |
+| 2 (-f2)      | char-5-gram                    |
+| 3 (-f3)      | stop words                     |
+| 4 (-f4)      | POS tag                        |
+| 5 (-f5)      | Lemmetizer                     |
+| 6 (-f6)      | NER tag                        |
+| 7 (-f7)      | word-ngram range (1,4)         |
+| 8 (-f8)      | word(1,3)+char-5gram           |
+| 9 (-f9)      | word(1,3)+stopwords            |
+| 10 (-f10)    | word(1,3)+char-5gram+stopwords |
+| 11 (-f11)    | word-ngram range (2,5)         |
 
 
 * To tune the linear SVC models:
