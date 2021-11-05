@@ -6,6 +6,8 @@ import csv
 import sys
 import pandas as pd
 import logging
+import os
+import os.path
 
 import spacy
 from nltk.stem import WordNetLemmatizer
@@ -21,14 +23,14 @@ nlp = spacy.load("en_core_web_sm")
 MODEL_DIR = "../Saved_Models"
 
 
-def saveModel(classifier,experiment_name ):
+def saveModel(classifier, experiment_name):
     """Save the trained model"""
-    try:
-        os.mkdir(MODEL_DIR)
-        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
-
-    except OSError as error:
-        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    joblib.dump(
+        classifier,
+        os.path.join(MODEL_DIR, experiment_name),
+        compress=9,
+    )
 
 
 def read_data(dataset):
@@ -191,8 +193,7 @@ def set_args():
             experiment_name = "tfidf_word_ngram_2_5"
 
     # Select c value for the model
-    C_values = [0.00001, 0.0001, 0.001, 0.01,
-                0.1, 1, 10, 100, 1000]
+    C_values = [0.00001, 0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
 
     if args.tuning1:
         experiment_name = f"tfidf_w_ngram_1_3_{C_values[0]}"
@@ -239,25 +240,25 @@ def set_args():
         experiment_name = "model_upsampling_aug_1"
 
     if args.upsamplingaug2:
-         experiment_name = "model_upsampling_aug_10"
+        experiment_name = "model_upsampling_aug_10"
 
     if args.upsamplingaug3:
-         experiment_name = "model_upsampling_aug_100"
+        experiment_name = "model_upsampling_aug_100"
 
     if args.upsamplingaug4:
-         experiment_name = "model_upsampling_aug_1000"
+        experiment_name = "model_upsampling_aug_1000"
 
     # Select model trained with a combination
     # technique of up- and downsampling
     if args.updownsamplingaug:
-         experiment_name = "model_updownsampling_aug"
+        experiment_name = "model_updownsampling_aug"
 
     return experiment_name
 
 
 def train_model(c, X_train, Y_train, experiment_name):
     """Set up pipeline, train, and save model,
-       save parameter in log file"""
+    save parameter in log file"""
     clf = LinearSVC(C=c, max_iter=1000000)
     vec = TfidfVectorizer(
         tokenizer=word_tokenize,

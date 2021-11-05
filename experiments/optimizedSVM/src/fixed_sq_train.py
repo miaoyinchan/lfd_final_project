@@ -52,7 +52,7 @@ def main():
     C_values = [1, 10, 100, 1000]
     for c in C_values:
         clf = LinearSVC(C=c, max_iter=1000000)
-        vec = TfidfVectorizer(ngram_range=(1, 3),lowercase=False)
+        vec = TfidfVectorizer(ngram_range=(1, 3), lowercase=False)
         pipeline = Pipeline(
             [
                 ("vec", vec),

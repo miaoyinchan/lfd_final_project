@@ -36,7 +36,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 ### Pre-trained Language Model
 
-* To run experiments with Pre-trained Language Models, run bash file from ***experiment/LM/***
+* To run experiments with Pre-trained Language Models, run bash file from ***experiments/LM/***
 
     * excecute `run.sh train` to train, test, and evaluate a model from scratch
     * excecute `run.sh test` to test and evaluate a saved models
@@ -57,7 +57,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 | Early Stopping Patience| **3** |
 
 
-* Parameters can be changed at ***experiment/LM/src/config.json*** file 
+* Parameters can be changed at ***experiments/LM/src/config.json*** file
 * By default parameters from the best model is given the config file
 * An example of a configuration file is given below
     
@@ -80,7 +80,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 ### Naive Bayes
 
-* To run experiments with Naive Bayes Algorithm, run bash file from ***experiment/Naive Bayes/***
+* To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
     * excecute `run.sh train` to train, test, and evaluate a model from scratch
     * excecute `run.sh test` to test and evaluate a saved models
@@ -95,4 +95,56 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 | training-set| **Full** (train.csv)|
 
 
-* Parameters can be changed at ***experiment/Naive Bayes/src/config.json*** file
+* Parameters can be changed at ***experiments/Naive Bayes/src/config.json*** file
+
+### Random Forest
+
+* To run the baseline model using Random Forest algorithm (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), run bash file from ***experiments/RF/***
+
+    * excecute `run.sh` to train the RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), then test the model with test set, and then evaluate the model and print F1 scores of the model to file (experiments/RF/Output/results.csv).
+
+
+* If just to test and evaluate the baseline RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data) which has been trained and uploaded in GoogleDrive:
+
+    * download model named "RF+Tf-idf_ccp_alpha_0.0".
+    * execute `test.py -t -b` to test the model.
+    * execute `evaluate.py -t -b` to get scores of the model.
+
+
+* To train, test, and evaluate models with different features and parameter values(Count Vector or TF-IDF, with different alphas):
+
+    * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+
+### Optimized Linear SVM
+
+* To run the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), run bash file from ***experiments/OptimizedSVM/***
+
+    * excecute `run.sh` to train the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), then test the model with test set, and then evaluate the model and print F1 scores of the model to file (experiments/OptimizedSVM/Output/results.csv).
+
+
+* If just to test and evaluate the best model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set) which has been trained and uploaded in GoogleDrive:
+
+    * download model named "model_upsampling_aug_1".
+    * execute`test.py -u1` to test the model.
+    * execute `evaluate.py -u1` to get scores of the model.
+
+
+* To train, test, and evaluate linear SVC models with different feature sets on the full training set:
+
+    * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+
+* To tune the linear SVC models:
+
+    * execute `tuning.py`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+
+* To train, tune, test, and evaluate linear SVC models on the augmented training set:
+
+    * execute `aug_train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+
+* To train, tune, test, and evaluate linear SVC models on the fixed sequence length training set:
+
+    * execute `fixed_sq_train.py`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.

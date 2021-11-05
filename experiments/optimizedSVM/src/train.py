@@ -11,7 +11,6 @@ import csv
 import logging
 import sys
 
-import joblib
 import spacy
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -93,7 +92,7 @@ def tokenizer_ner_tag(doc):
 
 def feature1_word_ngram(use_tfidf):
     """Vectorize word ngram range(1,3)
-       (feature set 1)"""
+    (feature set 1)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -120,7 +119,7 @@ def pipeline1_word_ngram(use_tfidf):
 
 def feature2_char_gram(use_tfidf):
     """Vectorize features character 5gram
-       (feature set 2)"""
+    (feature set 2)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -175,7 +174,7 @@ def pipeline3_stop_words(use_tfidf):
 
 def feature4_pos(use_tfidf):
     """Vectorize features using pos tag
-       (feature set 4)"""
+    (feature set 4)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -202,7 +201,7 @@ def pipeline4_pos(use_tfidf):
 
 def feature5_lemma(use_tfidf):
     """Vectorize features using lemmatokenizer
-       (feature set 5)"""
+    (feature set 5)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -229,7 +228,7 @@ def pipeline5_lemma(use_tfidf):
 
 def feature6_ner(use_tfidf):
     """Vectorize features using NER tag
-       (feature set 6)"""
+    (feature set 6)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -256,7 +255,7 @@ def pipeline6_ner(use_tfidf):
 
 def feature7_word_ngram_1_4(use_tfidf):
     """Vectorize features word ngram range(1,4)
-       feature set 7"""
+    feature set 7"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -283,8 +282,8 @@ def pipeline7_word_ngram_1_4(use_tfidf):
 
 def feature8_word_char_ngram(use_tfidf):
     """Vectorize features combining word ngram
-       range(1,3) and character 5gram
-       (feature set 8)"""
+    range(1,3) and character 5gram
+    (feature set 8)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature2_char_gram(use_tfidf)
     return FeatureUnion([("f1", f1), ("f2", f2)])
@@ -305,7 +304,7 @@ def pipeline8_word_char_ngram(use_tfidf):
 
 def feature9_word_ngram_stopwords(use_tfidf):
     """Union features word ngram range (1,3)
-       and character 5gram (feature set 9)"""
+    and character 5gram (feature set 9)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature3_stop_words(use_tfidf)
     return FeatureUnion([("f1", f1), ("f2", f2)])
@@ -326,8 +325,8 @@ def pipeline9_word_ngram_stopwords(use_tfidf):
 
 def feature10_word_char_ngram_stopwords(use_tfidf):
     """Union features word ngram range (1,3)
-       and character 5gram and stop words
-       (feature set 10)"""
+    and character 5gram and stop words
+    (feature set 10)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature2_char_gram(use_tfidf)
     f3 = feature3_stop_words(use_tfidf)
@@ -349,7 +348,7 @@ def pipeline10_word_char_ngram_stopwords():
 
 def feature11_word_ngram_2_5(use_tfidf):
     """Vectorize word ngram range(2,5)
-       (feature set 11)"""
+    (feature set 11)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -412,7 +411,7 @@ def main():
         pipeline = pipeline7_word_ngram_1_4(use_tfidf=args.tfidf)
         experiment_name = "cv_word_ngram_1_4"
 
-     # Select TFIDF model and features set to train
+    # Select TFIDF model and features set to train
     if args.tfidf:
         if args.feature1:
             pipeline = pipeline1_word_ngram(use_tfidf=args.tfidf)
