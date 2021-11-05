@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """Using RandomForest classifier to perform
-   text classification"""
+   binary text classification"""
 
 import argparse
 import logging
@@ -46,12 +46,10 @@ def load_data(dir):
 
 def main():
     args = create_arg_parser()
-    # Load training and test sets.
+    # Load training set.
     X_train, Y_train = load_data(DATA_DIR)
 
-    # Convert the texts to vectors. We use a dummy function as tokenizer
-    # and preprocessor, since the texts are already preprocessed and
-    # tokenized.
+    # Convert the texts to vectors
     if args.tfidf:
         vec = TfidfVectorizer(tokenizer=word_tokenize, ngram_range=(1,3), max_features=5000)
         experiment_name = "RF+Tf-idf"
