@@ -1,0 +1,996 @@
+2021-11-04 08:51:53,529 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 08:51:53,991 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 08:51:54,153 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 08:51:58,923 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 08:51:58,924 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 08:51:58,924 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 08:51:58,924 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 08:51:58,924 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 08:51:58,924 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 08:51:59,321 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 08:51:59,323 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 08:52:00,377 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 08:52:00,379 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 08:52:01,897 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
+2021-11-04 08:52:04,474 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 08:52:41,071 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 08:52:42,066 - transformers.modeling_tf_utils - WARNING - Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
+- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2021-11-04 08:52:42,066 - transformers.modeling_tf_utils - WARNING - Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-11-04 08:52:54,200 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 08:53:25,799 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 08:54:38,962 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 08:54:39,355 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 08:54:39,362 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 08:54:42,134 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 08:54:42,135 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 08:54:42,135 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 08:54:42,135 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 08:54:42,135 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 08:54:42,135 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 08:54:42,527 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 08:54:42,529 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 08:54:44,650 - transformers.configuration_utils - ERROR - 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/resolve/main/config.json
+2021-11-04 09:25:24,276 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 09:25:24,949 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 09:25:25,094 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 09:25:33,056 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 09:25:33,056 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 09:25:33,057 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 09:25:33,057 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 09:25:33,057 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 09:25:33,057 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 09:25:33,449 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 09:25:33,451 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 09:25:34,369 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 09:25:34,371 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 09:25:35,977 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
+2021-11-04 09:25:37,426 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 09:26:22,109 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 09:26:23,144 - transformers.modeling_tf_utils - WARNING - Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
+- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2021-11-04 09:26:23,144 - transformers.modeling_tf_utils - WARNING - Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-11-04 09:26:38,401 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 09:27:08,495 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 09:28:44,198 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 09:28:44,591 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 09:28:44,598 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 09:28:47,374 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 09:28:47,374 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 09:28:47,375 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 09:28:47,375 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 09:28:47,375 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 09:28:47,375 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 09:28:47,778 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 09:28:47,780 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 09:28:49,912 - transformers.configuration_utils - ERROR - 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/resolve/main/config.json
+2021-11-04 11:46:37,336 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 11:46:38,411 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 11:46:38,582 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 11:46:43,132 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 11:46:43,132 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 11:46:43,132 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 11:46:43,133 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 11:46:43,133 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 11:46:43,133 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 11:46:43,525 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 11:46:43,528 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 11:46:44,169 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 11:46:44,171 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 11:46:46,986 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
+2021-11-04 11:46:48,756 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 11:47:12,097 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 11:47:13,078 - transformers.modeling_tf_utils - WARNING - Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
+- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2021-11-04 11:47:13,078 - transformers.modeling_tf_utils - WARNING - Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-11-04 11:47:30,866 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 11:48:03,590 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 11:49:24,579 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 11:49:24,972 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 11:49:24,979 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 11:49:27,753 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 11:49:27,754 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 11:49:27,754 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 11:49:27,754 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 11:49:27,754 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 11:49:27,754 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 11:49:28,150 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 11:49:28,152 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 11:49:30,483 - transformers.configuration_utils - ERROR - 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/resolve/main/config.json
+2021-11-04 14:11:40,762 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 14:11:41,663 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 14:11:41,716 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 14:11:47,737 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 14:11:47,738 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 14:11:47,738 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 14:11:47,738 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 14:11:47,738 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 14:11:47,738 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 14:11:48,125 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 14:11:48,126 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 14:11:48,758 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 14:11:48,759 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 14:11:50,259 - transformers.modeling_tf_utils - INFO - loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
+2021-11-04 14:11:51,430 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 14:12:11,261 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 14:12:11,902 - transformers.modeling_tf_utils - WARNING - Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
+- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+2021-11-04 14:12:11,903 - transformers.modeling_tf_utils - WARNING - Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2021-11-04 14:13:00,477 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 14:13:27,936 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 14:28:48,874 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...
+2021-11-04 15:49:49,196 - transformers.configuration_utils - INFO - Configuration saved in ../Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/config.json
+2021-11-04 15:50:04,503 - transformers.modeling_tf_utils - INFO - Model weights saved in ../Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/tf_model.h5
+2021-11-04 15:56:09,311 - transformers.models.auto.tokenization_auto - INFO - Could not locate the tokenizer configuration file, will try to use the model config instead.
+2021-11-04 15:56:09,716 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 15:56:09,762 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 15:56:14,283 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
+2021-11-04 15:56:14,284 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
+2021-11-04 15:56:14,284 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
+2021-11-04 15:56:14,284 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
+2021-11-04 15:56:14,284 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
+2021-11-04 15:56:14,284 - transformers.tokenization_utils_base - INFO - loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
+2021-11-04 15:56:14,673 - transformers.configuration_utils - INFO - loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
+2021-11-04 15:56:14,674 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 15:56:16,787 - transformers.configuration_utils - INFO - loading configuration file ../Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/config.json
+2021-11-04 15:56:16,788 - transformers.configuration_utils - INFO - Model config LongformerConfig {
+  "_name_or_path": "allenai/longformer-base-4096",
+  "architectures": [
+    "LongformerForSequenceClassification"
+  ],
+  "attention_mode": "longformer",
+  "attention_probs_dropout_prob": 0.1,
+  "attention_window": [
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512,
+    512
+  ],
+  "bos_token_id": 0,
+  "classifier_dropout": null,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "ignore_attention_mask": false,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 4098,
+  "model_type": "longformer",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "sep_token_id": 2,
+  "transformers_version": "4.11.3",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+2021-11-04 15:56:20,289 - transformers.modeling_tf_utils - INFO - loading weights file ../Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL/tf_model.h5
+2021-11-04 15:56:20,592 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 15:56:23,129 - transformers.models.longformer.modeling_tf_longformer - INFO - Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
+2021-11-04 15:56:23,899 - transformers.modeling_tf_utils - WARNING - All model checkpoint layers were used when initializing TFLongformerForSequenceClassification.
+
+2021-11-04 15:56:23,900 - transformers.modeling_tf_utils - WARNING - All the layers of TFLongformerForSequenceClassification were initialized from the model checkpoint at ../Saved_Models/LONG_1024_5E-05_10_3_8_BINARY_SGD_TRIAL.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use TFLongformerForSequenceClassification for predictions without further training.
+2021-11-04 15:56:28,493 - transformers.models.longformer.modeling_tf_longformer - INFO - Initializing global attention on CLS token...

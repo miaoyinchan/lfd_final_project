@@ -1,385 +1,0 @@
-2021-10-29 20:38:45.319563: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:45.482663: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:45.483213: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:45.497491: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2021-10-29 20:38:45.498710: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:45.499124: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:45.499412: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:58.673070: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:58.673488: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:58.673787: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:38:58.674088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
-Could not locate the tokenizer configuration file, will try to use the model config instead.
-https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmp9o9gwro_
-Downloading:   0%|          | 0.00/694 [00:00<?, ?B/s]Downloading: 100%|██████████| 694/694 [00:00<00:00, 507kB/s]
-storing https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json in cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
-creating metadata file for /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
-loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
-Model config LongformerConfig {
-  "attention_mode": "longformer",
-  "attention_probs_dropout_prob": 0.1,
-  "attention_window": [
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512
-  ],
-  "bos_token_id": 0,
-  "classifier_dropout": null,
-  "eos_token_id": 2,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "ignore_attention_mask": false,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-05,
-  "max_position_embeddings": 4098,
-  "model_type": "longformer",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 1,
-  "position_embedding_type": "absolute",
-  "sep_token_id": 2,
-  "transformers_version": "4.11.3",
-  "type_vocab_size": 1,
-  "use_cache": true,
-  "vocab_size": 50265
-}
-
-https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmpnks8wb8h
-Downloading:   0%|          | 0.00/878k [00:00<?, ?B/s]Downloading:  10%|█         | 88.0k/878k [00:00<00:01, 519kB/s]Downloading:  46%|████▋     | 408k/878k [00:00<00:00, 1.32MB/s]Downloading: 100%|██████████| 878k/878k [00:00<00:00, 2.05MB/s]
-storing https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json in cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
-creating metadata file for /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
-https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmp7b6nhuic
-Downloading:   0%|          | 0.00/446k [00:00<?, ?B/s]Downloading:  20%|█▉        | 88.0k/446k [00:00<00:00, 519kB/s]Downloading:  95%|█████████▌| 424k/446k [00:00<00:00, 1.37MB/s]Downloading: 100%|██████████| 446k/446k [00:00<00:00, 1.30MB/s]
-storing https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt in cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-creating metadata file for /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmpki2w465v
-Downloading:   0%|          | 0.00/1.29M [00:00<?, ?B/s]Downloading:   6%|▌         | 80.0k/1.29M [00:00<00:02, 473kB/s]Downloading:  31%|███▏      | 416k/1.29M [00:00<00:00, 1.36MB/s]Downloading: 100%|██████████| 1.29M/1.29M [00:00<00:00, 3.03MB/s]
-storing https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json in cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
-creating metadata file for /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/vocab.json from cache at /home/s4996755/.cache/huggingface/transformers/859f4633944e1b7e7fa301e72161388cd5903e36385d0ef2917256506bff64c3.d67d6b367eb24ab43b08ad55e014cf254076934f71d832bbab9ad35644a375ab
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/merges.txt from cache at /home/s4996755/.cache/huggingface/transformers/af6fcabe2bf8cab6f77b20d94ba46a3dbf441ca0549e1f3c852c437b612f5224.5d12962c5ee615a4c803841266e9c3be9a691a924f72d395d3a6c6c81157788b
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/93ab433997eab2709f7adf8fa46f21d4699497bf20768f3ffd25e2e73b9b93c2.fc9576039592f026ad76a1c231b89aee8668488c671dfbe6616bab2ed298d730
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/added_tokens.json from cache at None
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/special_tokens_map.json from cache at None
-loading file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tokenizer_config.json from cache at None
-loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
-Model config LongformerConfig {
-  "attention_mode": "longformer",
-  "attention_probs_dropout_prob": 0.1,
-  "attention_window": [
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512
-  ],
-  "bos_token_id": 0,
-  "classifier_dropout": null,
-  "eos_token_id": 2,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "ignore_attention_mask": false,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-05,
-  "max_position_embeddings": 4098,
-  "model_type": "longformer",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 1,
-  "position_embedding_type": "absolute",
-  "sep_token_id": 2,
-  "transformers_version": "4.11.3",
-  "type_vocab_size": 1,
-  "use_cache": true,
-  "vocab_size": 50265
-}
-
-loading configuration file https://huggingface.co/allenai/longformer-base-4096/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/0690955d8f70934f95adf0fb108d5f7322d02f8d7dd938b7b133cb7421e120e6.b25f41ff6acdcb7ab47c505c70e351b3fc01957b3798197e5ac6e8efc547ac99
-Model config LongformerConfig {
-  "attention_mode": "longformer",
-  "attention_probs_dropout_prob": 0.1,
-  "attention_window": [
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512,
-    512
-  ],
-  "bos_token_id": 0,
-  "classifier_dropout": null,
-  "eos_token_id": 2,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "ignore_attention_mask": false,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-05,
-  "max_position_embeddings": 4098,
-  "model_type": "longformer",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 1,
-  "position_embedding_type": "absolute",
-  "sep_token_id": 2,
-  "transformers_version": "4.11.3",
-  "type_vocab_size": 1,
-  "use_cache": true,
-  "vocab_size": 50265
-}
-
-https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 not found in cache or force_download set to True, downloading to /home/s4996755/.cache/huggingface/transformers/tmpvghlpxq5
-Downloading:   0%|          | 0.00/729M [00:00<?, ?B/s]Downloading:   0%|          | 22.0k/729M [00:00<1:07:16, 189kB/s]Downloading:   0%|          | 192k/729M [00:00<15:48, 806kB/s]   Downloading:   0%|          | 821k/729M [00:00<04:33, 2.79MB/s]Downloading:   0%|          | 1.96M/729M [00:00<02:07, 5.97MB/s]Downloading:   1%|          | 5.80M/729M [00:00<00:44, 17.1MB/s]Downloading:   1%|          | 7.58M/729M [00:00<00:51, 14.7MB/s]Downloading:   2%|▏         | 12.9M/729M [00:00<00:28, 26.0MB/s]Downloading:   3%|▎         | 19.2M/729M [00:00<00:19, 37.3MB/s]Downloading:   3%|▎         | 24.1M/729M [00:01<00:18, 41.1MB/s]Downloading:   4%|▍         | 28.2M/729M [00:01<00:19, 38.3MB/s]Downloading:   5%|▍         | 34.8M/729M [00:01<00:16, 45.4MB/s]Downloading:   5%|▌         | 40.0M/729M [00:01<00:15, 47.6MB/s]Downloading:   6%|▋         | 46.2M/729M [00:01<00:13, 52.4MB/s]Downloading:   7%|▋         | 52.0M/729M [00:01<00:13, 54.4MB/s]Downloading:   8%|▊         | 57.3M/729M [00:01<00:21, 32.9MB/s]Downloading:   9%|▊         | 62.6M/729M [00:02<00:18, 37.5MB/s]Downloading:  10%|▉         | 70.6M/729M [00:02<00:14, 47.6MB/s]Downloading:  11%|█         | 76.9M/729M [00:02<00:13, 52.2MB/s]Downloading:  12%|█▏        | 84.8M/729M [00:02<00:11, 60.0MB/s]Downloading:  13%|█▎        | 93.1M/729M [00:02<00:10, 66.6MB/s]Downloading:  14%|█▎        | 100M/729M [00:02<00:13, 50.4MB/s] Downloading:  15%|█▍        | 108M/729M [00:02<00:11, 57.9MB/s]Downloading:  16%|█▌        | 114M/729M [00:02<00:10, 59.5MB/s]Downloading:  17%|█▋        | 121M/729M [00:02<00:10, 60.9MB/s]Downloading:  17%|█▋        | 127M/729M [00:03<00:10, 61.4MB/s]Downloading:  18%|█▊        | 133M/729M [00:03<00:10, 59.5MB/s]Downloading:  19%|█▉        | 139M/729M [00:03<00:10, 60.8MB/s]Downloading:  20%|██        | 147M/729M [00:03<00:09, 65.3MB/s]Downloading:  21%|██        | 154M/729M [00:03<00:08, 69.5MB/s]Downloading:  22%|██▏       | 161M/729M [00:03<00:09, 65.7MB/s]Downloading:  23%|██▎       | 169M/729M [00:03<00:08, 71.6MB/s]Downloading:  24%|██▍       | 176M/729M [00:03<00:08, 70.9MB/s]Downloading:  25%|██▌       | 183M/729M [00:03<00:08, 64.9MB/s]Downloading:  26%|██▌       | 190M/729M [00:04<00:09, 58.7MB/s]Downloading:  27%|██▋       | 196M/729M [00:04<00:09, 61.9MB/s]Downloading:  28%|██▊       | 202M/729M [00:04<00:12, 44.6MB/s]Downloading:  28%|██▊       | 207M/729M [00:04<00:14, 38.9MB/s]Downloading:  29%|██▉       | 213M/729M [00:04<00:12, 42.9MB/s]Downloading:  30%|███       | 219M/729M [00:04<00:11, 46.9MB/s]Downloading:  31%|███       | 224M/729M [00:04<00:11, 47.6MB/s]Downloading:  31%|███▏      | 229M/729M [00:05<00:13, 39.5MB/s]Downloading:  32%|███▏      | 233M/729M [00:05<00:13, 37.6MB/s]Downloading:  33%|███▎      | 238M/729M [00:05<00:12, 41.7MB/s]Downloading:  33%|███▎      | 244M/729M [00:05<00:11, 45.2MB/s]Downloading:  34%|███▍      | 248M/729M [00:05<00:11, 45.3MB/s]Downloading:  35%|███▌      | 256M/729M [00:05<00:11, 44.2MB/s]Downloading:  36%|███▌      | 261M/729M [00:05<00:10, 46.3MB/s]Downloading:  36%|███▋      | 266M/729M [00:06<00:14, 33.8MB/s]Downloading:  37%|███▋      | 269M/729M [00:06<00:13, 34.5MB/s]Downloading:  37%|███▋      | 273M/729M [00:06<00:14, 32.8MB/s]Downloading:  38%|███▊      | 277M/729M [00:06<00:13, 34.1MB/s]Downloading:  39%|███▊      | 281M/729M [00:06<00:12, 36.8MB/s]Downloading:  40%|███▉      | 288M/729M [00:06<00:10, 45.0MB/s]Downloading:  40%|████      | 293M/729M [00:06<00:11, 39.9MB/s]Downloading:  41%|████      | 300M/729M [00:06<00:08, 50.4MB/s]Downloading:  42%|████▏     | 306M/729M [00:07<00:09, 49.3MB/s]Downloading:  43%|████▎     | 312M/729M [00:07<00:07, 55.4MB/s]Downloading:  44%|████▎     | 318M/729M [00:07<00:07, 56.6MB/s]Downloading:  44%|████▍     | 324M/729M [00:07<00:07, 55.6MB/s]Downloading:  45%|████▌     | 329M/729M [00:07<00:07, 55.1MB/s]Downloading:  46%|████▌     | 335M/729M [00:07<00:07, 58.0MB/s]Downloading:  47%|████▋     | 341M/729M [00:07<00:08, 49.6MB/s]Downloading:  48%|████▊     | 348M/729M [00:07<00:07, 56.4MB/s]Downloading:  49%|████▊     | 354M/729M [00:07<00:06, 56.5MB/s]Downloading:  49%|████▉     | 360M/729M [00:08<00:06, 58.0MB/s]Downloading:  50%|█████     | 366M/729M [00:08<00:07, 49.3MB/s]Downloading:  51%|█████     | 371M/729M [00:08<00:07, 50.6MB/s]Downloading:  52%|█████▏    | 377M/729M [00:08<00:06, 54.2MB/s]Downloading:  52%|█████▏    | 382M/729M [00:08<00:06, 52.5MB/s]Downloading:  53%|█████▎    | 389M/729M [00:08<00:06, 57.3MB/s]Downloading:  54%|█████▍    | 396M/729M [00:08<00:05, 62.8MB/s]Downloading:  55%|█████▌    | 404M/729M [00:08<00:05, 66.8MB/s]Downloading:  56%|█████▌    | 410M/729M [00:08<00:05, 60.6MB/s]Downloading:  57%|█████▋    | 416M/729M [00:09<00:06, 53.4MB/s]Downloading:  58%|█████▊    | 424M/729M [00:09<00:05, 59.4MB/s]Downloading:  59%|█████▉    | 431M/729M [00:09<00:04, 63.6MB/s]Downloading:  60%|██████    | 438M/729M [00:09<00:04, 64.8MB/s]Downloading:  61%|██████    | 445M/729M [00:09<00:04, 67.2MB/s]Downloading:  62%|██████▏   | 451M/729M [00:09<00:04, 66.8MB/s]Downloading:  63%|██████▎   | 458M/729M [00:09<00:04, 63.1MB/s]Downloading:  64%|██████▎   | 464M/729M [00:09<00:04, 63.8MB/s]Downloading:  64%|██████▍   | 470M/729M [00:09<00:04, 59.2MB/s]Downloading:  65%|██████▌   | 476M/729M [00:10<00:04, 55.9MB/s]Downloading:  66%|██████▌   | 481M/729M [00:10<00:06, 42.9MB/s]Downloading:  67%|██████▋   | 487M/729M [00:10<00:05, 47.3MB/s]Downloading:  68%|██████▊   | 492M/729M [00:10<00:06, 39.2MB/s]Downloading:  68%|██████▊   | 499M/729M [00:10<00:05, 45.5MB/s]Downloading:  69%|██████▉   | 504M/729M [00:10<00:05, 45.1MB/s]Downloading:  70%|██████▉   | 509M/729M [00:10<00:04, 46.2MB/s]Downloading:  71%|███████   | 515M/729M [00:11<00:04, 50.5MB/s]Downloading:  71%|███████▏  | 520M/729M [00:11<00:04, 49.5MB/s]Downloading:  72%|███████▏  | 525M/729M [00:11<00:04, 47.7MB/s]Downloading:  73%|███████▎  | 529M/729M [00:11<00:06, 31.1MB/s]Downloading:  74%|███████▎  | 536M/729M [00:11<00:05, 39.7MB/s]Downloading:  75%|███████▍  | 544M/729M [00:11<00:04, 48.3MB/s]Downloading:  76%|███████▌  | 552M/729M [00:11<00:03, 55.9MB/s]Downloading:  77%|███████▋  | 558M/729M [00:11<00:03, 59.6MB/s]Downloading:  77%|███████▋  | 565M/729M [00:12<00:04, 42.3MB/s]Downloading:  78%|███████▊  | 572M/729M [00:12<00:03, 50.1MB/s]Downloading:  79%|███████▉  | 578M/729M [00:12<00:03, 47.4MB/s]Downloading:  80%|████████  | 584M/729M [00:12<00:03, 50.6MB/s]Downloading:  81%|████████  | 589M/729M [00:12<00:02, 50.2MB/s]Downloading:  82%|████████▏ | 597M/729M [00:12<00:02, 56.9MB/s]Downloading:  83%|████████▎ | 603M/729M [00:12<00:02, 53.4MB/s]Downloading:  83%|████████▎ | 608M/729M [00:13<00:02, 53.2MB/s]Downloading:  84%|████████▍ | 615M/729M [00:13<00:02, 57.2MB/s]Downloading:  85%|████████▌ | 622M/729M [00:13<00:01, 61.4MB/s]Downloading:  86%|████████▌ | 628M/729M [00:13<00:01, 55.7MB/s]Downloading:  87%|████████▋ | 633M/729M [00:13<00:01, 56.6MB/s]Downloading:  88%|████████▊ | 639M/729M [00:13<00:01, 49.1MB/s]Downloading:  88%|████████▊ | 644M/729M [00:13<00:02, 44.1MB/s]Downloading:  89%|████████▉ | 648M/729M [00:13<00:01, 44.5MB/s]Downloading:  89%|████████▉ | 653M/729M [00:14<00:02, 36.5MB/s]Downloading:  90%|█████████ | 657M/729M [00:14<00:02, 37.8MB/s]Downloading:  91%|█████████ | 662M/729M [00:14<00:01, 42.3MB/s]Downloading:  92%|█████████▏| 670M/729M [00:14<00:01, 54.0MB/s]Downloading:  93%|█████████▎| 676M/729M [00:14<00:01, 45.1MB/s]Downloading:  93%|█████████▎| 680M/729M [00:14<00:01, 46.1MB/s]Downloading:  94%|█████████▍| 687M/729M [00:14<00:00, 52.6MB/s]Downloading:  95%|█████████▍| 693M/729M [00:14<00:00, 49.3MB/s]Downloading:  96%|█████████▌| 698M/729M [00:15<00:00, 33.3MB/s]Downloading:  96%|█████████▋| 703M/729M [00:15<00:00, 36.8MB/s]Downloading:  97%|█████████▋| 707M/729M [00:15<00:00, 36.7MB/s]Downloading:  98%|█████████▊| 712M/729M [00:15<00:00, 36.9MB/s]Downloading:  99%|█████████▊| 720M/729M [00:15<00:00, 46.5MB/s]Downloading:  99%|█████████▉| 725M/729M [00:15<00:00, 46.7MB/s]Downloading: 100%|██████████| 729M/729M [00:15<00:00, 48.3MB/s]
-storing https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 in cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
-creating metadata file for /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
-loading weights file https://huggingface.co/allenai/longformer-base-4096/resolve/main/tf_model.h5 from cache at /home/s4996755/.cache/huggingface/transformers/259797cae83a24562b1600a461be070b7a56b6cdcf3e338d939e1fc966aec7e0.3f9cb4baa9f17a6fa7e4944571718cc348caa8091855b25a8ad60253854c1aa0.h5
-Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
-Input ids are automatically padded from 5 to 512 to be a multiple of `config.attention_window`: 512
-Some layers from the model checkpoint at allenai/longformer-base-4096 were not used when initializing TFLongformerForSequenceClassification: ['lm_head']
-- This IS expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
-- This IS NOT expected if you are initializing TFLongformerForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
-Some layers of TFLongformerForSequenceClassification were not initialized from the model checkpoint at allenai/longformer-base-4096 and are newly initialized: ['classifier']
-You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
-0epoch [00:00, ?epoch/s]  0%|          | 0/10 [00:00<?, ?epoch/s]2021-10-29 20:39:56.534107: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:185] None of the MLIR Optimization Passes are enabled (registered 2)
-
-  0%|          | 0.00/652 [00:00<?, ?batch/s][AInitializing global attention on CLS token...
-Traceback (most recent call last):
-  File "train.py", line 182, in <module>
-    main()
-  File "train.py", line 177, in main
-    classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)
-  File "train.py", line 137, in classifier
-    model.fit(tokens_train, Y_train, verbose=0, epochs=epochs,batch_size= batch_size, validation_data=(tokens_dev, Y_dev), callbacks=[es, history_logger, TqdmCallback(verbose=2)])
-  File "/home/s4996755/env/lib64/python3.6/site-packages/keras/engine/training.py", line 1184, in fit
-    tmp_logs = self.train_function(iterator)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 885, in __call__
-    result = self._call(*args, **kwds)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 933, in _call
-    self._initialize(args, kwds, add_initializers_to=initializers)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 760, in _initialize
-    *args, **kwds))
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3066, in _get_concrete_function_internal_garbage_collected
-    graph_function, _ = self._maybe_define_function(args, kwargs)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3463, in _maybe_define_function
-    graph_function = self._create_graph_function(args, kwargs)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/function.py", line 3308, in _create_graph_function
-    capture_by_value=self._capture_by_value),
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/func_graph.py", line 1007, in func_graph_from_py_func
-    func_outputs = python_func(*func_args, **func_kwargs)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/eager/def_function.py", line 668, in wrapped_fn
-    out = weak_wrapped_fn().__wrapped__(*args, **kwds)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/func_graph.py", line 994, in wrapper
-    raise e.ag_error_metadata.to_exception(e)
-TypeError: in user code:
-
-    /home/s4996755/env/lib64/python3.6/site-packages/keras/engine/training.py:853 train_function  *
-        return step_function(self, iterator)
-    /home/s4996755/env/lib64/python3.6/site-packages/transformers/models/longformer/modeling_tf_longformer.py:2408 call  *
-        inputs["global_attention_mask"] = tf.tensor_scatter_nd_update(
-    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/util/dispatch.py:206 wrapper  **
-        return target(*args, **kwargs)
-    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/array_ops.py:5755 tensor_scatter_nd_update
-        tensor=tensor, indices=indices, updates=updates, name=name)
-    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/ops/gen_array_ops.py:11311 tensor_scatter_update
-        updates=updates, name=name)
-    /home/s4996755/env/lib64/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:558 _apply_op_helper
-        inferred_from[input_arg.type_attr]))
-
-    TypeError: Input 'updates' of 'TensorScatterUpdate' Op has type int32 that does not match type int64 of argument 'tensor'.
-
-  0%|          | 0/10 [00:05<?, ?epoch/s]
-  0%|          | 0.00/652 [00:04<?, ?batch/s]2021-10-29 20:40:29.644744: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:29.664717: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:29.665201: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:29.666107: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2021-10-29 20:40:29.667894: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:29.668289: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:29.668557: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:30.421930: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:30.422520: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:30.422857: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:937] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
-2021-10-29 20:40:30.423198: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1510] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 29062 MB memory:  -> device: 0, name: GRID V100D-32Q, pci bus id: 0000:02:00.0, compute capability: 7.0
-loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
-Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "classifier_dropout": null,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "transformers_version": "4.11.3",
-  "type_vocab_size": 2,
-  "use_cache": true,
-  "vocab_size": 30522
-}
-
-loading file https://huggingface.co/bert-base-uncased/resolve/main/vocab.txt from cache at /home/s4996755/.cache/huggingface/transformers/45c3f7a79a80e1cf0a489e5c62b43f173c15db47864303a55d623bb3c96f72a5.d789d64ebfe299b0e416afc4a169632f903f693095b4629a7ea271d5a0cf2c99
-loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer.json from cache at /home/s4996755/.cache/huggingface/transformers/534479488c54aeaf9c3406f647aa2ec13648c06771ffe269edabebd4c412da1d.7f2721073f19841be16f41b0a70b600ca6b880c8f3df6f3535cbc704371bdfa4
-loading file https://huggingface.co/bert-base-uncased/resolve/main/added_tokens.json from cache at None
-loading file https://huggingface.co/bert-base-uncased/resolve/main/special_tokens_map.json from cache at None
-loading file https://huggingface.co/bert-base-uncased/resolve/main/tokenizer_config.json from cache at /home/s4996755/.cache/huggingface/transformers/c1d7f0a763fb63861cc08553866f1fc3e5a6f4f07621be277452d26d71303b7e.20430bd8e10ef77a7d2977accefe796051e01bc2fc4aa146bc862997a1a15e79
-loading configuration file https://huggingface.co/bert-base-uncased/resolve/main/config.json from cache at /home/s4996755/.cache/huggingface/transformers/3c61d016573b14f7f008c02c4e51a366c67ab274726fe2910691e2a761acf43e.37395cee442ab11005bcd270f3c34464dc1704b715b5d7d52b1a461abe3b9e4e
-Model config BertConfig {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "classifier_dropout": null,
-  "gradient_checkpointing": false,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "pad_token_id": 0,
-  "position_embedding_type": "absolute",
-  "transformers_version": "4.11.3",
-  "type_vocab_size": 2,
-  "use_cache": true,
-  "vocab_size": 30522
-}
-
-404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_512_3e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
-Traceback (most recent call last):
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 554, in get_config_dict
-    user_agent=user_agent,
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1410, in cached_path
-    local_files_only=local_files_only,
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/file_utils.py", line 1574, in get_from_cache
-    r.raise_for_status()
-  File "/home/s4996755/env/lib64/python3.6/site-packages/requests/models.py", line 953, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 404 Client Error: Not Found for url: https://huggingface.co/Saved_Models/LONG_512_3e-05_10_3_8_custom_Adam-trial/resolve/main/config.json
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "test.py", line 138, in <module>
-    main()
-  File "test.py", line 131, in main
-    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
-  File "test.py", line 91, in test
-    model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/auto_factory.py", line 397, in from_pretrained
-    pretrained_model_name_or_path, return_unused_kwargs=True, **kwargs
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/models/auto/configuration_auto.py", line 527, in from_pretrained
-    config_dict, _ = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/transformers/configuration_utils.py", line 570, in get_config_dict
-    raise EnvironmentError(msg)
-OSError: Can't load config for '../Saved_Models/LONG_512_3e-05_10_3_8_custom_Adam-trial'. Make sure that:
-
-- '../Saved_Models/LONG_512_3e-05_10_3_8_custom_Adam-trial' is a correct model identifier listed on 'https://huggingface.co/models'
-
-- or '../Saved_Models/LONG_512_3e-05_10_3_8_custom_Adam-trial' is the correct path to a directory containing a config.json file
-
-
-Traceback (most recent call last):
-  File "evaluate.py", line 94, in <module>
-    main()
-  File "evaluate.py", line 85, in main
-    output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
-  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 688, in read_csv
-    return _read(filepath_or_buffer, kwds)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 454, in _read
-    parser = TextFileReader(fp_or_buf, **kwds)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 948, in __init__
-    self._make_engine(self.engine)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 1180, in _make_engine
-    self._engine = CParserWrapper(self.f, **self.options)
-  File "/home/s4996755/env/lib64/python3.6/site-packages/pandas/io/parsers.py", line 2010, in __init__
-    self._reader = parsers.TextReader(src, **kwds)
-  File "pandas/_libs/parsers.pyx", line 382, in pandas._libs.parsers.TextReader.__cinit__
-  File "pandas/_libs/parsers.pyx", line 674, in pandas._libs.parsers.TextReader._setup_parser_source
-FileNotFoundError: [Errno 2] No such file or directory: '../Output/LONG_512_3e-05_10_3_8_custom_Adam-trial.csv'
-
-
-###############################################################################
-Peregrine Cluster
-Job 21994616 for user 's4996755'
-Finished at: Fri Oct 29 20:40:48 CEST 2021
-
-Job details:
-============
-
-Job ID              : 21994616
-Name                : run.sh
-User                : s4996755
-Partition           : gpu
-Nodes               : pg-gpu33
-Number of Nodes     : 1
-Cores               : 12
-Number of Tasks     : 1
-State               : FAILED
-Submit              : 2021-10-29T20:33:20
-Start               : 2021-10-29T20:33:25
-End                 : 2021-10-29T20:40:48
-Reserved walltime   : 03:00:00
-Used walltime       : 00:07:23
-Used CPU time       : 00:04:16 (efficiency:  4.83%)
-% User (Computation): 72.30%
-% System (I/O)      : 27.70%
-Mem reserved        : 8000M/node
-Max Mem (Node/step) : 2.64G (pg-gpu33, per node)
-Full Max Mem usage  : 2.64G
-Total Disk Read     : 1.36G
-Total Disk Write    : 732.08M
-Average GPU usage   : 0.0% (pg-gpu33)
-
-
-Acknowledgements:
-=================
-
-Please see this page for information about acknowledging Peregrine in your publications:
-
-https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
-
-################################################################################

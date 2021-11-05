@@ -1,8 +1,6 @@
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
-import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
-import joblib
 import json
 
 DATA_DIR = '../../../train-test-dev/'
@@ -10,24 +8,20 @@ MODEL_DIR = "../Saved_Models/"
 OUTPUT_DIR = "../Output/"
 
 
-def get_model_name():
+def get_config():
 
+    """Return model name and paramters after reading it from json file"""
     try:
         location = 'config.json'
         with open(location) as file:
             configs = json.load(file)
-            vals = [str(v) for v in configs.values()]
-            model_name = "_".join(vals)
-        return model_name
+            vals = [str(v).upper() for v in configs.values()]
+            model_name = "_".join(vals[:-1])
+        return configs, model_name
     except FileNotFoundError as error:
         print(error)
 
 
-# def create_arg_parser():
-#     parser = argparse.ArgumentParser()
-#     parser.add_argument("-t", "--trial", action="store_true", help="Use smaller dataset for parameter optimization")
-#     args = parser.parse_args()
-#     return args
 
 def save_results(Y_test, Y_pred, model_name):
     
@@ -51,12 +45,12 @@ def save_results(Y_test, Y_pred, model_name):
     result['macro f1-score'] = test_report['macro avg']['f1-score']
 
     try:
-        df = pd.read_csv(OUTPUT_DIR+"results.csv")
+        df = pd.read_csv(OUTPUT_DIR+"RESULTS.csv")
         df = df.append(result, ignore_index=True)
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df.to_csv(OUTPUT_DIR+"RESULTS.csv",index=False)
     except FileNotFoundError:
         df = pd.DataFrame(result,index=[0])
-        df.to_csv(OUTPUT_DIR+"results.csv",index=False)
+        df.to_csv(OUTPUT_DIR+"RESULTS.csv",index=False)
 
     # save the confusion matrix of the model in png file
     cm = confusion_matrix(Y_test, Y_pred)
@@ -75,13 +69,19 @@ def save_results(Y_test, Y_pred, model_name):
 
 def main():
 
+
+    #get parameters for experiments
+    config, model_name = get_config()
     
-    model_name = get_model_name()
-    
+    if config['training-set'] != 'trial':
+        model_name = model_name+"_"+str(config['seed'])
+
+    #read models prediction from csv file
     output = pd.read_csv(OUTPUT_DIR+model_name+'.csv')
     Y_test = output['Test']
     Y_predict = output['Predict']
 
+    #save results in directory
     save_results(Y_test, Y_predict, model_name)
 
 
