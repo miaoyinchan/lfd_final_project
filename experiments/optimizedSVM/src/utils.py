@@ -21,9 +21,14 @@ nlp = spacy.load("en_core_web_sm")
 MODEL_DIR = "../Saved_Models"
 
 
-def saveModel(classifier, experiment_name):
-    '''Save the trained model'''
-    joblib.dump(classifier, f"{MODEL_DIR}/{experiment_name}", compress=9)
+def saveModel(classifier,experiment_name ):
+    """Save the trained model"""
+    try:
+        os.mkdir(MODEL_DIR)
+        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
+
+    except OSError as error:
+        joblib.dump(classifier, MODEL_DIR+experiment_name, compress=9)
 
 
 def read_data(dataset):
@@ -51,12 +56,12 @@ class LemmaTokenizer:
 
 
 def tokenizer_pos_tag(doc):
-    '''Get POS tag using spacy'''
+    """Get POS tag using spacy"""
     return [token.pos_ for token in nlp(doc)]
 
 
 def tokenizer_ner_tag(doc):
-    '''Get NER tag using spacy'''
+    """Get NER tag using spacy"""
     return [token.label_ for token in nlp(doc).ents]
 
 

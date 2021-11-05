@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Tuning Linear SVM model using
+"""Tune Linear SVM model using
    TFIDF vectors, and word ngram
    range (1, 3) features to find
    the hyper-parameter."""
