@@ -53,6 +53,12 @@ def create_arg_parser():
         help="Upsampling on minority class and downsampling "
              "on majority class",
     )
+    parser.add_argument(
+        "-b",
+        "--bestmodel",
+        action="store_true",
+        help="Train model only with the hyper-parameter c=1",
+    )
 
     args = parser.parse_args()
     return args
@@ -77,11 +83,17 @@ def main():
     else:
         X_train, Y_train = read_data(f"{DATA_DIR}/train_aug.csv")
 
-        # Tune hyperparameters in this range of c value for
-        # model trained with augmentation data
-        C_values = [1, 10, 100, 1000]
-        for c in C_values:
-            train_model(c, X_train, Y_train, f"model_upsampling_aug_{c}")
+        # Select this option, only model with hyperparameter c=1 trained
+        if args.bestmodel:
+            train_model(1, X_train, Y_train, "model_upsampling_aug_1")
+
+        else:
+            # Tune hyperparameters in this range of c value for
+            # model trained with augmentation data
+            C_values = [1, 10, 100, 1000]
+            for c in C_values:
+                train_model(c, X_train, Y_train, f"model_upsampling_aug_{c}")
+
 
 
 if __name__ == "__main__":
