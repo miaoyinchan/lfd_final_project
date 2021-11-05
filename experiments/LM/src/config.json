@@ -10,7 +10,7 @@
     "batch_size": 8,
     "loss": "custom",
     "optimizer": "adam",
-    "experiment": "full",
+    "training-set": "trial",
     "seed": 1234
 
 
