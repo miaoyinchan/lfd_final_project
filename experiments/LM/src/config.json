@@ -2,15 +2,15 @@
 {
 
    
-    "model": "BERT",
-    "max_length" : 512,
-    "learning_rate": 5e-5,
+    "model": "LONG",
+    "max_length" : 1024,
+    "learning_rate": 3e-4,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
-    "loss": "custom",
-    "optimizer": "adam",
-    "training-set": "trial",
+    "loss": "binary",
+    "optimizer": "sgd",
+    "training-set": "full",
     "seed": 1234
 
 

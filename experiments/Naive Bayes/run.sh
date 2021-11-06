@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo $1
 
 cd src
 if [[ "$1" == "train" ]]

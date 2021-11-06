@@ -38,9 +38,14 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Pre-trained Language Models, run bash file from ***experiments/LM/***
 
-    * excecute `run.sh train` to train, test, and evaluate a model from scratch
-    * excecute `run.sh test` to test and evaluate a saved models
-    * excecute `run.sh eval` to evaluate a saved models
+    * **option:** use `train` to train, test, and evaluate a model from scratch, 
+                      `test` to test and evaluate a saved model, 
+                      `evaluate` to evaluate a saved model
+                    
+    * **testset:** use `24` to test the model on data from 24th meeting and
+                       `25` will test the model on 25th COP meeting
+    
+    **Example** `run.sh train 25` 
 
 * Models are available for following parameters:
 
@@ -82,9 +87,17 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    * excecute `run.sh train` to train, test, and evaluate a model from scratch
-    * excecute `run.sh test` to test and evaluate a saved models
-    * excecute `run.sh eval` to evaluate a saved models
+    execute `run.sh [option] [testset]`
+
+
+    * **option:** use `train` to train, test, and evaluate a model from scratch, 
+                      `test` to test and evaluate a saved model, 
+                      `evaluate` to evaluate a saved model
+                    
+    * **testset:** use `24` to test the model on data from 24th meeting and
+                       `25` will test the model on 25th COP meeting
+    
+    **Example** `run.sh train 25` 
 
 * Models are available for following parameters:
 
