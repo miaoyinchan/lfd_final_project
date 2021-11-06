@@ -60,6 +60,8 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Pre-trained Language Models, run bash file from ***experiments/LM/***
 
+    execute `run.sh [option] [testset]`
+
     * **option:** use `train` to train, test, and evaluate a model from scratch, 
                       `test` to test and evaluate a saved model, 
                       `evaluate` to evaluate a saved model
