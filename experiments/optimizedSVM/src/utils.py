@@ -82,12 +82,13 @@ def create_arg_parser():
         action="store_true",
         help="Use the TF-IDF vectorizer instead of CountVectorizer",
     )
-    parser.add_argument(
-        "-ts",
+    parser.add_argument("-ts",
         "--testset",
+        default="24",
         type=str,
-        help="Input directory of an unseen testset "
-             "(only used for test.py)",
+        help="define the test set. By default it uses "
+             "the 24th meeting as test set. Input "
+             " '25' to use the 25th meeting as test set."
     )
     for i in range(1, 12):
         parser.add_argument(

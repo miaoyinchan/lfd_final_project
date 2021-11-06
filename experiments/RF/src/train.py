@@ -65,6 +65,7 @@ def train_model(ccp_alpha, vec, X_train, Y_train, experiment_name):
 def main():
     args = create_arg_parser()
     # Load training set.
+    # TODO: args.testset
     X_train, Y_train = load_data(f"{DATA_DIR}/train.csv")
 
     # Convert the texts to tfidf or CV

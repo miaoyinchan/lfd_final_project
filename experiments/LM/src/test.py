@@ -22,7 +22,10 @@ def create_arg_parser():
         "--testset",
         default="24",
         type=str,
-        help="define the test set. By default it uses the 24th meeting as test set")
+        help="define the test set. By default it uses "
+             "the 24th meeting as test set. Input "
+             " '25' to use the 25th meeting as test set."
+        )
 
     args = parser.parse_args()
     return args
