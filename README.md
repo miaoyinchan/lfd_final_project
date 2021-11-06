@@ -10,8 +10,30 @@ Clone this reppository `https://github.com/miaoyinchan/lfd_final_project.git`
 
 To install recquired packagaes:
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt`
+```
 
+In case you cannot download nltk to Peregrine from this command line in data-processing.py
+
+```nltk.download("punkt")```
+
+Please try the following codes in Peregrine  To install NLTK data on Peregrine:
+
+```
+python
+import nltk
+import ssl
+
+try:
+    _create_unverified_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+else:
+    ssl._create_default_https_context = _create_unverified_https_context
+
+nltk.download("punkt")
+```
 
 ## Data Pre-Processing
 
