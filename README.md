@@ -58,18 +58,6 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 ### Pre-trained Language Model
 
-* To run experiments with Pre-trained Language Models, run bash file from ***experiments/LM/***
-
-    execute `run.sh [option] [testset]`
-
-    * **option:** use `train` to train, test, and evaluate a model from scratch, 
-                      `test` to test and evaluate a saved model, 
-                      `evaluate` to evaluate a saved model
-                    
-    * **testset:** use `24` to test the model on data from 24th meeting and
-                       `25` will test the model on 25th COP meeting
-    
-    **Example** `run.sh train 25` 
 
 * Models are available for following parameters:
 
@@ -107,21 +95,19 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
     ```
 * Values in between brackets are only given here for explananation. Please use the values presented as bold text into the config.json file to run experiments. 
 
-### Naive Bayes
-
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    execute `run.sh [option] [testset]`
+    execute `run.sh [testset] [--option]`
 
-
-    * **option:** use `train` to train, test, and evaluate a model from scratch, 
-                      `test` to test and evaluate a saved model, 
-                      `evaluate` to evaluate a saved model
-                    
     * **testset:** use `24` to test the model on data from 24th meeting and
-                       `25` will test the model on 25th COP meeting
+                       `25` will test the model on 25th COP meeting **[Mandatory]**
+
+    * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh train 25` 
+    **Example** `run.sh 25 t` 
+
+### Naive Bayes
+
 
 * Models are available for following parameters:
 
@@ -133,6 +119,17 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 
 * Parameters can be changed at ***experiments/Naive Bayes/src/config.json*** file
+
+* To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
+
+    execute `run.sh [testset] [--option]`
+
+    * **testset:** use `24` to test the model on data from 24th meeting and
+                       `25` will test the model on 25th COP meeting **[Mandatory]**
+
+    * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
+    
+    **Example** `run.sh 25 t` 
 
 ### Random Forest
 
