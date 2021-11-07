@@ -1,6 +1,6 @@
 # Binary Text Classification On Imbalanced Data
 
-**Add abstract here**
+ One of the most significant developments in the field of Natural Language Processing (NLP) in the recent decade has been the emergence of powerful pre-trained language models. Language models are pre-trained to understand a language so that they can be asked to perform any given task, such as text classification. A real scenario of the NLP world is that imbalanced data often make models biased. It is interesting to know how far these pre-trained language models can deal with an imbalanced dataset. In this work, we have compared pre-trained language model BERT with LongTransformer, Long Short-Term Memory architecture (LSTM), and classical machine learning models in a binary text classifications task on an imbalanced data set. Moreover, data augmentation and downsampling techniques were applied to see if they can help to improve the performance of the models. In an imbalanced dataset with binary class, we find the fine-tuned Longformer model obtained an F1-score of 94.50 for the minority class and a macro F1-score of 96.08.
 
 ## Environment Setup
 
@@ -104,7 +104,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` 
+    **Example** `run.sh 25 t` or `run.sh 24` 
 
 ### Naive Bayes
 
@@ -129,7 +129,7 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` 
+    **Example** `run.sh 25 t` or `run.sh 24`
 
 ### Random Forest
 
