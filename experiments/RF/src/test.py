@@ -26,8 +26,12 @@ def print_predicted_labels_to_file(classifier, X_test, Y_test, experiment_name, 
 
 def main():
     args = create_arg_parser()
-    # Load training and test sets.
-    X_test, Y_test = load_data(f"{DATA_DIR}/test.csv")
+
+    # Load test set from train-test-dev folder
+    testset_filepath = f"{DATA_DIR}/test.csv"
+    if args.testset == "25":
+        testset_filepath = f"{DATA_DIR}/test_25th.csv"
+    X_test, Y_test = load_data(testset_filepath)
 
     if args.tfidf:
         experiment_name = "RF+Tf-idf"

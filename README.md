@@ -135,13 +135,15 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run the baseline model using Random Forest algorithm (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), run bash file from ***experiments/RF/***
 
-    * excecute `run.sh` to train the RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), then test the model with test set, and then evaluate the model and print F1 scores of the model to file (experiments/RF/Output/results.csv).
+    * excecute `run_24.sh` to train the RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), then test the model with our **test set** (the **24th** COP meeting), and then evaluate the model and print F1 scores of the model to file (experiments/RF/Output/results.csv).
+
+    * excecute `run_25.sh` to train the RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data), then test the model with the **unseen test set** (the **25th** COP meeting), and then evaluate the model and print F1 scores of the model to file (experiments/RF/Output/results.csv).
 
 
 * If just to test and evaluate the baseline RF model (with the best alpha value ccp_alpha=0.0, using TF-IDF features, trained on the full training data) which has been trained and uploaded in GoogleDrive:
 
     * The baseline RF model named "RF+Tf-idf_ccp_alpha_0.0".
-    * execute `test.py -t -b` to test the model.
+    * execute `test.py -t -b -ts 24` to test the model with the **test set**, or `test.py -t -b -ts 25` to test the model with the **unseen test set**.
     * execute `evaluate.py -t -b` to get scores of the model.
 
 
@@ -154,13 +156,15 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), run bash file from ***experiments/OptimizedSVM/***
 
-    * excecute `run.sh` to train the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), then test the model with test set, and then evaluate the model and print F1 scores of the model to file (experiments/OptimizedSVM/Output/results.csv).
+    * excecute `run_24.sh` to train the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), then test the model with our **test set** (the **24th** COP meeting), and then evaluate the model and print F1 scores of the model to file (experiments/OptimizedSVM/Output/results.csv).
+
+    * excecute `run_25.sh` to train the best Linear SVM model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set), then test the model with the **unseen test set** (the **25th** COP meeting), and then evaluate the model and print F1 scores of the model to file (experiments/OptimizedSVM/Output/results.csv).
 
 
 * If just to test and evaluate the best model (with the best C value c=1.0, using TF-IDF vectors, and word ngram range(1,3) features, trained on augmented training set) which has been trained and uploaded in GoogleDrive:
 
     * The best Linear SVM model named "model_upsampling_aug_1".
-    * execute`test.py -u1` to test the model.
+    * execute`test.py -u1 -ts 24` to test the model with the **test set**, or execute`test.py -u1 -ts 25` to test the model with the **unseen test set**.
     * execute `evaluate.py -u1` to get scores of the model.
 
 
