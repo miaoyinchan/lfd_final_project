@@ -30,11 +30,15 @@ MODEL_DIR = "../Saved_Models"
 OUTPUT_DIR = "../Output"
 
 
-def load_data(directory):
-    """Load data from csv file"""
-    df = pd.read_csv(directory)
-    X = df["article"].ravel()
-    Y = df["topic"]
+def load_data(filepath, testset):
+    """Return test sets reading from csv files"""
+    if testset=="24":
+        df_test = pd.read_csv(f"{filepath}/test.csv")
+    elif testset=="25":
+        df_test = pd.read_csv(f"{filepath}/test_25th.csv")
+
+    X = df_test["article"].ravel()
+    Y = df_test["topic"]
 
     return X, Y
 
@@ -46,12 +50,8 @@ def main():
     # based on the input setting
     experiment_name = set_args()
 
-    # Test with an unseen test set
-    if args.testset:
-        X_test, Y_test = load_data(args.testset)
-    else:
-        # Load test sets.
-        X_test, Y_test = load_data(f"{DATA_DIR}/test.csv")
+    # Load test set from train-test-dev folder
+    X_test, Y_test = load_data(DATA_DIR, args.testset)
 
     # Load the saved model
     classifier = joblib.load(f"{MODEL_DIR}/{experiment_name}")

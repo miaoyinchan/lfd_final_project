@@ -1,31 +1,30 @@
 import os
-import json
 import pandas as pd
 import joblib
+import utils
+import argparse
 
+def create_arg_parser():
 
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-OUTPUT_DIR = "../Output/"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-ts",
+        "--testset",
+        default="24",
+        type=str,
+        help="define the test set. By default it uses the 24th meeting as test set")
 
-def get_config():
+    args = parser.parse_args()
+    return args
 
-    """Return model name and paramters after reading it from json file"""
-    try:
-        location = 'config.json'
-        with open(location) as file:
-            configs = json.load(file)
-            vals = [str(v).upper() for v in configs.values()]
-            model_name = "_".join(vals)
-        return model_name
-    except FileNotFoundError as error:
-        print(error)
-
-def load_data(dir):
+def load_data(dir, testset):
 
     """ Return article and label from test data """
 
-    df = pd.read_csv(dir+'/test.csv')
+    if testset == "24":
+        df = pd.read_csv(dir+'/test.csv')
+    elif testset=="25":
+        df = pd.read_csv(dir+'/test_25th.csv')
+
     X = df['article'].ravel()
     Y = df['topic']
     
@@ -35,15 +34,14 @@ def main():
 
     
     #get parameters for experiments
-    model_name = get_config()
-
-    
+    _, model_name = utils.get_config()
 
     #Load a Naive Bayes classifier model
-    classifier = joblib.load(MODEL_DIR+model_name)
+    classifier = joblib.load(utils.MODEL_DIR+model_name)
 
     #load data from train-test-dev folder
-    X_test, Y_test = load_data(DATA_DIR)
+    args = create_arg_parser()
+    X_test, Y_test = load_data(utils.DATA_DIR, args.testset)
 
     #Test the model with test set
     Y_pred = classifier.predict(X_test)
@@ -56,11 +54,11 @@ def main():
 
     #save output
     try:
-        os.mkdir(OUTPUT_DIR)
-        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
+        os.mkdir(utils.OUTPUT_DIR)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
         
     except OSError as error:
-        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
         
     
 

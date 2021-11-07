@@ -3,7 +3,6 @@ import logging
 log = logging.getLogger('transformers')
 log.setLevel(logging.INFO)
 print = log.info
-import json
 import os
 import pandas as pd
 from transformers import TFAutoModelForSequenceClassification
@@ -11,45 +10,35 @@ from transformers import AutoTokenizer
 import numpy as np
 import tensorflow as tf
 import random as python_random
+import utils
+import argparse
 
 
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-OUTPUT_DIR = "../Output/"
-LOG_DIR = "../Logs/"
 
-def change_dtype(tokens):
+def create_arg_parser():
 
-    """Return model inputs after changing data type to int32"""
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-ts",
+        "--testset",
+        default="24",
+        type=str,
+        help="define the test set. By default it uses "
+             "the 24th meeting as test set. Input "
+             " '25' to use the 25th meeting as test set."
+        )
 
-    tokens['input_ids'] = tokens['input_ids'].astype('int32')
-    tokens['input_ids'] = tokens['input_ids'].astype('int32')
-
-    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
-    tokens['attention_mask'] = tokens['attention_mask'].astype('int32')
+    args = parser.parse_args()
+    return args
     
-    return tokens
 
-def get_config():
-
-    """Return model name and paramters after reading it from json file"""
-
-    try:
-        location = 'config.json'
-        with open(location) as file:
-            configs = json.load(file)
-            vals = [str(v).upper() for v in configs.values()]
-            model_name = "_".join(vals[:-1])
-        return configs, model_name
-    except FileNotFoundError as error:
-        print(error)
-
-
-def load_data(dir):
+def load_data(dir, testset):
 
     """Return test sets reading from csv files"""
+    if testset=="24":
+        df_test = pd.read_csv(dir+'/test.csv')
+    elif testset=="25":
+        df_test = pd.read_csv(dir+'/test_25th.csv')
 
-    df_test = pd.read_csv(dir+'/test.csv')
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
 
@@ -75,11 +64,11 @@ def save_output(Y_test, Y_pred, model_name):
 
     #save output in directory
     try:
-        os.mkdir(OUTPUT_DIR)
-        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
+        os.mkdir(utils.OUTPUT_DIR)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
         
     except OSError as error:
-        df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
    
 
 def test(X_test, Y_test, config, model_name):
@@ -107,10 +96,10 @@ def test(X_test, Y_test, config, model_name):
     
     #change the data type of model inputs to int32 
     if config["model"] =='LONG':
-        tokens_test = change_dtype(tokens_test)
+        tokens_test = utils.change_dtype(tokens_test)
 
     #get transformer text classification model based on pre-trained model
-    model = TFAutoModelForSequenceClassification.from_pretrained(MODEL_DIR+model_name)
+    model = TFAutoModelForSequenceClassification.from_pretrained(utils.MODEL_DIR+model_name)
 
     #get model's prediction
     Y_pred = model.predict(tokens_test, batch_size=1)["logits"]
@@ -124,7 +113,7 @@ def set_log(model_name):
 
     #create log file
     try:
-        os.mkdir(LOG_DIR)
+        os.mkdir(utils.LOG_DIR)
         log.setLevel(logging.INFO)
 
     except OSError as error:
@@ -134,7 +123,7 @@ def set_log(model_name):
     #create formatter and add it to the handlers
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     #create file handler which logs info
-    fh = logging.FileHandler(LOG_DIR+model_name+".log")
+    fh = logging.FileHandler(utils.LOG_DIR+model_name+".log")
     fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     log.addHandler(fh)
@@ -147,7 +136,7 @@ def main():
         tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
     #get parameters for experiments
-    config, model_name = get_config()
+    config, model_name = utils.get_config()
     
     if config['training-set'] != 'trial':
         model_name = model_name+"_"+str(config['seed'])
@@ -155,8 +144,11 @@ def main():
     #set log settings
     set_log(model_name)
 
+    args = create_arg_parser()
+
+
     #load data from train-test-dev folder
-    X_train, Y_train = load_data(DATA_DIR)
+    X_train, Y_train = load_data(utils.DATA_DIR,args.testset)
     Y_test, Y_pred = test(X_train, Y_train, config, model_name)
     
     #save output in directory

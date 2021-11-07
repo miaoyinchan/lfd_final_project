@@ -6,26 +6,7 @@ import pandas as pd
 from nltk.tokenize import word_tokenize
 from sklearn.pipeline import Pipeline
 import joblib
-import json
-
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-LOG_DIR = "../Logs/"
-
-
-
-def get_config():
-
-    """Return model name and paramters after reading it from json file"""
-    try:
-        location = 'config.json'
-        with open(location) as file:
-            configs = json.load(file)
-            vals = [str(v).upper() for v in configs.values()]
-            model_name = "_".join(vals)
-        return configs, model_name
-    except FileNotFoundError as error:
-        print(error)
+import utils
 
 
 def load_data(dir, training_set):
@@ -47,7 +28,7 @@ def load_data(dir, training_set):
 def main():
 
     #get parameters for experiments
-    config, model_name = get_config()
+    config, model_name = utils.get_config()
 
     #get n-gram parameters from config
     
@@ -63,12 +44,12 @@ def main():
 
     #Create Log file
     try:
-        os.mkdir(LOG_DIR)
-        log = logging.basicConfig(filename=LOG_DIR+model_name+'.log',level=logging.INFO)
+        os.mkdir(utils.LOG_DIR)
+        log = logging.basicConfig(filename=utils.LOG_DIR+model_name+'.log',level=logging.INFO)
         print = log
     except OSError as error:
-        logging.basicConfig(filename=LOG_DIR+model_name+'.log', level=logging.INFO)
-        log = logging.basicConfig(filename=LOG_DIR+model_name+'.log',level=logging.INFO)
+        logging.basicConfig(filename=utils.LOG_DIR+model_name+'.log', level=logging.INFO)
+        log = logging.basicConfig(filename=utils.LOG_DIR+model_name+'.log',level=logging.INFO)
         print = log
     
 
@@ -76,7 +57,7 @@ def main():
     classifier = Pipeline([('vec', vec), ('cls', MultinomialNB())])
 
     #load data from train-test-dev folder
-    X_train, Y_train = load_data(DATA_DIR, config['training-set'])
+    X_train, Y_train = load_data(utils.DATA_DIR, config['training-set'])
 
     # Train the model with training set
     classifier.fit(X_train, Y_train)
@@ -86,11 +67,11 @@ def main():
 
     #save model output directory
     try:
-        os.mkdir(MODEL_DIR)
-        joblib.dump(classifier, MODEL_DIR+model_name, compress=9)
+        os.mkdir(utils.MODEL_DIR)
+        joblib.dump(classifier, utils.MODEL_DIR+model_name, compress=9)
         
     except OSError as error:
-        joblib.dump(classifier, MODEL_DIR+model_name, compress=9)
+        joblib.dump(classifier, utils.MODEL_DIR+model_name, compress=9)
     
 
 if __name__ == "__main__":
