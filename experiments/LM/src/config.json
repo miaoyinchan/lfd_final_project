@@ -10,7 +10,7 @@
     "batch_size": 8,
     "loss": "binary",
     "optimizer": "sgd",
-    "training-set": "full",
+    "training-set": "resample-balance",
     "seed": 1234
 
 

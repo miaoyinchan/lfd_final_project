@@ -20,7 +20,7 @@ def load_data():
     test = pd.read_csv("train-test-dev/test.csv")
     dev = pd.read_csv("train-test-dev/dev.csv")
     train_resample = pd.read_csv("train-test-dev/train_aug.csv")
-    train_resample_balance = pd.read_csv("train-test-dev/train_aug.csv")
+    train_resample_balance = pd.read_csv("train-test-dev/train_down.csv")
     return train, test, dev, train_resample, train_resample_balance
 
 def find_distribution(df, column_name):
