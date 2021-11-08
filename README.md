@@ -232,9 +232,11 @@ run `test.py -m <modelname> -t <traininge set> -ts <test set>` and `evaluate.py 
     * or `test.py -m aug_model_model -t train_aug -ts test_25th.csv` to use the 25th cop meeting a test set
     * then, execute `evaluate.py -e aug_model_model` to get scores of the model.
 
+* **IMPORTANT**: We find that sometimes keras does not load the weights from saved model and initialize random weights which produce very poor result. We have followed everything from kears documentations but still it does not work. Besides, we have tried solutions form [here](https://github.com/keras-team/keras/issues/4875). It works fine in peregrine but not in our pc.
+In case, if it does not work, please run `train_test_evaluate.py` from ***experiments/LSTM/src*** which trains the model, predict outputs and evaluate it.
 * To train the model using different parameters, use the --h command of train.py
 
-* run `lstm.sh` from ***experiments/LSTM/src*** which trains the model, predict outputs and evaluate it. You can also change the arguments in the bash script. 
+* run `lstm.sh` from ***experiments/LSTM/src*** which trains the model, predict outputs and evaluate it. You can also change the arguments in the bash script to try different models. 
 
 
 
