@@ -16,7 +16,6 @@ import sys
 
 import joblib
 import spacy
-from imblearn.under_sampling import RandomUnderSampler
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline

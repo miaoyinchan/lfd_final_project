@@ -158,6 +158,12 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 * To train, test, and evaluate models with different features and parameter values(Count Vector or TF-IDF, with different alphas):
 
     * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+### SVM
+* To run the baseline model using SVM algorithm, run bash file from ***experiments/SVM/***
+    * excecute `svm.sh` to train the SVM model using Countvectors, test the model against our test set and evaluate it.
+    * excecute `svm_tfidf.sh` to train the SVM model using TF-IDF, test the model against our test set and evaluate it.
+    * excecute `svm_25.sh` to train the SVM model using Countvectors, test the model against the new test set (cop 25)  and evaluate it.
+    * excecute `svm_tfidf_25.sh` to train the SVM model using TF-IDF, test the model against the new test set (cop 25) and evaluate it.
 
 
 ### Optimized Linear SVM
