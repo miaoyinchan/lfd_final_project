@@ -43,8 +43,9 @@ def save_results(Y_test, Y_pred, model_name):
     acc = accuracy_score(Y_test, Y_pred)
     print("Final accuracy: {}".format(acc))
 
+    #print classification report
     print("\nClassification Report\n")
-    print(classification_report(Y_test,Y_pred))
+    print(classification_report(Y_test,Y_pred, digits=4))
 
 
 

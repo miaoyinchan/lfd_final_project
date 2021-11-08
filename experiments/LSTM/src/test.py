@@ -14,8 +14,10 @@ import random as python_random
 from tensorflow.keras.layers import TextVectorization
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
+
 from keras.backend import manual_variable_initialization 
 manual_variable_initialization(True)
+
 
 
 
@@ -124,6 +126,7 @@ def test(X_test, Y_test, model_name):
     Return list with predicted label and gold standartd
     """
     #load model
+    manual_variable_initialization(True)
     model_json = f"{model_name}.json"
     model_weight = f"{model_name}.h5"
     json_file = open(MODEL_DIR+model_json, 'r')

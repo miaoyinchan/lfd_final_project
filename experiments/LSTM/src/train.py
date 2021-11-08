@@ -407,10 +407,6 @@ def main():
        emb = get_embeddings(voc)
        emb_matrix = get_emb_matrix(voc, emb)
 
-    # Transform string labels to one-hot encodings
-    encoder = LabelBinarizer()
-    Y_train_bin = encoder.fit_transform(Y_train)  # Use encoder.classes_ to find mapping back
-    Y_dev_bin = encoder.fit_transform(Y_dev)
 
     # Create model
     model = create_model(Y_train, emb_matrix, args)

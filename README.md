@@ -4,14 +4,15 @@
 
 ## Environment Setup
 
-Requires Python 3.6+ and it is recommended to use virtual environment such as virtualenv
+Requires Python 3.8+ and it is recommended to use virtual environment such as virtualenv
 
 Clone this reppository `https://github.com/miaoyinchan/lfd_final_project.git`
 
 To install recquired packagaes:
 
 ```
-pip install -r requirements.txt`
+pip install -r requirements.txt
+
 ```
 
 In case you cannot download nltk to Peregrine from this command line in data-processing.py
@@ -37,13 +38,17 @@ nltk.download("punkt")
 
 ## Data Pre-Processing
 
-For data pre-processing, run:
-
-`pre-processing.sh`
+**IMPORTNAT**
 
 * It is assumed that data is present at ***data*** folder
-* This command will **NOT** add augmented data and it is recommended to create a directory named ***train-test-dev*** in the project folder and download the file ***train_aug.csv*** from [here](https://drive.google.com/file/d/1tHI_j5RUNZH8Cx2NIaR_L9oC765s3CSX/view?usp=sharing).
-* Otherwise, run `pre-processing.sh upsampling` to add augmented data from scratch but it can take considerable amount of time (e.g 4-6 hours) to finish
+* The following command will **NOT** add augmented data and it is recommended to create a directory named ***train-test-dev*** in the project folder and download the file ***train_aug.csv*** from [here](https://drive.google.com/file/d/1tHI_j5RUNZH8Cx2NIaR_L9oC765s3CSX/view?usp=sharing).
+
+* For data pre-processing, run: `pre-processing.sh`
+
+
+* To add augmented data from scratch you can run `pre-processing.sh upsampling`  but it can take considerable amount of time (e.g 4-6 hours) to finish.
+
+* Please ensure you have *test.csv* and *test_25th.csv* files in the *train-test-dev* folder
 
 To get a summery of data and create graphical plots, run:
 
@@ -51,9 +56,12 @@ To get a summery of data and create graphical plots, run:
 
 ## Experiments
 
-Download all saved models from [here](https://drive.google.com/drive/folders/1g7D1uaNfiLXztpZqMaM8WWEU00cxeSKL?usp=sharing). To distribute models in respective folders, **unzip** the downloaded file and run:
+Download all saved models from [here](https://drive.google.com/drive/folders/1g7D1uaNfiLXztpZqMaM8WWEU00cxeSKL?usp=sharing). 
 
-`python3 model-distribute.py`
+* Please download all files in *lfd_final_project* folder and execute `model-distribute.sh`
+
+* The bash script will combine all zip files and distribute into respective folders
+
 
 
 ### Pre-trained Language Model
@@ -150,6 +158,12 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 * To train, test, and evaluate models with different features and parameter values(Count Vector or TF-IDF, with different alphas):
 
     * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+### SVM
+* To run the baseline model using SVM algorithm, run bash file from ***experiments/SVM/***
+    * excecute `svm.sh` to train the SVM model using Countvectors, test the model against our test set and evaluate it.
+    * excecute `svm_tfidf.sh` to train the SVM model using TF-IDF, test the model against our test set and evaluate it.
+    * excecute `svm_25.sh` to train the SVM model using Countvectors, test the model against the new test set (cop 25)  and evaluate it.
+    * excecute `svm_tfidf_25.sh` to train the SVM model using TF-IDF, test the model against the new test set (cop 25) and evaluate it.
 
 
 ### Optimized Linear SVM
@@ -205,23 +219,33 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 
 ### LSTM   
-To run the best LSTM model, run bash file from ***experiments/LSTM/src***, which trains the model, test it and evaluate it.
 
-* To simply test and evaluate an existing model simply run `test.py -m <modelname> -t <traininge set>`
-    * The best LSTM model named "aug_model_model".
-    * execute`test.py ` to test the model or `test.py -ts test_25.csv` to use the 25th cop meeting
-    * execute `evaluate.py` to get scores of the model.
+* In order to run the experiment, Please dowload pre-trained word vector from [here](https://nlp.stanford.edu/data/glove.6B.zip). 
+
+* Create a directory names *data* in  *experiments/LSTM/src/data/* and copy the *glove.6B.200d.txt* file from downloaded folder
+
+* To simply test and evaluate an existing model,  
+run `test.py -m <modelname> -t <traininge set> -ts <test set>` and `evaluate.py -e <modelname>`
+
+    * The test the LSTM model named *aug_model_model*.
+    * execute`test.py -m aug_model_model -t train_aug -ts test.csv` to get predictions from out test set.
+    * or `test.py -m aug_model_model -t train_aug -ts test_25th.csv` to use the 25th cop meeting a test set
+    * then, execute `evaluate.py -e aug_model_model` to get scores of the model.
+
 * To train the model using different parameters, use the --h command of train.py
-Requirements:
-* In order to run the experiment you need to download the glove.6B.200d.txt file and save it in the LSTM/src/data/
 
-    * Models:
+* run `lstm.sh` from ***experiments/LSTM/src*** which trains the model, predict outputs and evaluate it. You can also change the arguments in the bash script. 
 
-| Models            | Training data  |
-|-------------------|----------------|
-| aug_model_model | train_aug      |
-| base_model      | train          |
-| down_model      | train_down     |
+
+
+
+ * Please use following model names and corresponding training sets to run experiments:
+
+    | Models            | Training data  |
+    |-------------------|----------------|
+    | aug_model_model | train_aug      |
+    | base_model      | train          |
+    | down_model      | train_down     |
 
 
 

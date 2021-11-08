@@ -76,14 +76,17 @@ def main():
 
         try:
             train_aug = pd.read_csv(TRAIN_DIR+'train_aug.csv')
+            #get balanced train set after random downlsampling
+            train_down = downsampling(train_aug)
+
+            #save data in csv format
+            train_down.to_csv(TRAIN_DIR+'train_down.csv', index= False)
         except FileNotFoundError as error:
-            print("Please download the uplsampled data or run again with upsampling argument")
+            print("#########################################################################\n")
+            print("Please download the uplsampled data or run again with upsampling argument\n")
+            print("#########################################################################\n")
 
-        #get balanced train set after random downlsampling
-        train_down = downsampling(train_aug)
-
-        #save data in csv format
-        train_down.to_csv(TRAIN_DIR+'train_down.csv', index= False)
+        
     
 
 
