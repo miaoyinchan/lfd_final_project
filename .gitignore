@@ -3,7 +3,11 @@
 /experiments/RF/Saved_Models
 /experiments/LM/Saved_Models
 /experiments/optimizedSVM/Saved_Models
+/experiments/optimizedSVM/Output/oldoutput
+/experiments/optimizedSVM/src/resampling_SMOTE.py
+__pycache__
 /experiments/LSTM/Saved_Models
 /experiments/LSTM/src/train2.py
 /experiments/LSTM/src/train3.py
 /experiments/LSTM/src/data
+*.out

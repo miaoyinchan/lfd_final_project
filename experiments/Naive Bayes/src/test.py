@@ -1,35 +1,30 @@
 import os
-import argparse
 import pandas as pd
 import joblib
-
-
-DATA_DIR = '../../../train-test-dev/'
-MODEL_DIR = "../Saved_Models/"
-OUTPUT_DIR = "../Output/"
+import utils
+import argparse
 
 def create_arg_parser():
+
     parser = argparse.ArgumentParser()
-
-
-    parser.add_argument("-t", "--tfidf", action="store_true",
-                        help="Use the TF-IDF vectorizer instead of CountVectorizer")
-
-    parser.add_argument("-n1", "--n1", default=1, type=int,
-                        help="Ngram Start point")
-    
-    parser.add_argument("-n2", "--n2", default=1, type=int,
-                        help="Ngram End point")
-
+    parser.add_argument("-ts",
+        "--testset",
+        default="24",
+        type=str,
+        help="define the test set. By default it uses the 24th meeting as test set")
 
     args = parser.parse_args()
     return args
 
-def load_data(dir):
+def load_data(dir, testset):
 
     """ Return article and label from test data """
 
-    df = pd.read_csv(dir+'/test.csv')
+    if testset == "24":
+        df = pd.read_csv(dir+'/test.csv')
+    elif testset=="25":
+        df = pd.read_csv(dir+'/test_25th.csv')
+
     X = df['article'].ravel()
     Y = df['topic']
     
@@ -38,23 +33,15 @@ def load_data(dir):
 def main():
 
     
-    args = create_arg_parser()
-    n1 = args.n1
-    n2 = args.n2
-
-
-    if args.tfidf:
-        experiment_name = "NB+Tf-idf+"+str(n1)+"-"+str(n2)
-    else:
-        experiment_name = "NB+CV+"+str(n1)+"-"+str(n2)
-
-    
+    #get parameters for experiments
+    _, model_name = utils.get_config()
 
     #Load a Naive Bayes classifier model
-    classifier = joblib.load(MODEL_DIR+experiment_name)
+    classifier = joblib.load(utils.MODEL_DIR+model_name)
 
     #load data from train-test-dev folder
-    X_test, Y_test = load_data(DATA_DIR)
+    args = create_arg_parser()
+    X_test, Y_test = load_data(utils.DATA_DIR, args.testset)
 
     #Test the model with test set
     Y_pred = classifier.predict(X_test)
@@ -67,11 +54,11 @@ def main():
 
     #save output
     try:
-        os.mkdir(OUTPUT_DIR)
-        df.to_csv(OUTPUT_DIR+experiment_name+".csv", index=False)
+        os.mkdir(utils.OUTPUT_DIR)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
         
     except OSError as error:
-        df.to_csv(OUTPUT_DIR+experiment_name+".csv", index=False)
+        df.to_csv(utils.OUTPUT_DIR+model_name+".csv", index=False)
         
     
 

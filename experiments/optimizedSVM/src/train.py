@@ -1,9 +1,16 @@
+#!/usr/bin/env python
+
+"""Training Linear SVM models on the full
+   training set of COP meeting data
+   with different features, and tuning
+   these models to find the best one
+   for binary text classification."""
+
 import argparse
 import csv
 import logging
 import sys
 
-import joblib
 import spacy
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -15,9 +22,18 @@ from sklearn.feature_extraction.text import (
 from sklearn.pipeline import FeatureUnion, Pipeline
 from sklearn.svm import LinearSVC
 
+from utils import (
+    saveModel,
+    read_data,
+    LemmaTokenizer,
+    tokenizer_pos_tag,
+    tokenizer_ner_tag,
+)
+
 
 nlp = spacy.load("en_core_web_sm")
 csv.field_size_limit(sys.maxsize)
+
 
 DATA_DIR = "../../../train-test-dev"
 MODEL_DIR = "../Saved_Models"
@@ -28,7 +44,7 @@ def create_arg_parser():
     """
     Description:
     This method is an arg parser
-    Return
+    Return:
     This method returns a map with commandline parameters taken from the user
     """
     parser = argparse.ArgumentParser()
@@ -50,23 +66,12 @@ def create_arg_parser():
     return args
 
 
-def read_data(dataset):
-    sentences = []
-    labels = []
-    with open(dataset, "r") as file:
-        text = list(csv.reader(file, delimiter=","))
-        for row in text[1:]:
-            tokens = row[-2].strip().split()
-            sentences.append(" ".join(tokens))
-            labels.append(row[-1])
-    return sentences, labels
-
-
 def get_stop_words():
     """Get nltk stop words"""
     return stopwords.words("english")
 
 
+# Interface lemma tokenizer from nltk with sklearn
 class LemmaTokenizer:
     def __init__(self):
         self.wnl = WordNetLemmatizer()
@@ -76,14 +81,18 @@ class LemmaTokenizer:
 
 
 def tokenizer_pos_tag(doc):
+    """Get POS tag using spacy"""
     return [token.pos_ for token in nlp(doc)]
 
 
 def tokenizer_ner_tag(doc):
+    """Get NER tag using spacy"""
     return [token.label_ for token in nlp(doc).ents]
 
 
 def feature1_word_ngram(use_tfidf):
+    """Vectorize word ngram range(1,3)
+    (feature set 1)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -96,6 +105,7 @@ def feature1_word_ngram(use_tfidf):
 
 
 def pipeline1_word_ngram(use_tfidf):
+    """Set pipeline using feature set 1"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature1_word_ngram(use_tfidf)
     pipeline = Pipeline(
@@ -108,6 +118,8 @@ def pipeline1_word_ngram(use_tfidf):
 
 
 def feature2_char_gram(use_tfidf):
+    """Vectorize features character 5gram
+    (feature set 2)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -118,18 +130,9 @@ def feature2_char_gram(use_tfidf):
         max_features=5000,
     )
 
-    args = create_arg_parser()
-    if args.tfidf:
-        return TfidfVectorizer(
-            analyzer="char_wb", ngram_range=(5, 5), min_df=5, max_features=5000
-        )
-    else:
-        return CountVectorizer(
-            analyzer="char_wb", ngram_range=(5, 5), min_df=5, max_features=5000
-        )
-
 
 def pipeline2_char_gram(use_tfidf):
+    """Set pipeline using feature set 2"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature2_char_gram(use_tfidf)
     pipeline = Pipeline(
@@ -142,6 +145,8 @@ def pipeline2_char_gram(use_tfidf):
 
 
 def feature3_stop_words(use_tfidf):
+    """Vectorize features word ngram range (1,3)
+    excluding stop words (feature set 3)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -155,6 +160,7 @@ def feature3_stop_words(use_tfidf):
 
 
 def pipeline3_stop_words(use_tfidf):
+    """Set pipeline using feature set 3"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature3_stop_words(use_tfidf)
     pipeline = Pipeline(
@@ -167,6 +173,8 @@ def pipeline3_stop_words(use_tfidf):
 
 
 def feature4_pos(use_tfidf):
+    """Vectorize features using pos tag
+    (feature set 4)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -179,6 +187,7 @@ def feature4_pos(use_tfidf):
 
 
 def pipeline4_pos(use_tfidf):
+    """Set pipeline using feature set 4"""
     clf = LinearSVC(C=1.0, max_iter=100000000)
     vec = feature4_pos(use_tfidf)
     pipeline = Pipeline(
@@ -191,6 +200,8 @@ def pipeline4_pos(use_tfidf):
 
 
 def feature5_lemma(use_tfidf):
+    """Vectorize features using lemmatokenizer
+    (feature set 5)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -203,6 +214,7 @@ def feature5_lemma(use_tfidf):
 
 
 def pipeline5_lemma(use_tfidf):
+    """Set pipeline using feature set 5"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature5_lemma(use_tfidf)
     pipeline = Pipeline(
@@ -215,6 +227,8 @@ def pipeline5_lemma(use_tfidf):
 
 
 def feature6_ner(use_tfidf):
+    """Vectorize features using NER tag
+    (feature set 6)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -227,6 +241,7 @@ def feature6_ner(use_tfidf):
 
 
 def pipeline6_ner(use_tfidf):
+    """Set pipeline using feature set 6"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature6_ner(use_tfidf)
     pipeline = Pipeline(
@@ -239,6 +254,8 @@ def pipeline6_ner(use_tfidf):
 
 
 def feature7_word_ngram_1_4(use_tfidf):
+    """Vectorize features word ngram range(1,4)
+    feature set 7"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -251,6 +268,7 @@ def feature7_word_ngram_1_4(use_tfidf):
 
 
 def pipeline7_word_ngram_1_4(use_tfidf):
+    """Set pipeline using feature set 7"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature7_word_ngram_1_4(use_tfidf)
     pipeline = Pipeline(
@@ -263,12 +281,16 @@ def pipeline7_word_ngram_1_4(use_tfidf):
 
 
 def feature8_word_char_ngram(use_tfidf):
+    """Vectorize features combining word ngram
+    range(1,3) and character 5gram
+    (feature set 8)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature2_char_gram(use_tfidf)
     return FeatureUnion([("f1", f1), ("f2", f2)])
 
 
 def pipeline8_word_char_ngram(use_tfidf):
+    """Set pipeline using feature set 8"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature8_word_char_ngram(use_tfidf)
     pipeline = Pipeline(
@@ -281,12 +303,15 @@ def pipeline8_word_char_ngram(use_tfidf):
 
 
 def feature9_word_ngram_stopwords(use_tfidf):
+    """Union features word ngram range (1,3)
+    and character 5gram (feature set 9)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature3_stop_words(use_tfidf)
     return FeatureUnion([("f1", f1), ("f2", f2)])
 
 
 def pipeline9_word_ngram_stopwords(use_tfidf):
+    """Set up pipeline using features set 9"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature9_word_ngram_stopwords(use_tfidf)
     pipeline = Pipeline(
@@ -299,6 +324,9 @@ def pipeline9_word_ngram_stopwords(use_tfidf):
 
 
 def feature10_word_char_ngram_stopwords(use_tfidf):
+    """Union features word ngram range (1,3)
+    and character 5gram and stop words
+    (feature set 10)"""
     f1 = feature1_word_ngram(use_tfidf)
     f2 = feature2_char_gram(use_tfidf)
     f3 = feature3_stop_words(use_tfidf)
@@ -306,6 +334,7 @@ def feature10_word_char_ngram_stopwords(use_tfidf):
 
 
 def pipeline10_word_char_ngram_stopwords():
+    """Set pipeline using feature set 10"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature10_word_char_ngram_stopwords()
     pipeline = Pipeline(
@@ -318,6 +347,8 @@ def pipeline10_word_char_ngram_stopwords():
 
 
 def feature11_word_ngram_2_5(use_tfidf):
+    """Vectorize word ngram range(2,5)
+    (feature set 11)"""
     vectorizer = CountVectorizer
     if use_tfidf:
         vectorizer = TfidfVectorizer
@@ -330,6 +361,7 @@ def feature11_word_ngram_2_5(use_tfidf):
 
 
 def pipeline11_word_ngram_2_5(use_tfidf):
+    """Set pipeline using feature set 11"""
     clf = LinearSVC(C=1.0, max_iter=1000000)
     vec = feature11_word_ngram_2_5(use_tfidf)
     pipeline = Pipeline(
@@ -341,19 +373,16 @@ def pipeline11_word_ngram_2_5(use_tfidf):
     return pipeline
 
 
-def saveModel(classifier, experiment_name):
-    joblib.dump(classifier, f"{MODEL_DIR}/{experiment_name}", compress=9)
-
-
 def main():
     args = create_arg_parser()
 
-    # Load training and test sets.
+    # Load training set.
     X_train, Y_train = read_data(f"{DATA_DIR}/train.csv")
 
     # Create Log file
     logging.basicConfig(filename=f"{LOG_DIR}/optSVM.log", level=logging.INFO)
 
+    # Select CV model and features set to train
     if args.feature1:
         pipeline = pipeline1_word_ngram(use_tfidf=args.tfidf)
         experiment_name = "cv_word_ngram"
@@ -382,6 +411,7 @@ def main():
         pipeline = pipeline7_word_ngram_1_4(use_tfidf=args.tfidf)
         experiment_name = "cv_word_ngram_1_4"
 
+    # Select TFIDF model and features set to train
     if args.tfidf:
         if args.feature1:
             pipeline = pipeline1_word_ngram(use_tfidf=args.tfidf)
