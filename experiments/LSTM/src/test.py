@@ -42,7 +42,7 @@ def create_arg_parser():
     """
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-m", "--model", default= "base", type=str, help="model to test")
+    parser.add_argument("-m", "--model", default= "aug", type=str, help="model to test")
     parser.add_argument("-t", "--training_set", default= "aug", type=str, help="training set that was used for training")
 
     args = parser.parse_args()

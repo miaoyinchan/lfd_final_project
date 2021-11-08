@@ -14,7 +14,7 @@ OUTPUT_DIR = "../Output//"
 def create_arg_parser():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-e", "--experiment",type=str,default= "expfull_10_model", 
+    parser.add_argument("-e", "--experiment",type=str,default= "aug", 
                         help="Get predicted results for specific experiment")
 
 
