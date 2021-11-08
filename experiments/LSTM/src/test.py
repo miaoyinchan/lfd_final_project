@@ -44,12 +44,13 @@ def create_arg_parser():
 
     parser.add_argument("-m", "--model", default= "aug", type=str, help="model to test")
     parser.add_argument("-t", "--training_set", default= "aug", type=str, help="training set that was used for training")
+    parser.add_argument("-ts", "--test_set", default= "test.csv", type=str, help="test set")
 
     args = parser.parse_args()
     return args
 
 
-def load_data(data_set,dir):
+def load_data(data_set,test_set,dir):
     """
     Description:
     
@@ -62,6 +63,11 @@ def load_data(data_set,dir):
     if data_set == "aug":
 
         df_train = pd.read_csv(dir+'/'+'train_aug.csv')
+    elif data_set = "down":
+        df_train = pd.read_csv(dir+'/'+'train_down.csv')
+    else:
+        df_train = pd.read_csv(dir+'/'+'train.csv')
+     
 
     X_train = df_train['article'].ravel().tolist()
     Y_train = df_train['topic']
@@ -71,7 +77,7 @@ def load_data(data_set,dir):
     X_dev = df_dev['article'].ravel().tolist()
     Y_dev = df_dev['topic']
     
-    df_test = pd.read_csv(dir+'/test.csv')
+    df_test = pd.read_csv(dir+'/'+test_set)
 
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
@@ -170,7 +176,7 @@ def main():
     max_length  =  1000
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev,X_test, Y_test = load_data(args.training_set,DATA_DIR)
+    X_train, Y_train, X_dev, Y_dev,X_test, Y_test = load_data(args.training_set,args.test_set,DATA_DIR)
     vectorizer = TextVectorization(standardize=None, output_sequence_length=1000)
     # Use train and dev to create vocab - could also do just train
     text_ds = tf.data.Dataset.from_tensor_slices(X_train + X_dev)
