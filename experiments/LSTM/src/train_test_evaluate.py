@@ -80,12 +80,14 @@ def create_arg_parser():
                         help="Specify training data" )
     parser.add_argument("-i", "--input_file", type=str, default='train.csv',
                         help="Input file for training")
+    parser.add_argument("-ts", "--test_set", action="store_true",
+                        help="Use cop 25 test set")
     args = parser.parse_args()
     return args
 
 
 
-def load_data(dir, tfile):
+def load_data(dir, tfile, test):
     """
     Description:
     
@@ -105,7 +107,7 @@ def load_data(dir, tfile):
     X_dev = df_dev['article'].ravel().tolist()
     Y_dev = df_dev['topic']
     
-    df_test = pd.read_csv(dir+'/test.csv')
+    df_test = pd.read_csv(dir+'/'+test)
 
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
@@ -380,7 +382,47 @@ def save_output(Y_test, Y_pred, model_name):
     except OSError as error:
         df.to_csv(OUTPUT_DIR+model_name+".csv", index=False)
    
+def save_results(Y_test, Y_pred, experiment_name):
+   
+    
+    ''' save results (accuracy, precision, recall, and f1-score) in csv file and plot confusion matrix '''
 
+   
+    test_report =  classification_report(Y_test,Y_pred,output_dict=True,digits=4)
+
+    result = {"experiment":experiment_name}
+
+    labels = list(test_report.keys())[:2]
+
+    for label in labels:
+        result["precision-"+label] = test_report[label]['precision']
+        result["recall-"+label] = test_report[label]['recall']
+        result["f1-"+label] = test_report[label]['f1-score']
+        
+    
+    result['accuracy'] = test_report['accuracy'] 
+    result['macro f1-score'] = test_report['macro avg']['f1-score']
+
+    try:
+        df = pd.read_csv(OUTPUT_DIR+experiment_name+"_results.csv")
+        df = df.append(result, ignore_index=True)
+        df.to_csv(OUTPUT_DIR+experiment_name+"_results.csv",index=False)
+    except FileNotFoundError:
+        df = pd.DataFrame(result,index=[0])
+        df.to_csv(OUTPUT_DIR+experiment_name+"_results.csv",index=False)
+
+    # save the confusion matrix of the model in png file
+    cm = confusion_matrix(Y_test, Y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=labels)
+    disp.plot()
+    plt.savefig(OUTPUT_DIR+"{}.png".format(experiment_name))
+
+    # Obtain the accuracy score of the model
+    acc = accuracy_score(Y_test, Y_pred)
+    print("Final accuracy: {}".format(acc))
+
+    print("\nClassification Report\n")
+    print(classification_report(Y_test,Y_pred))
 
 def main():
 
@@ -388,9 +430,13 @@ def main():
     model_name = args.model
     set_log(model_name)
     print(args)
+    if args.test_set:
+        test_set = "test_25th.csv"
+    else:
+        test_set = "test.csv"
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev,X_test, Y_test = load_data(DATA_DIR, args.input_file)
+    X_train, Y_train, X_dev, Y_dev,X_test, Y_test = load_data(DATA_DIR, args.input_file, test_set)
 
    # Transform words to indices using a vectorizer
     vectorizer = TextVectorization(standardize=None, output_sequence_length=MAXLEN)
@@ -422,7 +468,10 @@ def main():
     # Train the model
     model = train_model(model, X_train_vect, Y_train, X_dev_vect, Y_dev,model_name, args)
     test, pred = test_set_predict(model, X_test_vect, Y_test, "test")
+    
+    # Test and evaluate
     save_output(test, pred, model_name)
+    save_results(test, pred, model_name)
 
 if __name__ == "__main__":
     main()
