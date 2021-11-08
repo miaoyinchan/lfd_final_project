@@ -207,8 +207,8 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 ### LSTM   
 To run the best LSTM model, run bash file from ***experiments/LSTM/src***, which trains the model, test it and evaluate it.
 
-* To simply test and evaluate an existing model simply run test.py -m <modelname> -t <traininge set>
-    ** The best LSTM model named "aug_model_model".
-    ** execute`test.py ` to test the model or `test.py -ts <file> ` to use custom test set
-    ** execute `evaluate.py` to get scores of the model.
+* To simply test and evaluate an existing model simply run `test.py -m <modelname> -t <traininge set>`
+    * The best LSTM model named "aug_model_model".
+    * execute`test.py ` to test the model or `test.py -ts <file> ` to use custom test set
+    * execute `evaluate.py` to get scores of the model.
 * To train the model using different parameters, use the --h command of train.py
