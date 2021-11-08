@@ -64,17 +64,21 @@ def weighted_loss_function(labels, logits):
     pos_weight = tf.constant(0.33)
     return tf.reduce_mean(tf.nn.weighted_cross_entropy_with_logits(labels=labels, logits=logits, pos_weight=pos_weight))
 
-def load_data(dir, training_set):
+def load_data(dir, config):
 
     """Return appropriate training and validation sets reading from csv files"""
+
+    training_set = config["training-set"]
 
     if training_set.lower()=="trial":
         df_train = pd.read_csv(dir+'/train_opt.csv')
     elif training_set.lower()=="resample":
         df_train = pd.read_csv(dir+'/train_aug.csv')
     elif training_set.lower()=="resample-balance":
-        df_train = pd.read_csv(dir+'/train_down.csv')
-        df_train = df_train[:-1] #remove one sample to escape longformer's incompatibility with shapes
+
+        df_train = pd.read_csv(dir+'/train_down.csv')   
+        if config["model"].upper() =='LONG':
+            df_train = df_train[:-1] #remove one sample to fix longformer's incompatibility with shapes
     else:
         df_train = pd.read_csv(dir+'/train.csv')
     
@@ -194,7 +198,7 @@ def main():
     set_log(model_name)
 
     #load data from train-test-dev folder
-    X_train, Y_train, X_dev, Y_dev = load_data(utils.DATA_DIR, config["training-set"])
+    X_train, Y_train, X_dev, Y_dev = load_data(utils.DATA_DIR, config)
 
     #run model
     classifier(X_train,X_dev,Y_train, Y_dev, config, model_name)

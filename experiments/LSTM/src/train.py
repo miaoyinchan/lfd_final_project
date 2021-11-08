@@ -6,13 +6,10 @@ print = log.info
 import numpy as np 
 import pandas as pd 
 import os
-from tqdm import tqdm, trange
+
 from sklearn.metrics import roc_auc_score
-import pickle
-import gc
-import csv
+
 import random as python_random
-import json
 import argparse
 import numpy as np
 import pandas as pd
@@ -25,26 +22,17 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
 from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import LabelBinarizer
-from sklearn.feature_extraction.text import TfidfVectorizer
 from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.optimizers.schedules import PolynomialDecay
 from tensorflow.keras.layers import TextVectorization
 from tensorflow.keras.layers import Bidirectional
-from tensorflow.keras.losses import CategoricalCrossentropy
-from tensorflow import keras
-from tensorflow.keras import initializers
-from tensorflow.keras import initializers
 from tensorflow.keras.callbacks import EarlyStopping, CSVLogger
-from itertools import islice
 from gensim.models.fasttext import FastText
-from gensim.test.utils import datapath
 from tqdm.keras import TqdmCallback
-from tensorflow.keras import backend as K
-import keras.metrics as metrics
-import joblib
-import sys
-from keras.models import model_from_json
+
+
+
+
+
 
 # Make reproducible as much as possible
 np.random.seed(1234)
@@ -144,7 +132,7 @@ def get_embeddings(docs):
     model.build_vocab(docs)
     model.train(docs, epochs=model.epochs,
     total_examples=model.corpus_count, total_words=model.corpus_total_words)
-    return model.wv;
+    return model.wv
 
 def get_embeddings_glove():
     """

@@ -2,10 +2,8 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
-import joblib
 from matplotlib import pyplot as plt
-from sklearn import svm
-from wordcloud import WordCloud
+
 
 DATA_DIR = '../../train-test-dev/'
 MODEL_DIR = "Saved_Models/"

@@ -3,23 +3,14 @@ import pandas as pd
 import os
 import csv
 import argparse
-import random
-import nltk
 import logging
 from nltk.tokenize import word_tokenize
-from sklearn.pipeline import FeatureUnion
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.svm import LinearSVC
 from sklearn.metrics import classification_report as report
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import cross_val_predict
-import numpy as np
-import pandas as pd
-from nltk.util import ngrams, pr
 import sys
 import joblib
 

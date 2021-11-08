@@ -83,13 +83,13 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
    
     "model": "LONG",
     "max_length" : 1024,
-    "learning_rate": 5e-5,
+    "learning_rate": 3e-4,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
-    "loss": "custom",
-    "optimizer": "adam",
-    "training-set": "resample-balance"
+    "loss": "binary",
+    "optimizer": "sgd",
+    "training-set": "full"
 
 
     ```
@@ -97,14 +97,14 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    execute `run.sh [testset] [--option]`
+    execute `lm.sh [testset] [--option]`
 
     * **testset:** use `24` to test the model on data from 24th meeting and
                        `25` will test the model on 25th COP meeting **[Mandatory]**
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` or `run.sh 24` 
+    **Example** `lm.sh 25 t` or `lm.sh 24` 
 
 ### Naive Bayes
 
@@ -122,14 +122,14 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    execute `run.sh [testset] [--option]`
+    execute `nb.sh [testset] [--option]`
 
     * **testset:** use `24` to test the model on data from 24th meeting and
                        `25` will test the model on 25th COP meeting **[Mandatory]**
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` or `run.sh 24`
+    **Example** `nb.sh 25 t` or `nb.sh 24`
 
 ### Random Forest
 
@@ -209,6 +209,21 @@ To run the best LSTM model, run bash file from ***experiments/LSTM/src***, which
 
 * To simply test and evaluate an existing model simply run `test.py -m <modelname> -t <traininge set>`
     * The best LSTM model named "aug_model_model".
-    * execute`test.py ` to test the model or `test.py -ts <file> ` to use custom test set
+    * execute`test.py ` to test the model or `test.py -ts test_25.csv` to use the 25th cop meeting
     * execute `evaluate.py` to get scores of the model.
 * To train the model using different parameters, use the --h command of train.py
+Requirements:
+* In order to run the experiment you need to download the glove.6B.200d.txt file and save it in the LSTM/src/data/
+
+    * Models:
+
+| Models            | Training data  |
+|-------------------|----------------|
+| aug_model_model | train_aug      |
+| base_model      | train          |
+| down_model      | train_down     |
+
+
+
+
+
