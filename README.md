@@ -83,13 +83,13 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
    
     "model": "LONG",
     "max_length" : 1024,
-    "learning_rate": 5e-5,
+    "learning_rate": 3e-4,
     "epochs": 10,
     "patience": 3,
     "batch_size": 8,
-    "loss": "custom",
-    "optimizer": "adam",
-    "training-set": "resample-balance"
+    "loss": "binary",
+    "optimizer": "sgd",
+    "training-set": "full"
 
 
     ```
@@ -97,14 +97,14 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    execute `run.sh [testset] [--option]`
+    execute `lm.sh [testset] [--option]`
 
     * **testset:** use `24` to test the model on data from 24th meeting and
                        `25` will test the model on 25th COP meeting **[Mandatory]**
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` or `run.sh 24` 
+    **Example** `lm.sh 25 t` or `lm.sh 24` 
 
 ### Naive Bayes
 
@@ -122,14 +122,14 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 
 * To run experiments with Naive Bayes Algorithm, run bash file from ***experiments/Naive Bayes/***
 
-    execute `run.sh [testset] [--option]`
+    execute `nb.sh [testset] [--option]`
 
     * **testset:** use `24` to test the model on data from 24th meeting and
                        `25` will test the model on 25th COP meeting **[Mandatory]**
 
     * **--option:** use `t` to train, predict, and evaluate a model from scratch. by default it only predict outputs from a saved model and evaluate the result **[OPTIONAL]**
     
-    **Example** `run.sh 25 t` or `run.sh 24`
+    **Example** `nb.sh 25 t` or `nb.sh 24`
 
 ### Random Forest
 
@@ -150,6 +150,12 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 * To train, test, and evaluate models with different features and parameter values(Count Vector or TF-IDF, with different alphas):
 
     * execute `train.py -h`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+### SVM
+* To run the baseline model using SVM algorithm, run bash file from ***experiments/SVM/***
+    * excecute `svm.sh` to train the SVM model using Countvectors, test the model against our test set and evaluate it.
+    * excecute `svm_tfidf.sh` to train the SVM model using TF-IDF, test the model against our test set and evaluate it.
+    * excecute `svm_25.sh` to train the SVM model using Countvectors, test the model against the new test set (cop 25)  and evaluate it.
+    * excecute `svm_tfidf_25.sh` to train the SVM model using TF-IDF, test the model against the new test set (cop 25) and evaluate it.
 
 
 ### Optimized Linear SVM
@@ -202,3 +208,28 @@ Download all saved models from [here](https://drive.google.com/drive/folders/1g7
 * To train, tune, test, and evaluate linear SVC models on the fixed sequence length training set:
 
     * execute `fixed_sq_train.py`, `test.py -h`, `evaluate.py -h` to see all command line arguments, and choose the desired option.
+
+
+### LSTM   
+To run the best LSTM model, run bash file from ***experiments/LSTM/src***, which trains the model, test it and evaluate it.
+
+* To simply test and evaluate an existing model simply run `test.py -m <modelname> -t <traininge set>`
+    * The best LSTM model named "aug_model_model".
+    * execute`test.py ` to test the model or `test.py -ts test_25.csv` to use the 25th cop meeting
+    * execute `evaluate.py` to get scores of the model.
+* To train the model using different parameters, use the --h command of train.py
+Requirements:
+* In order to run the experiment you need to download the glove.6B.200d.txt file and save it in the LSTM/src/data/
+
+    * Models:
+
+| Models            | Training data  |
+|-------------------|----------------|
+| aug_model_model | train_aug      |
+| base_model      | train          |
+| down_model      | train_down     |
+
+
+
+
+

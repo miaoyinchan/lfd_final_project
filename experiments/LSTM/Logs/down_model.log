@@ -1,0 +1,10 @@
+2021-11-04 19:41:35,923 - transformers - INFO - Accuracy on own test set: 0.935
+2021-11-04 19:41:35,963 - transformers - INFO -               precision    recall  f1-score   support
+
+           0       0.83      0.99      0.90       509
+           1       0.99      0.91      0.95      1199
+
+    accuracy                           0.94      1708
+   macro avg       0.91      0.95      0.93      1708
+weighted avg       0.94      0.94      0.94      1708
+

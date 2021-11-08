@@ -2,6 +2,8 @@
 /train-test-dev
 /experiments/RF/Saved_Models
 /experiments/LM/Saved_Models
+/experiments/SVM/Saved_Models
+/experiments/Naive Bayes/Saved_Models
 /experiments/optimizedSVM/Saved_Models
 /experiments/optimizedSVM/Output/oldoutput
 /experiments/optimizedSVM/src/resampling_SMOTE.py

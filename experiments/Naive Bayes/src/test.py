@@ -6,6 +6,7 @@ import argparse
 
 def create_arg_parser():
 
+    '''Returns a map with commandline parameters taken from the user'''
     parser = argparse.ArgumentParser()
     parser.add_argument("-ts",
         "--testset",
