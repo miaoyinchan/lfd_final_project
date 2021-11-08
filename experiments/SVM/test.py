@@ -20,23 +20,34 @@ def create_arg_parser():
     
     parser.add_argument("-n2", "--n2", default=1, type=int,
                         help="Ngram End point")
+    parser.add_argument("-ts", "--test_set", default='24', type=str,
+                        help="Which test set to use")
 
 
     args = parser.parse_args()
     return args
 
-def load_data(dir):
+def load_data(dir, testset):
 
     """ Return article and label from test data """
-
-    df = pd.read_csv(dir+'/test.csv')
-    X = df['article'].ravel()
-    Y = df['topic']
+    if testset=="24":
+        df = pd.read_csv(dir+'/test.csv')
+        X = df['article'].ravel()
+        Y = df['topic']
     
-    Y = [1 if y=="MISC" else 0 for y in Y]
+        Y = [1 if y=="MISC" else 0 for y in Y]
     
-    return X,Y
+        return X,Y
+    elif testset=="25":
+        df = pd.read_csv(dir+'/test_25th.csv')
+        X = df['article'].ravel()
+        Y = df['topic']
+    
+        Y = [1 if y=="MISC" else 0 for y in Y]
+    
+        return X,Y
 
+    
 def main():
 
     
@@ -52,9 +63,10 @@ def main():
 
     
     classifier = joblib.load(MODEL_DIR+experiment_name)
+    test_set = args.test_set
 
     #load data from train-test-dev folder
-    X_test, Y_test = load_data(DATA_DIR)
+    X_test, Y_test = load_data(DATA_DIR, test_set)
 
     #Test the model with test set
     Y_pred = classifier.predict(X_test)
