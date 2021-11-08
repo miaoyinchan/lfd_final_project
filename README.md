@@ -219,12 +219,11 @@ Requirements:
 
 | Models            | Training data  |
 |-------------------|----------------|
-| 1 aug_model_model | train_aug      |
-| 2 base_model      | train          |
-| 3 down_model      | train_down     |
+| aug_model_model | train_aug      |
+| base_model      | train          |
+| down_model      | train_down     |
 
-Packages(extra) to install
-* gensim (FastText)
+
 
 
 

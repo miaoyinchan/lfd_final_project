@@ -3,12 +3,11 @@ import logging
 log = logging.getLogger('transformers')
 log.setLevel(logging.INFO)
 print = log.info
-import json
+
 import os
 import argparse
 import pandas as pd
-from transformers import TFAutoModelForSequenceClassification
-from transformers import AutoTokenizer
+
 import numpy as np
 import tensorflow as tf
 import random as python_random

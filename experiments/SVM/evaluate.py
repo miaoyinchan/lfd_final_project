@@ -4,7 +4,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
 from matplotlib import pyplot as plt
-from sklearn import svm
 from wordcloud import WordCloud
 
 DATA_DIR = '../../train-test-dev/'
