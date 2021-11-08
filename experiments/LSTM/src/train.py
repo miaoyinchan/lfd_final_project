@@ -84,11 +84,11 @@ def create_arg_parser():
                         help="Dropout rate")
     parser.add_argument("-rec", "--recurrent",action="store_true",
                         help="Recurrent dropout")
-    parser.add_argument("-lay", "--LSTM_layers",type=int, default=1, max=2,min=1,
+    parser.add_argument("-lay", "--LSTM_layers",type=int, default=1, choices=range(1,3),
                         help="Number of LSTM layers")
     parser.add_argument("-bi", "--bidirectional",action="store_true",
                         help="Add bidirectional LSTM")
-    parser.add_argument("-tr", "--traing_data",action="store_true",type=str, default='aug',
+    parser.add_argument("-tr", "--training_data",type=str, default='aug',
                         help="Specify training data" )
     parser.add_argument("-i", "--input_file", type=str, default='train.csv',
                         help="Input file for training")
@@ -133,7 +133,7 @@ def load_data(dir, tfile):
     return X_train, Y_train, X_dev, Y_dev, X_test, Y_test
 
 def get_embeddings(docs):
-        """
+    """
     Description:
     
     This method get Fasttext embeddings
@@ -189,7 +189,7 @@ def get_emb_matrix(voc, emb):
     
     
 def get_emb_matrix2(voc, emb):
-        """
+    """
     Description:
     
     This method gets embedding matrix given vocab and the glove embeddings
@@ -262,14 +262,14 @@ def create_model(Y_train, emb_matrix,args):
     model.add(Dense(input_dim=embedding_dim, units=num_labels, activation="sigmoid"))
     
     # Compile model using our settings, check for accuracy
-    model.compile(loss= "binary_crossentropy", optimizer=optim,  metrics=METRICS)
+    model.compile(loss= "binary_crossentropy", optimizer=optim)
     logging.info(model.summary())
     
     return model
 
 
 def train_model(model, X_train, Y_train, X_dev, Y_dev, name, args):
-        """
+    """
     Description:
     
     This method trains the model here
@@ -297,12 +297,10 @@ def train_model(model, X_train, Y_train, X_dev, Y_dev, name, args):
     return model
 
 def saveModel(classifier,experiment_name ):
-     """
+    """
     Description:
     
     This method saves our model
-   
-
     """
 
     try:
@@ -317,7 +315,7 @@ def saveModel(classifier,experiment_name ):
 
     except OSError as error:
         model_json = classifier.to_json()
-        #classifier.save( MODEL_DIR+'/'+experiment_name)
+
         with open(MODEL_DIR+'/'+experiment_name+"_model.json", "w") as json_file:
             json_file.write(model_json)
         classifier.save_weights(MODEL_DIR+'/'+experiment_name+"_model.h5")
@@ -349,7 +347,7 @@ def test_set_predict(model, X_test, Y_test, ident):
 
 
 def set_log(model_name):
-	 """
+    """
     Description:
     
     This method creates a Log file

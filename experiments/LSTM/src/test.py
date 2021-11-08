@@ -63,7 +63,7 @@ def load_data(data_set,test_set,dir):
     if data_set == "aug":
 
         df_train = pd.read_csv(dir+'/'+'train_aug.csv')
-    elif data_set = "down":
+    elif data_set == "down":
         df_train = pd.read_csv(dir+'/'+'train_down.csv')
     else:
         df_train = pd.read_csv(dir+'/'+'train.csv')
