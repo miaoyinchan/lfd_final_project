@@ -213,7 +213,7 @@ To run the best LSTM model, run bash file from ***experiments/LSTM/src***, which
     * execute `evaluate.py` to get scores of the model.
 * To train the model using different parameters, use the --h command of train.py
 Requirements:
-* In order to run the experiment you need to download the glove.6B.200d.txt and save it in the LSTM/src/data/
+* In order to run the experiment you need to download the glove.6B.200d.txt file and save it in the LSTM/src/data/
 
     * Models:
 
