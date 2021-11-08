@@ -35,10 +35,17 @@ def create_arg_parser():
 def load_data(dir, testset):
 
     """Return test sets reading from csv files"""
-    if testset=="24":
-        df_test = pd.read_csv(dir+'/test.csv')
-    elif testset=="25":
-        df_test = pd.read_csv(dir+'/test_25th.csv')
+    try:
+        if testset=="24":
+            df_test = pd.read_csv(dir+'/test.csv')
+        elif testset=="25":
+            df_test = pd.read_csv(dir+'/test_25th.csv')
+    except FileNotFoundError as error:
+        print("#########################################################################\n")
+        print("Please ensure that test.csv or test_25th.csv files are present in the train-test-dev folder\n")
+        print("#########################################################################\n")
+        return
+            
 
     X_test = df_test['article'].ravel().tolist()
     Y_test = df_test['topic']
@@ -149,11 +156,14 @@ def main():
 
 
     #load data from train-test-dev folder
-    X_train, Y_train = load_data(utils.DATA_DIR,args.testset)
-    Y_test, Y_pred = test(X_train, Y_train, config, model_name)
+    try:
+        X_train, Y_train = load_data(utils.DATA_DIR,args.testset)
+        Y_test, Y_pred = test(X_train, Y_train, config, model_name)
     
-    #save output in directory
-    save_output(Y_test, Y_pred, model_name)
+        #save output in directory
+        save_output(Y_test, Y_pred, model_name)
+    except:
+        return
   
     
 

@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 DATA_DIR = '../../train-test-dev/'
 MODEL_DIR = "Saved_Models/"
-OUTPUT_DIR = "../Output//"
+OUTPUT_DIR = "../Output/"
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -59,7 +59,7 @@ def save_results(Y_test, Y_pred, experiment_name):
     print("Final accuracy: {}".format(acc))
 
     print("\nClassification Report\n")
-    print(classification_report(Y_test,Y_pred))
+    print(classification_report(Y_test,Y_pred, digits=4))
 
 
 def main():
