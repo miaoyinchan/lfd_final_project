@@ -14,7 +14,11 @@ import random as python_random
 from tensorflow.keras.layers import TextVectorization
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import classification_report
-from tensorflow.keras.backend import manual_variable_initialization
+
+from keras.backend import manual_variable_initialization 
+manual_variable_initialization(True)
+
+
 
 
 np.random.seed(1234)
@@ -142,10 +146,6 @@ def test(X_test, Y_test, model_name):
     return Y_test, Y_pred
 
     
-    
-
-    
-    return Y_test, Y_pred
 
 def set_log(model_name):
 
